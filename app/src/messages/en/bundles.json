@@ -1,1 +1,31 @@
-{}
+{
+  "section": {
+    "title": "Curated collections",
+    "subtitle": "Pre-built tool stacks for specific use cases",
+    "seeAll": "See all"
+  },
+  "list": {
+    "title": "Bundles",
+    "intro": "Hand-picked stacks of AI tools at one price. Pick a bundle and save compared to buying each tool on its own."
+  },
+  "card": {
+    "perMonth": "per month",
+    "save": "Save {percent}%",
+    "toolsIncluded": "{count, plural, one {# tool} other {# tools}} included"
+  },
+  "detail": {
+    "back": "All bundles",
+    "subscribe": "Subscribe",
+    "included": "{count, plural, one {# tool included} other {# tools included}}"
+  },
+  "period": {
+    "label": "Billing period",
+    "monthly": "Monthly",
+    "quarterly": "Quarterly",
+    "yearly": "Yearly"
+  },
+  "price": {
+    "save": "Save {percent}%",
+    "perMonth": "{price} per month"
+  }
+}
