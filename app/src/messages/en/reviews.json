@@ -1,1 +1,56 @@
-{}
+{
+  "title": "Reviews",
+  "anonymous": "AI Explore member",
+  "loading": "Loading reviews",
+  "summary": {
+    "empty": "No reviews yet",
+    "label": "Rated {average} out of 5",
+    "count": "{count, plural, one {# review} other {# reviews}}"
+  },
+  "list": {
+    "empty": "Be the first to share what you think of this tool.",
+    "sortLabel": "Sort reviews",
+    "sort": {
+      "newest": "Newest",
+      "helpful": "Most helpful"
+    }
+  },
+  "item": {
+    "ratingLabel": "{rating} out of 5 stars",
+    "yours": "Your review",
+    "edited": "Edited",
+    "helpful": "Helpful ({count})"
+  },
+  "form": {
+    "createTitle": "Write a review",
+    "editTitle": "Edit your review",
+    "ratingLabel": "Your rating",
+    "ratingOption": "{rating, plural, one {# star} other {# stars}}",
+    "bodyLabel": "Your review",
+    "bodyOptional": "Optional",
+    "bodyPlaceholder": "What did you use it for? What worked well, and what didn't?",
+    "counter": "{count} / {max}",
+    "submit": "Post review",
+    "update": "Save changes",
+    "cancel": "Cancel",
+    "validation": {
+      "ratingRequired": "Choose a rating from 1 to 5 stars.",
+      "bodyTooLong": "Keep your review to {max} characters or fewer."
+    }
+  },
+  "signIn": {
+    "prompt": "Sign in to rate this tool and share your experience.",
+    "action": "Sign in to review"
+  },
+  "own": {
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "delete": {
+    "title": "Delete your review?",
+    "description": "Your rating will be removed from this tool's average. This can't be undone.",
+    "confirm": "Delete review",
+    "cancel": "Keep it",
+    "close": "Close"
+  }
+}
