@@ -98,7 +98,7 @@ strip_markers() { sed -E 's/\.(skip|fixme|todo)\(/(/g'; }
 
 step_oracle() {
   case "$TASK" in O1|O2|C1|C2|C3|F1|F2|F3|F4|L1) echo "exempt task $TASK" >> "$LOG"; return 0 ;; esac
-  local bad=0 f diff removed added owned n pairs i r a
+  local bad=0 f diff removed added owned n pairs i r a line
   owned="$(owned_invariants)"
   while IFS= read -r f; do
     [[ -z "$f" ]] && continue
@@ -113,8 +113,10 @@ step_oracle() {
     if [[ "$(strip_markers <<< "$removed")" != "$(strip_markers <<< "$added")" ]]; then
       echo "oracle changed beyond markers: $f" >> "$LOG"; bad=1; continue
     fi
-    mapfile -t rem_lines <<< "$removed"
-    mapfile -t add_lines <<< "$added"
+    rem_lines=()
+    add_lines=()
+    while IFS= read -r line; do rem_lines+=("$line"); done <<< "$removed"
+    while IFS= read -r line; do add_lines+=("$line"); done <<< "$added"
     for i in "${!rem_lines[@]}"; do
       r="${rem_lines[$i]}"; a="${add_lines[$i]:-}"
       [[ "$r" == "$a" ]] && continue
