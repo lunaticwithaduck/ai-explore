@@ -1,1 +1,19 @@
-{}
+{
+  "siteName": "AI Explore",
+  "defaultDescription": "Открийте, сравнете и комбинирайте най-добрите AI инструменти в една подбрана библиотека.",
+  "libraryTitle": "Библиотека с AI инструменти",
+  "libraryDescription": "Разгледайте подбрана библиотека с AI инструменти по категория, цена и оценка и намерете подходящия за вашата работа.",
+  "bundlesTitle": "Пакети",
+  "bundlesDescription": "Подбрани колекции от AI инструменти, обединени на по-ниска цена.",
+  "compareTitle": "Сравнение на AI инструменти",
+  "compareDescription": "Сравнете AI инструменти един до друг по цена, функции, скорост и качество на резултата.",
+  "compareTools": "{first} срещу {second}",
+  "compareToolsDescription": "Сравнете {first} и {second} един до друг по цена, функции, скорост и качество на резултата.",
+  "signInTitle": "Вход",
+  "signUpTitle": "Създаване на профил",
+  "resetPasswordTitle": "Нулиране на паролата",
+  "myLibraryTitle": "Моята библиотека",
+  "profileTitle": "Профил",
+  "settingsTitle": "Настройки",
+  "adminTitle": "Администрация"
+}

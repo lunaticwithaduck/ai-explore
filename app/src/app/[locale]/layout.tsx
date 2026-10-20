@@ -1,11 +1,13 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import type { ReactNode } from 'react';
 import { StoreProvider } from '@/api/StoreProvider';
 import { routing } from '@/i18n/routing';
 import { FeatureFlagProvider } from '@/lib/feature-flags/FeatureFlagProvider';
 import { loadFlags } from '@/lib/feature-flags/loadFlags';
+import { siteMetadataBase } from '@/lib/seo/metadata';
 import { AppShell } from '@/shell/AppShell/AppShell';
 import '../globals.css';
 
@@ -16,6 +18,17 @@ type LocaleLayoutProps = {
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: LocaleLayoutProps): Promise<Metadata> {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) return {};
+  const t = await getTranslations({ locale, namespace: 'seo' });
+  return {
+    metadataBase: siteMetadataBase(),
+    title: { default: t('siteName'), template: `%s · ${t('siteName')}` },
+    description: t('defaultDescription'),
+  };
 }
 
 export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {

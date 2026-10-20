@@ -1,5 +1,6 @@
 import type { Category, Tool, ToolUpdate, WithId } from '@ai-explore/schemas';
 import { ReviewsSection } from '@/features/reviews/components/ReviewsSection/ReviewsSection';
+import { ToolJsonLd } from '@/lib/seo/ToolJsonLd';
 import { ToolAbout } from '../components/ToolAbout/ToolAbout';
 import { ToolComplementary } from '../components/ToolComplementary/ToolComplementary';
 import { ToolHeader } from '../components/ToolHeader/ToolHeader';
@@ -25,6 +26,7 @@ export function ToolDetailView({
 }: ToolDetailViewProps) {
   return (
     <main className="mx-auto flex w-full max-w-content flex-col gap-6 px-4 py-8">
+      <ToolJsonLd tool={tool} />
       <ToolHeader tool={tool} category={category} similar={similar} />
       <ToolAbout tool={tool} />
       <ToolPlans tool={tool} />

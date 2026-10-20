@@ -1,1 +1,19 @@
-{}
+{
+  "siteName": "AI Explore",
+  "defaultDescription": "Discover, compare and bundle the best AI tools in one curated library.",
+  "libraryTitle": "AI tools library",
+  "libraryDescription": "Browse a curated library of AI tools by category, price and rating, and find the right one for your work.",
+  "bundlesTitle": "Bundles",
+  "bundlesDescription": "Curated collections of AI tools bundled together at a lower price.",
+  "compareTitle": "Compare AI tools",
+  "compareDescription": "Compare AI tools side by side on pricing, features, speed and output quality.",
+  "compareTools": "{first} vs {second}",
+  "compareToolsDescription": "Compare {first} and {second} side by side on pricing, features, speed and output quality.",
+  "signInTitle": "Sign in",
+  "signUpTitle": "Create an account",
+  "resetPasswordTitle": "Reset your password",
+  "myLibraryTitle": "My library",
+  "profileTitle": "Profile",
+  "settingsTitle": "Settings",
+  "adminTitle": "Admin"
+}
