@@ -1,0 +1,9 @@
+{
+  "permission-denied": "You don't have permission to do that.",
+  "unauthenticated": "Please sign in to continue.",
+  "not-found": "We couldn't find that.",
+  "already-exists": "That already exists.",
+  "unavailable": "The service is unavailable. Check your connection and try again.",
+  "invalid-data": "Some of the information isn't valid.",
+  "unknown": "Something went wrong. Please try again."
+}
