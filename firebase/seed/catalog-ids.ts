@@ -20,3 +20,12 @@ export const SEED_BUNDLE_SLUGS = [
   'content-creator-suite',
   'developer-productivity-kit',
 ] as const;
+
+export const E2E_FIXTURES = {
+  unreviewedToolSlug: 'jasper',
+  notifyingToolSlug: 'midjourney',
+  compareSlugs: ['midjourney', 'stable-diffusion'],
+  bundleSlug: 'startup-founder-pack',
+  searchTerm: 'mid',
+  searchCategoryId: 'image',
+} as const;
