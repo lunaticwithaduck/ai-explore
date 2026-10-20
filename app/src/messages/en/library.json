@@ -1,1 +1,34 @@
-{}
+{
+  "searchLabel": "Search tools",
+  "searchPlaceholder": "Search by name, tag or developer",
+  "clearSearch": "Clear search",
+  "categoryLabel": "Filter by category",
+  "allCategories": "All",
+  "tagLabel": "Filter by tag",
+  "priceLabel": "Filter by price",
+  "sortLabel": "Sort by",
+  "price": {
+    "all": "Any price",
+    "free": "Free plan",
+    "trial": "Has trial",
+    "paid": "Paid only"
+  },
+  "sort": {
+    "rating": "Top rated",
+    "reviews": "Most reviewed",
+    "priceAsc": "Price: low to high",
+    "priceDesc": "Price: high to low",
+    "newest": "Newest"
+  },
+  "emptyTitle": "No tools match your search",
+  "emptyBody": "Try a different search or clear the filters.",
+  "reset": "Reset filters",
+  "card": {
+    "free": "Free",
+    "from": "From {price}/mo",
+    "paid": "Paid",
+    "trial": "{days}-day trial",
+    "noReviews": "No reviews yet",
+    "reviewCount": "({count})"
+  }
+}

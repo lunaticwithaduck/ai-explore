@@ -4,7 +4,7 @@ import { TEST_IDS } from '../src/config/test-ids';
 
 type Box = { x: number; y: number; width: number; height: number };
 
-test.fixme('INV-26: library cards align in rows with equal heights, logos and price rows', async ({
+test('INV-26: library cards align in rows with equal heights, logos and price rows', async ({
   page,
 }) => {
   // INV-26
