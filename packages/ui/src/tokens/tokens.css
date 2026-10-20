@@ -1,0 +1,6 @@
+@theme {
+  --color-surface: oklch(0.17 0.01 260);
+  --color-text: oklch(0.97 0 0);
+  --color-text-muted: oklch(0.72 0.01 260);
+  --container-content: 80rem;
+}

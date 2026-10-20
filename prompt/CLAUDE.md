@@ -62,7 +62,9 @@ Closed 2026-10-20 (PLAN §0). Not open for renegotiation by a worker.
 
 ## App structure (majstorbg layering)
 
-Layers, imports only point down: `app → features → shell → shared (api, lib, ui) → config`.
+Layers, imports only point down: `app → shell → features → shared (api, lib, i18n) → config`.
+The shell sits above features because it composes their slot components (`NotificationsBell`,
+`SidebarCollections`). Features never import the shell.
 
 ```
 app/src/
@@ -75,6 +77,7 @@ app/src/
   api/endpoints/<domain>.ts                       injectEndpoints per domain, hooks exported here
   api/server/<domain>.ts                          RSC readers
   lib/firebase/                                   client + lite init, emulator wiring, converters
+  i18n/                                           routing, navigation (Link, useRouter, redirect), request, namespaces
   config/{env,routes,feature-flags}.ts
   messages/{en,bg}/<namespace>.json               one namespace per feature
 ```
