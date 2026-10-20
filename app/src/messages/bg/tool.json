@@ -1,1 +1,55 @@
-{}
+{
+  "header": {
+    "developer": "от {developer}",
+    "open": "Отвори",
+    "ratingLabel": "Оценка {average} от 5",
+    "noRating": "Все още няма оценки"
+  },
+  "about": {
+    "title": "За този инструмент",
+    "features": "Функции"
+  },
+  "plans": {
+    "title": "Цени и планове",
+    "freeBadge": "Има безплатен план",
+    "trialBadge": "{days}-дневен безплатен пробен период",
+    "popular": "Най-популярен",
+    "free": "Безплатно",
+    "custom": "Цена по договаряне",
+    "perMonth": "на месец",
+    "perYear": "на година",
+    "contactSales": "Свържете се с продажбите"
+  },
+  "tutorials": {
+    "title": "Уроци",
+    "previous": "Предишни уроци",
+    "next": "Следващи уроци",
+    "play": "Пусни урока: {title}",
+    "duration": "{minutes} мин",
+    "difficulty": {
+      "beginner": "Начинаещ",
+      "intermediate": "Средно ниво",
+      "advanced": "Напреднал"
+    }
+  },
+  "updates": {
+    "title": "Последни обновления",
+    "empty": "Все още няма публикувани обновления.",
+    "kind": {
+      "feature": "Нова функция",
+      "improvement": "Подобрение",
+      "bugfix": "Поправка"
+    }
+  },
+  "similar": {
+    "title": "Подобни инструменти",
+    "previous": "Предишни подобни инструменти",
+    "next": "Следващи подобни инструменти"
+  },
+  "complementary": {
+    "title": "Върви добре с",
+    "description": "Изградете цялостен работен процес около {name}.",
+    "current": "Текущ инструмент",
+    "then": "после"
+  }
+}

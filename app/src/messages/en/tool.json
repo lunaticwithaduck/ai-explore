@@ -1,1 +1,55 @@
-{}
+{
+  "header": {
+    "developer": "by {developer}",
+    "open": "Open",
+    "ratingLabel": "Rated {average} out of 5",
+    "noRating": "No ratings yet"
+  },
+  "about": {
+    "title": "About this tool",
+    "features": "Features"
+  },
+  "plans": {
+    "title": "Pricing and plans",
+    "freeBadge": "Free plan available",
+    "trialBadge": "{days}-day free trial",
+    "popular": "Most popular",
+    "free": "Free",
+    "custom": "Custom pricing",
+    "perMonth": "per month",
+    "perYear": "per year",
+    "contactSales": "Contact sales"
+  },
+  "tutorials": {
+    "title": "Tutorials",
+    "previous": "Previous tutorials",
+    "next": "Next tutorials",
+    "play": "Play tutorial: {title}",
+    "duration": "{minutes} min",
+    "difficulty": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    }
+  },
+  "updates": {
+    "title": "Recent updates",
+    "empty": "No updates published yet.",
+    "kind": {
+      "feature": "New feature",
+      "improvement": "Improvement",
+      "bugfix": "Bug fix"
+    }
+  },
+  "similar": {
+    "title": "Similar tools",
+    "previous": "Previous similar tools",
+    "next": "Next similar tools"
+  },
+  "complementary": {
+    "title": "Works well with",
+    "description": "Build a complete workflow around {name}.",
+    "current": "Current tool",
+    "then": "then"
+  }
+}
