@@ -1,1 +1,5 @@
-{}
+{
+  "notifyMe": "Notify me when it launches",
+  "registered": "You're on the list",
+  "signInToNotify": "Sign in to get notified"
+}

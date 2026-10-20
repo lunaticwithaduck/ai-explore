@@ -1,1 +1,144 @@
-{}
+{
+  "title": "Admin",
+  "back": "Back to admin",
+  "gate": {
+    "loading": "Checking your access"
+  },
+  "forbidden": {
+    "title": "You don't have access to this page",
+    "body": "This area is only for administrators.",
+    "back": "Back to the library"
+  },
+  "tabs": {
+    "label": "Admin sections",
+    "tools": "Tools",
+    "bundles": "Bundles",
+    "updates": "Updates",
+    "interest": "Interest"
+  },
+  "status": {
+    "published": "Published",
+    "draft": "Draft"
+  },
+  "actions": {
+    "edit": "Edit"
+  },
+  "tools": {
+    "count": "{count, plural, one {# tool} other {# tools}}",
+    "new": "New tool"
+  },
+  "bundles": {
+    "count": "{count, plural, one {# bundle} other {# bundles}}",
+    "new": "New bundle"
+  },
+  "updates": {
+    "hint": "Publish a release note for a tool.",
+    "new": "New update"
+  },
+  "interest": {
+    "hint": "People who asked to be notified when bundles launch.",
+    "period": "{period}: {count}",
+    "periods": {
+      "monthly": "Monthly",
+      "quarterly": "Quarterly",
+      "yearly": "Yearly"
+    }
+  },
+  "form": {
+    "invalid": "Check this field.",
+    "en": "English",
+    "bg": "Bulgarian",
+    "saved": "Saved."
+  },
+  "tool": {
+    "newTitle": "New tool",
+    "editTitle": "Edit tool",
+    "basics": "Basics",
+    "slug": "Slug",
+    "name": "Name",
+    "developer": "Developer",
+    "websiteUrl": "Website",
+    "category": "Category",
+    "categoryPlaceholder": "Choose a category",
+    "taglineEn": "Tagline (English)",
+    "taglineBg": "Tagline (Bulgarian)",
+    "descriptionEn": "Description (English)",
+    "descriptionBg": "Description (Bulgarian)",
+    "logoPath": "Logo path",
+    "logoBackground": "Logo background",
+    "pricing": "Pricing",
+    "hasFreePlan": "Has a free plan",
+    "trialDays": "Trial days",
+    "plans": "Plans",
+    "addPlan": "Add plan",
+    "removePlan": "Remove plan",
+    "planName": "Plan name",
+    "planPrice": "Price (cents)",
+    "planPeriod": "Billing period",
+    "planPopular": "Popular",
+    "planPeriods": {
+      "month": "Month",
+      "year": "Year",
+      "custom": "Custom"
+    },
+    "tags": "Tags",
+    "addTag": "Add tag",
+    "removeTag": "Remove tag",
+    "tag": "Tag",
+    "features": "Features",
+    "addFeature": "Add feature",
+    "removeFeature": "Remove feature",
+    "published": "Published",
+    "save": "Save tool"
+  },
+  "bundle": {
+    "newTitle": "New bundle",
+    "editTitle": "Edit bundle",
+    "slug": "Slug",
+    "nameEn": "Name (English)",
+    "nameBg": "Name (Bulgarian)",
+    "descriptionEn": "Description (English)",
+    "descriptionBg": "Description (Bulgarian)",
+    "icon": "Icon",
+    "accent": "Accent",
+    "accents": {
+      "blue": "Blue",
+      "violet": "Violet",
+      "pink": "Pink",
+      "amber": "Amber",
+      "emerald": "Emerald",
+      "cyan": "Cyan",
+      "rose": "Rose",
+      "slate": "Slate"
+    },
+    "price": "{period} price (cents)",
+    "periods": {
+      "monthly": "Monthly",
+      "quarterly": "Quarterly",
+      "yearly": "Yearly"
+    },
+    "tools": "Included tools",
+    "toolsHint": "Choose at least two tools.",
+    "toolsInvalid": "Choose at least two tools.",
+    "published": "Published",
+    "save": "Save bundle"
+  },
+  "update": {
+    "newTitle": "New update",
+    "tool": "Tool",
+    "toolPlaceholder": "Choose a tool",
+    "version": "Version",
+    "kind": "Kind",
+    "kinds": {
+      "feature": "Feature",
+      "improvement": "Improvement",
+      "bugfix": "Bug fix"
+    },
+    "titleEn": "Title (English)",
+    "titleBg": "Title (Bulgarian)",
+    "changes": "Changes",
+    "addChange": "Add change",
+    "removeChange": "Remove change",
+    "save": "Publish update"
+  }
+}

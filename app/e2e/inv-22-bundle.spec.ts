@@ -4,7 +4,7 @@ import { routes } from '../src/config/routes';
 import { TEST_IDS } from '../src/config/test-ids';
 import { signUp, uniqueUser } from './fixtures/auth';
 
-test.fixme('INV-22: bundle periods change prices, subscribe is absent, notify me registers once', async ({
+test('INV-22: bundle periods change prices, subscribe is absent, notify me registers once', async ({
   page,
 }, testInfo) => {
   // INV-22

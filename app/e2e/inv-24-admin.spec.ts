@@ -6,7 +6,7 @@ import { adminToolField, TEST_IDS } from '../src/config/test-ids';
 import { signIn, signOut, signUp, uniqueUser } from './fixtures/auth';
 import { emulatorRest } from './fixtures/emulator-rest';
 
-test.fixme('INV-24: an admin publishes a tool and a non-admin sees the 403 view', async ({
+test('INV-24: an admin publishes a tool and a non-admin sees the 403 view', async ({
   page,
 }, testInfo) => {
   // INV-24
