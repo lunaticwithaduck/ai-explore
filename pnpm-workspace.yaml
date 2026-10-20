@@ -1,0 +1,22 @@
+packages:
+  - app
+  - packages/*
+  - firebase
+
+allowBuilds:
+  '@firebase/util': true
+  '@parcel/watcher': true
+  '@swc/core': true
+  esbuild: true
+  protobufjs: true
+  re2: false
+
+minimumReleaseAgeExclude:
+  - '@turbo/darwin-64@2.11.10'
+  - '@turbo/darwin-arm64@2.11.10'
+  - '@turbo/linux-64@2.11.10'
+  - '@turbo/linux-arm64@2.11.10'
+  - '@turbo/windows-64@2.11.10'
+  - '@turbo/windows-arm64@2.11.10'
+  - lucide-react@1.60.0
+  - turbo@2.11.10

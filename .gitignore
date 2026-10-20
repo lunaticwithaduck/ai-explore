@@ -20,3 +20,4 @@ ui-debug.log
 emulator-data/
 
 .DS_Store
+.firebase.slot.json
