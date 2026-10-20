@@ -3,6 +3,11 @@ import { E2E_FIXTURES } from '../../firebase/seed/catalog-ids';
 import { routes } from '../src/config/routes';
 import { TEST_IDS } from '../src/config/test-ids';
 import { openMobileMenu, signUp, uniqueUser } from './fixtures/auth';
+import { resetUnreviewedTool } from './fixtures/reset';
+
+test.beforeEach(async () => {
+  await resetUnreviewedTool(E2E_FIXTURES.unreviewedToolSlug);
+});
 
 test('INV-20: user saves, collects, reviews, edits and deletes a review', async ({
   page,
