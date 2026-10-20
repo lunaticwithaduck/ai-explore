@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "deny": [
+      "Bash(git push:*)",
+      "Bash(git remote add:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh repo create:*)",
+      "Bash(firebase deploy:*)",
+      "Bash(firebase login:*)",
+      "Bash(firebase projects:*)",
+      "Bash(pnpm firebase deploy:*)",
+      "Bash(pnpm exec firebase deploy:*)",
+      "Bash(npx firebase deploy:*)",
+      "Bash(gcloud:*)"
+    ]
+  }
+}
