@@ -1,0 +1,11 @@
+app/src/features/account/profile/**
+app/src/features/account/settings/**
+app/src/features/account/components/**
+app/src/features/account/hooks/**
+app/src/features/account/utils/**
+app/src/features/account/config/**
+app/src/features/account/delete/DeleteAccountSection.tsx
+app/src/api/endpoints/profile.ts
+app/src/messages/en/account.json
+app/src/messages/bg/account.json
+artifacts/screens/U2-*

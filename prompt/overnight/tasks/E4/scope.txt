@@ -1,0 +1,7 @@
+app/e2e/inv-19-visitor.spec.ts
+app/src/features/library/**
+app/src/features/tool/**
+app/src/features/compare/**
+app/src/features/share/**
+artifacts/screens/E4-*
+app/src/features/catalogue/**

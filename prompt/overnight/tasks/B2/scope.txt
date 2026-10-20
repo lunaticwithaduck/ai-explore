@@ -1,0 +1,4 @@
+app/src/features/bundles/**
+app/src/messages/en/bundles.json
+app/src/messages/bg/bundles.json
+artifacts/screens/B2-*

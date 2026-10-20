@@ -1,0 +1,10 @@
+app/src/shell/**
+app/src/features/auth/**
+app/src/api/endpoints/auth.ts
+app/src/api/endpoints/profile.ts
+app/src/messages/en/shell.json
+app/src/messages/bg/shell.json
+app/src/messages/en/auth.json
+app/src/messages/bg/auth.json
+app/e2e/inv-23-locale.spec.ts
+artifacts/screens/A1-*

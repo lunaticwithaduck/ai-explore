@@ -1,0 +1,5 @@
+app/src/features/notifications/**
+app/src/api/endpoints/notifications.ts
+app/src/messages/en/notifications.json
+app/src/messages/bg/notifications.json
+artifacts/screens/N1-*

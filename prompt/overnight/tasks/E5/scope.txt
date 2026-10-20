@@ -1,0 +1,8 @@
+app/e2e/inv-20-user.spec.ts
+app/e2e/inv-21-notifications.spec.ts
+app/src/features/my-library/**
+app/src/features/reviews/**
+app/src/features/notifications/**
+app/src/features/auth/**
+app/src/shell/**
+artifacts/screens/E5-*

@@ -1,0 +1,6 @@
+packages/ui/**
+app/src/app/[[]locale]/(dev)/**
+app/src/features/dev/**
+app/src/messages/en/dev.json
+app/src/messages/bg/dev.json
+artifacts/screens/d1-*

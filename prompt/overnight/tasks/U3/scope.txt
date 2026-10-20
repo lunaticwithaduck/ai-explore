@@ -1,0 +1,4 @@
+app/src/features/account/delete/**
+app/src/messages/en/account.json
+app/src/messages/bg/account.json
+artifacts/screens/U3-*

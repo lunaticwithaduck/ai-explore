@@ -1,0 +1,5 @@
+app/src/features/my-library/**
+app/src/api/endpoints/myLibrary.ts
+app/src/messages/en/myLibrary.json
+app/src/messages/bg/myLibrary.json
+artifacts/screens/U1-*

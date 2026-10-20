@@ -1,0 +1,5 @@
+app/src/features/library/**
+app/src/messages/en/library.json
+app/src/messages/bg/library.json
+app/e2e/inv-26-card-layout.spec.ts
+artifacts/screens/B1-*

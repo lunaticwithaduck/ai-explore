@@ -1,0 +1,4 @@
+app/src/features/tool/**
+app/src/messages/en/tool.json
+app/src/messages/bg/tool.json
+artifacts/screens/T1-*

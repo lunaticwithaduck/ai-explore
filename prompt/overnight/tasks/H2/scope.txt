@@ -1,0 +1,9 @@
+app/src/lib/seo/**
+app/src/app/sitemap.ts
+app/src/app/robots.ts
+app/src/messages/en/seo.json
+app/src/messages/bg/seo.json
+app/src/app/[[]locale]/*page.tsx
+app/src/app/[[]locale]/*layout.tsx
+app/src/features/tool/detail/ToolDetailView.tsx
+artifacts/screens/H2-*

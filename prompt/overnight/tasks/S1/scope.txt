@@ -1,0 +1,2 @@
+firebase/seed/**
+app/public/logos/**

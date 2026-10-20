@@ -1,0 +1,12 @@
+app/src/features/admin/**
+app/src/features/bundle-interest/**
+app/src/app/[[]locale]/(admin)/admin/**
+app/src/api/endpoints/admin.ts
+app/src/api/endpoints/bundleInterest.ts
+app/src/messages/en/admin.json
+app/src/messages/bg/admin.json
+app/src/messages/en/bundleInterest.json
+app/src/messages/bg/bundleInterest.json
+app/e2e/inv-22-bundle.spec.ts
+app/e2e/inv-24-admin.spec.ts
+artifacts/screens/M1-*

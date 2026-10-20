@@ -1,0 +1,5 @@
+app/src/features/reviews/**
+app/src/api/endpoints/reviews.ts
+app/src/messages/en/reviews.json
+app/src/messages/bg/reviews.json
+artifacts/screens/V1-*

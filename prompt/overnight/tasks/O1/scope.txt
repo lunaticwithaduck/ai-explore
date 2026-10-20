@@ -1,0 +1,3 @@
+firebase/tests/rules/**
+firebase/seed/seed.test.ts
+app/src/features/share/utils/copyToClipboard.test.ts

@@ -1,0 +1,2 @@
+firebase/firestore.rules
+firebase/tests/rules/r2-hardening.test.ts

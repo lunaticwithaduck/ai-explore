@@ -118,6 +118,7 @@ oracle frozen.
 | Slot | Owner lane | Rendered by |
 |---|---|---|
 | `features/bundles/components/BundlesSection` | B2 | B1 library page |
+| `features/catalogue/components/ToolCard` (`actions` slot) | B1 (merged; moved by manager) | library, bundles, tool, my-library |
 | `features/my-library/components/SaveToolButton` | U1 | B1 card, T1 tool page |
 | `features/my-library/components/AddToCollectionMenu` | U1 | T1 |
 | `features/my-library/components/SidebarCollections` | U1 | A1 sidebar |

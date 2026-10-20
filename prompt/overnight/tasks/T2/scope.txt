@@ -1,0 +1,7 @@
+app/src/features/compare/**
+app/src/features/share/**
+app/src/messages/en/compare.json
+app/src/messages/bg/compare.json
+app/src/messages/en/share.json
+app/src/messages/bg/share.json
+artifacts/screens/T2-*

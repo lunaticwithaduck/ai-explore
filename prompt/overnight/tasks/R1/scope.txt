@@ -1,0 +1,3 @@
+firebase/firestore.rules
+firebase/firestore.indexes.json
+firebase/tests/rules/**
