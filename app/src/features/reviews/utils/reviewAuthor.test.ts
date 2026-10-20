@@ -30,6 +30,14 @@ describe('reviewAuthor', () => {
     expect(name.displayName).toHaveLength(60);
   });
 
+  it('counts UTF-16 units, so emoji never push the name past the limit', () => {
+    const emoji = reviewAuthor({ ...user, displayName: '😀'.repeat(40) }, null, 'Member');
+    expect(emoji.displayName.length).toBeLessThanOrEqual(60);
+    expect(emoji.displayName).toBe('😀'.repeat(30));
+    const split = reviewAuthor({ ...user, displayName: `${'x'.repeat(59)}😀` }, null, 'Member');
+    expect(split.displayName).toBe('x'.repeat(59));
+  });
+
   it('drops a photo the review schema would reject', () => {
     expect(
       reviewAuthor({ ...user, photoUrl: 'not a url' }, { displayName: 'Ada', photoUrl: null }, 'M')

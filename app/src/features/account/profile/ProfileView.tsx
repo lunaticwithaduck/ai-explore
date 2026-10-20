@@ -23,7 +23,7 @@ export function ProfileView({ tools }: ProfileViewProps) {
     user ? { uid: user.uid, recentLimit: RECENT_REVIEWS_LIMIT } : skipToken,
   );
   return (
-    <main className="mx-auto flex w-full max-w-content flex-col gap-6 px-4 py-8">
+    <main className="mx-auto flex w-full max-w-content flex-col gap-6 px-4 py-8 sm:px-6">
       <AccountBackButton />
       <ProfileHeader
         name={profile?.displayName ?? user?.displayName ?? ''}

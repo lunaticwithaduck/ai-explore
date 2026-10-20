@@ -17,7 +17,9 @@ export type ReviewAuthorProfile = {
 
 const photoUrlSchema = z.url().max(PHOTO_URL_MAX);
 
-const clip = (value: string) => [...value].slice(0, DISPLAY_NAME_MAX).join('').trim();
+const HIGH_SURROGATE = /[\uD800-\uDBFF]$/;
+
+const clip = (value: string) => value.slice(0, DISPLAY_NAME_MAX).replace(HIGH_SURROGATE, '').trim();
 
 export function reviewAuthor(
   user: ReviewAuthorSource,

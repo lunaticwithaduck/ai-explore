@@ -22,11 +22,16 @@ export function BundleListView({ bundles, tools }: BundleListViewProps) {
       {bundles.length === 0 ? (
         <EmptyState title={t('list.emptyTitle')} body={t('list.emptyBody')} />
       ) : (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {bundles.map((bundle) => (
-            <BundleCard key={bundle.id} bundle={bundle} tools={tools} />
-          ))}
-        </div>
+        <section className="flex flex-col gap-4">
+          <Heading level={2} className="sr-only">
+            {t('list.resultsTitle')}
+          </Heading>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {bundles.map((bundle) => (
+              <BundleCard key={bundle.id} bundle={bundle} tools={tools} />
+            ))}
+          </div>
+        </section>
       )}
     </main>
   );

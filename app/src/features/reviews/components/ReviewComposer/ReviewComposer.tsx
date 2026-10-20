@@ -14,9 +14,10 @@ import { reviewComposerStyles as styles } from './ReviewComposer.styles';
 export type ReviewComposerProps = {
   toolId: string;
   own: ReviewDoc | null | undefined;
+  failed?: boolean;
 };
 
-export function ReviewComposer({ toolId, own }: ReviewComposerProps) {
+export function ReviewComposer({ toolId, own, failed = false }: ReviewComposerProps) {
   const t = useTranslations('reviews.form');
   const tErrors = useTranslations('errors');
   const { status } = useCurrentUser();
@@ -24,6 +25,7 @@ export function ReviewComposer({ toolId, own }: ReviewComposerProps) {
   const writes = useReviewWrites(toolId);
 
   if (status === 'signedOut') return <ReviewSignInPrompt />;
+  if (own === undefined && failed) return null;
   if (!author || own === undefined) return <Skeleton shape="card" className={styles.loading} />;
 
   return (

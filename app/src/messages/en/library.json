@@ -30,5 +30,6 @@
     "trial": "{days}-day trial",
     "noReviews": "No reviews yet",
     "reviewCount": "({count})"
-  }
+  },
+  "resultsTitle": "Tools"
 }

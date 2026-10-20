@@ -33,7 +33,6 @@ export function SaveToolButton({ toolId }: SaveToolButtonProps) {
         icon={Heart}
         label={t('saveButton')}
         data-testid={TEST_IDS.myLibrary.saveButton}
-        aria-pressed={false}
       >
         <Link href={signInHref(pathname)} />
       </IconButton>

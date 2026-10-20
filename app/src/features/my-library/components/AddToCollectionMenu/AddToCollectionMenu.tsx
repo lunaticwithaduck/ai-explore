@@ -66,7 +66,7 @@ export function AddToCollectionMenu({ toolId }: AddToCollectionMenuProps) {
 
   return (
     <>
-      <DropdownMenu>
+      <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
           <Button
             variant="secondary"
@@ -79,7 +79,7 @@ export function AddToCollectionMenu({ toolId }: AddToCollectionMenuProps) {
         <DropdownMenuContent align="start">
           <DropdownMenuLabel>{t('collectionsLabel')}</DropdownMenuLabel>
           {collections.length === 0 && (
-            <Text size="sm" tone="subtle" className="px-2.5 py-1.5">
+            <Text size="sm" tone="muted" className="px-2.5 py-1.5">
               {t('noCollections')}
             </Text>
           )}

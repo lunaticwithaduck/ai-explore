@@ -31,6 +31,7 @@ export function NotificationsPanel({
     <PopoverContent
       size="lg"
       align="end"
+      aria-label={t('title')}
       className={panelStyles.content}
       data-testid={TEST_IDS.notifications.panel}
     >

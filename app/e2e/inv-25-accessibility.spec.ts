@@ -11,7 +11,7 @@ const blocking = async (page: Page) => {
     .map((v) => `${v.id} (${v.impact}): ${v.nodes.length} node(s)`);
 };
 
-test.fixme('INV-25: no serious or critical axe violations on the key pages', async ({
+test('INV-25: no serious or critical axe violations on the key pages', async ({
   page,
 }, testInfo) => {
   // INV-25

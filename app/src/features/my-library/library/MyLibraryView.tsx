@@ -45,23 +45,32 @@ export function MyLibraryView({ tools }: MyLibraryViewProps) {
       {!ready || !uid ? (
         <Skeleton shape="card" className="h-48 w-full" />
       ) : (
-        <Tabs value={value} onValueChange={select}>
-          <LibraryTabs collections={collections} />
-          <TabsContent value={SAVED_TAB} className="flex flex-col gap-4">
-            <LibraryPanel tools={pick(ids)} kind="saved" />
-          </TabsContent>
-          {collections.map((collection) => (
-            <TabsContent key={collection.id} value={collection.id} className="flex flex-col gap-4">
-              <CollectionHeader
-                uid={uid}
-                collection={collection}
-                toolCount={collection.toolIds.length}
-                onDeleted={() => select(SAVED_TAB)}
-              />
-              <LibraryPanel tools={pick(collection.toolIds)} kind="collection" />
+        <>
+          <Heading level={2} className="sr-only">
+            {t('resultsTitle')}
+          </Heading>
+          <Tabs value={value} onValueChange={select}>
+            <LibraryTabs collections={collections} />
+            <TabsContent value={SAVED_TAB} className="flex flex-col gap-4">
+              <LibraryPanel tools={pick(ids)} kind="saved" />
             </TabsContent>
-          ))}
-        </Tabs>
+            {collections.map((collection) => (
+              <TabsContent
+                key={collection.id}
+                value={collection.id}
+                className="flex flex-col gap-4"
+              >
+                <CollectionHeader
+                  uid={uid}
+                  collection={collection}
+                  toolCount={collection.toolIds.length}
+                  onDeleted={() => select(SAVED_TAB)}
+                />
+                <LibraryPanel tools={pick(collection.toolIds)} kind="collection" />
+              </TabsContent>
+            ))}
+          </Tabs>
+        </>
       )}
     </main>
   );

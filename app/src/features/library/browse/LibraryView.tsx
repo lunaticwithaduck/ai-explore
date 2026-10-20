@@ -19,6 +19,7 @@ export type LibraryViewProps = {
 
 export function LibraryView({ tools, categories, bundles }: LibraryViewProps) {
   const t = useTranslations('common');
+  const tLibrary = useTranslations('library');
   const { filters, reset } = useLibraryFilters();
   const visible = sortTools(filterTools(tools, filters), filters.sort);
   return (
@@ -31,7 +32,12 @@ export function LibraryView({ tools, categories, bundles }: LibraryViewProps) {
       {visible.length === 0 ? (
         <LibraryEmpty onReset={reset} />
       ) : (
-        <LibraryGrid tools={visible} categories={categories} />
+        <>
+          <Heading level={2} className="sr-only">
+            {tLibrary('resultsTitle')}
+          </Heading>
+          <LibraryGrid tools={visible} categories={categories} />
+        </>
       )}
       <BundlesSection bundles={bundles} tools={tools} />
     </main>

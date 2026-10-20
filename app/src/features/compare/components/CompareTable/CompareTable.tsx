@@ -118,6 +118,7 @@ export function CompareTable({ first, second, locale }: CompareTableProps) {
                   <ToolLogo
                     src={tool.logo.path}
                     alt={tool.name}
+                    aria-hidden
                     background={tool.logo.background}
                     size="md"
                   />

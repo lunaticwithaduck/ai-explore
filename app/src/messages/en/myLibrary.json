@@ -30,5 +30,6 @@
   "validation": {
     "nameRequired": "Enter a name for the collection.",
     "nameTooLong": "Use 40 characters or fewer."
-  }
+  },
+  "resultsTitle": "Your tools"
 }

@@ -45,7 +45,11 @@ export function ReviewsSection({ toolId }: ReviewsSectionProps) {
           </Heading>
           <RatingSummary toolId={toolId} />
         </div>
-        <ReviewComposer toolId={toolId} own={reviews === undefined ? undefined : own} />
+        <ReviewComposer
+          toolId={toolId}
+          own={reviews === undefined ? undefined : own}
+          failed={Boolean(error)}
+        />
         {reviews === undefined && !error && <ReviewListSkeleton label={t('loading')} />}
         {reviews === undefined && error && (
           <Text size="sm" tone="danger" role="alert">

@@ -50,7 +50,7 @@ export function NotificationItem({ entry }: NotificationItemProps) {
                 <Badge tone="outline" size="sm">
                   {formatVersion(update.version)}
                 </Badge>
-                <Text as="span" size="xs" tone="subtle">
+                <Text as="span" size="xs" tone="muted">
                   {format.relativeTime(update.publishedAt)}
                 </Text>
               </span>

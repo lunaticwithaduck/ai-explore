@@ -30,5 +30,6 @@
     "trial": "{days} дни пробен период",
     "noReviews": "Още няма отзиви",
     "reviewCount": "({count})"
-  }
+  },
+  "resultsTitle": "Инструменти"
 }

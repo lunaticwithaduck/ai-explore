@@ -79,6 +79,7 @@ export function ComparePicker({ tools, selected, excludeId, label, onSelect }: C
               <ToolLogo
                 src={tool.logo.path}
                 alt={tool.name}
+                aria-hidden
                 background={tool.logo.background}
                 size="sm"
               />

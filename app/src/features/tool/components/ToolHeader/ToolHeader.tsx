@@ -1,6 +1,6 @@
 import type { Category, Locale, Tool, WithId } from '@ai-explore/schemas';
 import { pickLocalized } from '@ai-explore/schemas';
-import { Badge, Button, Card, Heading, StarRating, Text, ToolLogo } from '@ai-explore/ui';
+import { Badge, Button, Card, Heading, Text, ToolLogo } from '@ai-explore/ui';
 import { ExternalLink } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { env } from '@/config/env';
@@ -11,7 +11,7 @@ import { AddToCollectionMenu } from '@/features/my-library/components/AddToColle
 import { SaveToolButton } from '@/features/my-library/components/SaveToolButton/SaveToolButton';
 import { ShareButton } from '@/features/share/components/ShareButton/ShareButton';
 import { Link } from '@/i18n/navigation';
-import { averageRating, formatAverage } from '@/lib/format/rating';
+import { ToolHeaderRating } from '../ToolHeaderRating/ToolHeaderRating';
 
 export type ToolHeaderProps = {
   tool: WithId<Tool>;
@@ -22,8 +22,6 @@ export type ToolHeaderProps = {
 export function ToolHeader({ tool, category, similar }: ToolHeaderProps) {
   const t = useTranslations('tool.header');
   const locale = useLocale() as Locale;
-  const average = averageRating(tool.rating);
-  const averageText = average === null ? null : formatAverage(average, locale);
   return (
     <Card asChild padding="lg">
       <header data-testid={TEST_IDS.tool.header}>
@@ -45,20 +43,7 @@ export function ToolHeader({ tool, category, similar }: ToolHeaderProps) {
             <Text tone="muted" className="mt-3">
               {pickLocalized(tool.tagline, locale)}
             </Text>
-            <div className="mt-3 flex items-center gap-2">
-              <StarRating
-                value={average ?? 0}
-                label={
-                  averageText === null ? t('noRating') : t('ratingLabel', { average: averageText })
-                }
-                valueText={averageText ?? undefined}
-              />
-              {averageText === null && (
-                <Text as="span" size="sm" tone="subtle">
-                  {t('noRating')}
-                </Text>
-              )}
-            </div>
+            <ToolHeaderRating toolId={tool.id} initial={tool.rating} />
           </div>
         </div>
         <div className="mt-6 flex flex-wrap items-center gap-2 border-t border-border pt-5">

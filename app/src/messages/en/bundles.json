@@ -8,7 +8,8 @@
     "title": "Bundles",
     "intro": "Hand-picked stacks of AI tools at one price. Pick a bundle and save compared to buying each tool on its own.",
     "emptyTitle": "No bundles yet",
-    "emptyBody": "Curated bundles will appear here soon."
+    "emptyBody": "Curated bundles will appear here soon.",
+    "resultsTitle": "All bundles"
   },
   "card": {
     "perMonth": "per month",

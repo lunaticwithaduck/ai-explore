@@ -32,7 +32,7 @@ export function UserMenu() {
   const photo = profile?.photoUrl ?? user?.photoUrl ?? null;
 
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"

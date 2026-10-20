@@ -26,7 +26,7 @@ export const dropdownMenuItemStyles = cva(
 export const dropdownMenuIconStyles = cva('size-4 shrink-0 text-text-muted');
 
 export const dropdownMenuLabelStyles = cva(
-  'px-2.5 pt-2 pb-1 font-medium text-text-subtle text-xs uppercase tracking-wide',
+  'px-2.5 pt-2 pb-1 font-medium text-text-muted text-xs uppercase tracking-wide',
 );
 
 export const dropdownMenuSeparatorStyles = cva('-mx-1 my-1 h-px bg-border');
