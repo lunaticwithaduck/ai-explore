@@ -22,3 +22,4 @@ emulator-data/
 .DS_Store
 .firebase.slot.json
 gates.log
+app/AGENTS.md
