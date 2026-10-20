@@ -6,7 +6,9 @@
   },
   "list": {
     "title": "Bundles",
-    "intro": "Hand-picked stacks of AI tools at one price. Pick a bundle and save compared to buying each tool on its own."
+    "intro": "Hand-picked stacks of AI tools at one price. Pick a bundle and save compared to buying each tool on its own.",
+    "emptyTitle": "No bundles yet",
+    "emptyBody": "Curated bundles will appear here soon."
   },
   "card": {
     "perMonth": "per month",
@@ -16,7 +18,9 @@
   "detail": {
     "back": "All bundles",
     "subscribe": "Subscribe",
-    "included": "{count, plural, one {# tool included} other {# tools included}}"
+    "included": "{count, plural, one {# tool included} other {# tools included}}",
+    "emptyTitle": "No tools in this bundle",
+    "emptyBody": "This bundle has no published tools right now."
   },
   "period": {
     "label": "Billing period",

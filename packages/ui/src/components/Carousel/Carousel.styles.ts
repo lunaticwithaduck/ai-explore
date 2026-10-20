@@ -11,7 +11,7 @@ export const carouselTrackStyles = cva('-ml-4 flex touch-pan-y touch-pinch-zoom'
 export const carouselSlideStyles = cva('min-w-0 shrink-0 grow-0 pl-4', {
   variants: {
     slideSize: {
-      sm: 'basis-1/2 sm:basis-1/3 lg:basis-1/4',
+      sm: 'basis-4/5 min-w-56 sm:basis-1/2 md:basis-1/3 lg:basis-1/4',
       md: 'basis-4/5 sm:basis-1/2 lg:basis-1/3',
       lg: 'basis-full sm:basis-2/3 lg:basis-1/2',
       full: 'basis-full',

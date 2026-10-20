@@ -5,6 +5,7 @@ import { Heading, Text } from '@ai-explore/ui';
 import { useLocale, useTranslations } from 'next-intl';
 import { useMemo } from 'react';
 import { routes } from '@/config/routes';
+import { EmptyState } from '@/features/system/components/EmptyState/EmptyState';
 import { useRouter } from '@/i18n/navigation';
 import { ComparePicker } from '../components/ComparePicker/ComparePicker';
 import { CompareTable } from '../components/CompareTable/CompareTable';
@@ -35,7 +36,9 @@ export function CompareView({ tools, firstId, secondId }: CompareViewProps) {
         <Text tone="muted">{t('subtitle')}</Text>
       </header>
 
-      {first ? (
+      {tools.length < 2 ? (
+        <EmptyState title={t('emptyTitle')} body={t('emptyBody')} />
+      ) : first ? (
         <>
           <div className={compareViewStyles.pickers}>
             <Text size="sm" tone="muted">

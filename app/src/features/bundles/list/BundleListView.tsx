@@ -1,6 +1,7 @@
 import type { Bundle, Tool, WithId } from '@ai-explore/schemas';
 import { Heading, Text } from '@ai-explore/ui';
 import { useTranslations } from 'next-intl';
+import { EmptyState } from '@/features/system/components/EmptyState/EmptyState';
 import { BundleCard } from '../components/BundleCard/BundleCard';
 
 export type BundleListViewProps = {
@@ -18,11 +19,15 @@ export function BundleListView({ bundles, tools }: BundleListViewProps) {
           {t('list.intro')}
         </Text>
       </header>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {bundles.map((bundle) => (
-          <BundleCard key={bundle.id} bundle={bundle} tools={tools} />
-        ))}
-      </div>
+      {bundles.length === 0 ? (
+        <EmptyState title={t('list.emptyTitle')} body={t('list.emptyBody')} />
+      ) : (
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {bundles.map((bundle) => (
+            <BundleCard key={bundle.id} bundle={bundle} tools={tools} />
+          ))}
+        </div>
+      )}
     </main>
   );
 }

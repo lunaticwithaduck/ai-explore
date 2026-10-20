@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { TEST_IDS } from '@/config/test-ids';
 import { ToolCard } from '@/features/catalogue/components/ToolCard/ToolCard';
+import { EmptyState } from '@/features/system/components/EmptyState/EmptyState';
 import { BundleCta } from '../components/BundleCta/BundleCta';
 import { BundleHeader } from '../components/BundleHeader/BundleHeader';
 import { BundlePrice } from '../components/BundlePrice/BundlePrice';
@@ -46,11 +47,15 @@ export function BundleDetailView({ bundle, tools }: BundleDetailViewProps) {
         <Heading level={2} id="bundle-included-title">
           {t('detail.included', { count: included.length })}
         </Heading>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {included.map((tool) => (
-            <ToolCard key={tool.id} tool={tool} />
-          ))}
-        </div>
+        {included.length === 0 ? (
+          <EmptyState title={t('detail.emptyTitle')} body={t('detail.emptyBody')} />
+        ) : (
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {included.map((tool) => (
+              <ToolCard key={tool.id} tool={tool} />
+            ))}
+          </div>
+        )}
       </section>
     </main>
   );

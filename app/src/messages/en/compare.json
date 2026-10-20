@@ -39,5 +39,7 @@
     "fraction": "{value}/5",
     "meter": "{value} out of 5",
     "noFeatures": "Not listed"
-  }
+  },
+  "emptyTitle": "Not enough tools to compare",
+  "emptyBody": "At least two published tools are needed for a comparison."
 }

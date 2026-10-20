@@ -13,6 +13,7 @@ export type BundlesSectionProps = {
 
 export function BundlesSection({ bundles, tools }: BundlesSectionProps) {
   const t = useTranslations('bundles');
+  if (bundles.length === 0) return null;
   return (
     <section className="flex flex-col gap-4" aria-labelledby="bundles-section-title">
       <div className="flex items-end justify-between gap-4">
@@ -24,8 +25,10 @@ export function BundlesSection({ bundles, tools }: BundlesSectionProps) {
             {t('section.subtitle')}
           </Text>
         </div>
-        <TextLink asChild size="sm" iconRight={ArrowRight}>
-          <Link href={routes.bundles}>{t('section.seeAll')}</Link>
+        <TextLink asChild size="sm" iconRight={ArrowRight} className="shrink-0">
+          <Link href={routes.bundles} className="whitespace-nowrap">
+            {t('section.seeAll')}
+          </Link>
         </TextLink>
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
