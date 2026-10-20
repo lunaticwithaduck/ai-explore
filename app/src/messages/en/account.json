@@ -1,1 +1,65 @@
-{}
+{
+  "backButton": "Back",
+  "save": "Save changes",
+  "validation": {
+    "displayNameRequired": "Enter a display name.",
+    "displayNameTooLong": "Display names can be up to 60 characters."
+  },
+  "profile": {
+    "memberSince": "Member since {date}",
+    "stats": {
+      "saved": "Saved",
+      "collections": "Collections",
+      "reviews": "Reviews"
+    },
+    "reviews": {
+      "title": "Recent reviews",
+      "empty": "You haven't reviewed any tools yet.",
+      "stars": "{count, plural, one {# star} other {# stars}}",
+      "viewTool": "View {name}"
+    },
+    "collections": {
+      "title": "Your collections",
+      "empty": "You haven't created any collections yet.",
+      "toolCount": "{count, plural, =0 {No tools} one {# tool} other {# tools}}"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "saved": "Your changes were saved.",
+    "displayName": {
+      "title": "Profile",
+      "label": "Display name"
+    },
+    "locale": {
+      "title": "Language",
+      "description": "Choose the language used across AI Explore.",
+      "label": "Language",
+      "options": {
+        "en": "English",
+        "bg": "Български"
+      }
+    },
+    "notifications": {
+      "title": "Notifications",
+      "comingSoon": "Coming soon",
+      "productUpdates": {
+        "label": "Product updates",
+        "description": "Show updates about the tools you follow in your notifications."
+      },
+      "emailDigest": {
+        "label": "Email digest",
+        "description": "A periodic summary of what's new. Email delivery isn't available yet."
+      }
+    },
+    "session": {
+      "title": "Session",
+      "signedInAs": "Signed in as {email}",
+      "signOut": "Sign out"
+    },
+    "danger": {
+      "title": "Danger zone",
+      "description": "Actions here can't be undone."
+    }
+  }
+}

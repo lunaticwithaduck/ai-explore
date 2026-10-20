@@ -1,1 +1,65 @@
-{}
+{
+  "backButton": "Назад",
+  "save": "Запази промените",
+  "validation": {
+    "displayNameRequired": "Въведете показвано име.",
+    "displayNameTooLong": "Показваното име може да е до 60 знака."
+  },
+  "profile": {
+    "memberSince": "Член от {date}",
+    "stats": {
+      "saved": "Запазени",
+      "collections": "Колекции",
+      "reviews": "Ревюта"
+    },
+    "reviews": {
+      "title": "Последни ревюта",
+      "empty": "Все още не сте оценили инструменти.",
+      "stars": "{count, plural, one {# звезда} other {# звезди}}",
+      "viewTool": "Виж {name}"
+    },
+    "collections": {
+      "title": "Вашите колекции",
+      "empty": "Все още нямате колекции.",
+      "toolCount": "{count, plural, =0 {Няма инструменти} one {# инструмент} other {# инструмента}}"
+    }
+  },
+  "settings": {
+    "title": "Настройки",
+    "saved": "Промените са запазени.",
+    "displayName": {
+      "title": "Профил",
+      "label": "Показвано име"
+    },
+    "locale": {
+      "title": "Език",
+      "description": "Изберете езика на AI Explore.",
+      "label": "Език",
+      "options": {
+        "en": "English",
+        "bg": "Български"
+      }
+    },
+    "notifications": {
+      "title": "Известия",
+      "comingSoon": "Очаквайте скоро",
+      "productUpdates": {
+        "label": "Новини за продуктите",
+        "description": "Показвай новини за инструментите, които следвате, в известията."
+      },
+      "emailDigest": {
+        "label": "Резюме по имейл",
+        "description": "Периодично резюме на новото. Изпращането на имейли още не е налично."
+      }
+    },
+    "session": {
+      "title": "Сесия",
+      "signedInAs": "Влезли сте като {email}",
+      "signOut": "Изход"
+    },
+    "danger": {
+      "title": "Опасна зона",
+      "description": "Действията тук не могат да бъдат отменени."
+    }
+  }
+}
