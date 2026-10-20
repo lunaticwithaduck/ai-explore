@@ -1,1 +1,43 @@
-{}
+{
+  "title": "Compare tools",
+  "subtitle": "See two AI tools side by side.",
+  "tableLabel": "Comparison of {first} and {second}",
+  "featureColumn": "Feature",
+  "pickFirstTitle": "Pick two tools to compare",
+  "pickSecondTitle": "Pick a tool to compare with {name}",
+  "pickFirst": "First tool",
+  "pickSecond": "Second tool",
+  "pickerPlaceholder": "Choose a tool",
+  "pickerSearch": "Search tools",
+  "pickerSearchPlaceholder": "Search by name",
+  "pickerClear": "Clear search",
+  "pickerEmpty": "No tools match your search.",
+  "link": "Compare",
+  "rows": {
+    "price": "From price",
+    "freePlan": "Free plan",
+    "trial": "Free trial",
+    "features": "Features",
+    "api": "API access",
+    "integrations": "Integrations",
+    "speed": "Speed",
+    "quality": "Output quality",
+    "bestUse": "Best use case"
+  },
+  "values": {
+    "yes": "Yes",
+    "no": "No",
+    "unknown": "Not listed",
+    "perMonth": "{price}/mo",
+    "trialDays": "{days} days",
+    "api": {
+      "none": "None",
+      "limited": "Limited",
+      "full": "Full"
+    },
+    "integrations": "{count}+ tools",
+    "fraction": "{value}/5",
+    "meter": "{value} out of 5",
+    "noFeatures": "Not listed"
+  }
+}

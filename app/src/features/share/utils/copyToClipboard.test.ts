@@ -3,7 +3,7 @@ import { copyToClipboard } from './copyToClipboard';
 
 const TEXT = 'https://ai-explore.test/tools/midjourney';
 
-describe.skip('INV-18: copyToClipboard falls back and never throws', () => {
+describe('INV-18: copyToClipboard falls back and never throws', () => {
   let copiedByFallback: string | undefined;
   const execCommand = vi.fn<(command: string) => boolean>();
 

@@ -1,1 +1,43 @@
-{}
+{
+  "title": "Сравнение на инструменти",
+  "subtitle": "Виж два AI инструмента един до друг.",
+  "tableLabel": "Сравнение на {first} и {second}",
+  "featureColumn": "Характеристика",
+  "pickFirstTitle": "Избери два инструмента за сравнение",
+  "pickSecondTitle": "Избери инструмент за сравнение с {name}",
+  "pickFirst": "Първи инструмент",
+  "pickSecond": "Втори инструмент",
+  "pickerPlaceholder": "Избери инструмент",
+  "pickerSearch": "Търсене на инструменти",
+  "pickerSearchPlaceholder": "Търси по име",
+  "pickerClear": "Изчисти търсенето",
+  "pickerEmpty": "Няма инструменти, които отговарят на търсенето.",
+  "link": "Сравни",
+  "rows": {
+    "price": "Цена от",
+    "freePlan": "Безплатен план",
+    "trial": "Безплатен пробен период",
+    "features": "Функции",
+    "api": "Достъп до API",
+    "integrations": "Интеграции",
+    "speed": "Скорост",
+    "quality": "Качество на резултата",
+    "bestUse": "Най-подходящо за"
+  },
+  "values": {
+    "yes": "Да",
+    "no": "Не",
+    "unknown": "Не е посочено",
+    "perMonth": "{price}/мес.",
+    "trialDays": "{days} дни",
+    "api": {
+      "none": "Няма",
+      "limited": "Ограничен",
+      "full": "Пълен"
+    },
+    "integrations": "{count}+ инструмента",
+    "fraction": "{value}/5",
+    "meter": "{value} от 5",
+    "noFeatures": "Не е посочено"
+  }
+}

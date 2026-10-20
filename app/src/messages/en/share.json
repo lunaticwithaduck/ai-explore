@@ -1,1 +1,12 @@
-{}
+{
+  "button": "Share",
+  "title": "Share this tool",
+  "copyLink": "Copy link",
+  "copied": "Copied!",
+  "copyFailed": "Could not copy the link",
+  "native": "Share…",
+  "x": "Share on X",
+  "facebook": "Share on Facebook",
+  "linkedin": "Share on LinkedIn",
+  "email": "Share by email"
+}
