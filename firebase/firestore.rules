@@ -2,24 +2,308 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    function onlyKeys(keys) {
+      return request.resource.data.keys().hasOnly(keys);
+    }
+
+    function exactKeys(keys) {
+      return onlyKeys(keys) && request.resource.data.keys().hasAll(keys);
+    }
+
+    function changedOnly(keys) {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly(keys);
+    }
+
+    function unchanged(keys) {
+      return !request.resource.data.diff(resource.data).affectedKeys().hasAny(keys);
+    }
+
+    function isServerTime(value) {
+      return value == request.time;
+    }
+
+    function isText(value, min, max) {
+      return value is string && value.size() >= min && value.size() <= max;
+    }
+
+    function isNullableText(value) {
+      return value == null || value is string;
+    }
+
+    function isLocale(value) {
+      return value in ['en', 'bg'];
+    }
+
+    function toolPath(slug) {
+      return /databases/$(database)/documents/tools/$(slug);
+    }
+
+    function reviewPath(slug, authorUid) {
+      return /databases/$(database)/documents/tools/$(slug)/reviews/$(authorUid);
+    }
+
+    function votePath(slug, authorUid, voterUid) {
+      return /databases/$(database)/documents/tools/$(slug)/reviews/$(authorUid)/votes/$(voterUid);
+    }
+
+    // INV-5, INV-6
+    function ratingMovedBy(slug, count, sum) {
+      let before = get(toolPath(slug)).data.rating;
+      let after = getAfter(toolPath(slug)).data.rating;
+      return after.count == before.count + count && after.sum == before.sum + sum;
+    }
+
+    // INV-5, INV-6, INV-7
+    function isRatingUpdate(slug) {
+      let before = resource.data.rating;
+      let after = request.resource.data.rating;
+      let review = reviewPath(slug, request.auth.uid);
+      let countDelta = after.count - before.count;
+      let sumDelta = after.sum - before.sum;
+      return isSignedIn()
+        && changedOnly(['rating'])
+        && after.diff(before).affectedKeys().hasOnly(['count', 'sum'])
+        && after.count is int
+        && after.sum is int
+        && (
+          (countDelta == 1 && !exists(review) && existsAfter(review)
+            && sumDelta == getAfter(review).data.rating)
+          || (countDelta == -1 && exists(review) && !existsAfter(review)
+            && sumDelta + get(review).data.rating == 0)
+          || (countDelta == 0 && sumDelta != 0 && exists(review) && existsAfter(review)
+            && sumDelta == getAfter(review).data.rating - get(review).data.rating)
+        );
+    }
+
+    function isValidReview(slug) {
+      let review = request.resource.data;
+      return exactKeys(['toolId', 'authorUid', 'rating', 'body', 'authorName', 'authorPhotoUrl',
+          'locale', 'helpfulCount', 'createdAt', 'updatedAt'])
+        && review.toolId == slug
+        && review.authorUid == request.auth.uid
+        && review.rating is int
+        && review.rating >= 1
+        && review.rating <= 5
+        && isText(review.body, 0, 2000)
+        && isText(review.authorName, 1, 60)
+        && isNullableText(review.authorPhotoUrl)
+        && isLocale(review.locale)
+        && review.helpfulCount is int
+        && isServerTime(review.updatedAt);
+    }
+
+    // INV-5
+    function isValidReviewCreate(slug) {
+      return isValidReview(slug)
+        && request.resource.data.helpfulCount == 0
+        && isServerTime(request.resource.data.createdAt);
+    }
+
+    // INV-6, INV-8
+    function isValidReviewEdit(slug) {
+      return isValidReview(slug) && unchanged(['toolId', 'authorUid', 'helpfulCount', 'createdAt']);
+    }
+
+    // INV-9
+    function helpfulMovedBy(slug, authorUid, delta) {
+      let review = reviewPath(slug, authorUid);
+      return getAfter(review).data.helpfulCount == get(review).data.helpfulCount + delta;
+    }
+
+    // INV-9
+    function isHelpfulCountUpdate(slug, authorUid) {
+      let vote = votePath(slug, authorUid, request.auth.uid);
+      let delta = request.resource.data.helpfulCount - resource.data.helpfulCount;
+      return isSignedIn()
+        && request.auth.uid != authorUid
+        && changedOnly(['helpfulCount'])
+        && (
+          (delta == 1 && !exists(vote) && existsAfter(vote))
+          || (delta == -1 && exists(vote) && !existsAfter(vote))
+        );
+    }
+
+    function isValidVote() {
+      return exactKeys(['createdAt']) && isServerTime(request.resource.data.createdAt);
+    }
+
+    // INV-10
+    function isValidProfile() {
+      let profile = request.resource.data;
+      return exactKeys(['displayName', 'photoUrl', 'locale', 'prefs', 'notificationsSeenAt', 'createdAt'])
+        && isText(profile.displayName, 1, 60)
+        && isNullableText(profile.photoUrl)
+        && isLocale(profile.locale)
+        && profile.prefs is map
+        && profile.prefs.keys().hasOnly(['productUpdates', 'emailDigest'])
+        && profile.prefs.keys().hasAll(['productUpdates', 'emailDigest'])
+        && profile.prefs.productUpdates is bool
+        && profile.prefs.emailDigest is bool;
+    }
+
+    // INV-10, INV-11
+    function isValidProfileCreate() {
+      return isValidProfile()
+        && request.resource.data.notificationsSeenAt == null
+        && isServerTime(request.resource.data.createdAt);
+    }
+
+    // INV-10, INV-11
+    function isValidProfileUpdate() {
+      return isValidProfile()
+        && unchanged(['createdAt'])
+        && (unchanged(['notificationsSeenAt'])
+          || isServerTime(request.resource.data.notificationsSeenAt));
+    }
+
+    // INV-10
+    function isValidSaved() {
+      return exactKeys(['savedAt']) && isServerTime(request.resource.data.savedAt);
+    }
+
+    // INV-10
+    function isValidCollection() {
+      let entry = request.resource.data;
+      return exactKeys(['name', 'icon', 'color', 'toolIds', 'order', 'createdAt'])
+        && entry.name is string
+        && isText(entry.name.trim(), 1, 40)
+        && entry.icon in ['folder', 'briefcase', 'palette', 'code', 'pen-tool', 'video',
+          'music', 'chart-bar', 'sparkles', 'rocket', 'heart', 'star', 'bookmark', 'zap',
+          'graduation-cap', 'camera']
+        && entry.color in ['blue', 'violet', 'pink', 'amber', 'emerald', 'cyan', 'rose', 'slate']
+        && entry.toolIds is list
+        && entry.toolIds.size() <= 50
+        && entry.order is int
+        && entry.order >= 0;
+    }
+
+    // INV-10, INV-12
+    function isValidBundleInterest() {
+      return exactKeys(['period', 'createdAt'])
+        && request.resource.data.period in ['monthly', 'quarterly', 'yearly'];
+    }
+
+    // INV-1, INV-2
     match /categories/{categoryId} {
-      allow get, list: if true;
+      allow read: if true;
+      allow write: if isAdmin();
     }
 
+    // INV-1, INV-2
     match /config/{docId} {
-      allow get: if docId == 'app';
+      allow get: if docId == 'app' || isAdmin();
+      allow write: if isAdmin();
     }
 
+    // INV-4
+    match /admins/{uid} {
+      allow get: if isOwner(uid);
+    }
+
+    // INV-1, INV-2, INV-5…8
     match /tools/{slug} {
-      allow get, list: if resource.data.published == true;
+      allow get, list: if resource.data.published == true || isAdmin();
+      allow create, delete: if isAdmin();
+      allow update: if isAdmin() || isRatingUpdate(slug);
 
       match /updates/{updateId} {
-        allow get, list: if true;
+        allow read: if true;
+        allow write: if isAdmin();
+      }
+
+      match /reviews/{authorUid} {
+        allow read: if true;
+        allow create: if isOwner(authorUid)
+          && isValidReviewCreate(slug)
+          && ratingMovedBy(slug, 1, request.resource.data.rating);
+        allow update: if (isOwner(authorUid)
+            && isValidReviewEdit(slug)
+            && ratingMovedBy(slug, 0, request.resource.data.rating - resource.data.rating))
+          || isHelpfulCountUpdate(slug, authorUid);
+        allow delete: if isOwner(authorUid)
+          && ratingMovedBy(slug, -1, 0 - resource.data.rating);
+
+        // INV-9
+        match /votes/{voterUid} {
+          allow read: if true;
+          allow create: if isOwner(voterUid)
+            && voterUid != authorUid
+            && isValidVote()
+            && helpfulMovedBy(slug, authorUid, 1);
+          allow delete: if isOwner(voterUid) && helpfulMovedBy(slug, authorUid, -1);
+        }
       }
     }
 
+    // INV-1, INV-2
     match /bundles/{slug} {
-      allow get, list: if resource.data.published == true;
+      allow get, list: if resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // INV-3, INV-10, INV-11
+    match /users/{uid} {
+      allow get: if isOwner(uid);
+      allow create: if isOwner(uid) && isValidProfileCreate();
+      allow update: if isOwner(uid) && isValidProfileUpdate();
+      allow delete: if isOwner(uid);
+
+      match /saved/{toolSlug} {
+        allow read, delete: if isOwner(uid);
+        allow create, update: if isOwner(uid) && isValidSaved();
+      }
+
+      match /collections/{collectionId} {
+        allow read, delete: if isOwner(uid);
+        allow create: if isOwner(uid)
+          && isValidCollection()
+          && isServerTime(request.resource.data.createdAt);
+        allow update: if isOwner(uid) && isValidCollection() && unchanged(['createdAt']);
+      }
+
+      // INV-12
+      match /bundleInterest/{bundleSlug} {
+        allow read, delete: if isOwner(uid);
+        allow create: if isOwner(uid)
+          && isValidBundleInterest()
+          && isServerTime(request.resource.data.createdAt);
+        allow update: if isOwner(uid)
+          && isValidBundleInterest()
+          && (unchanged(['createdAt']) || isServerTime(request.resource.data.createdAt));
+      }
+
+      // INV-4
+      match /subscriptions/{subscriptionId} {
+        allow read: if isOwner(uid);
+      }
+    }
+
+    // INV-1
+    match /{path=**}/updates/{updateId} {
+      allow read: if true;
+    }
+
+    // INV-1
+    match /{path=**}/reviews/{authorUid} {
+      allow read: if true;
+    }
+
+    // INV-12
+    match /{path=**}/bundleInterest/{bundleSlug} {
+      allow list: if isAdmin();
     }
   }
 }

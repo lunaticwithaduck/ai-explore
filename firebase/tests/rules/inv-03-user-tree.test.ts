@@ -25,7 +25,7 @@ import { paths } from './paths';
 const TOOL = 'midjourney';
 const BUNDLE = 'startup-founder-pack';
 
-describe.skip('INV-3: a user reads and writes only their own users/{uid} tree', () => {
+describe('INV-3: a user reads and writes only their own users/{uid} tree', () => {
   const rules = useRules();
 
   beforeEach(async () => {

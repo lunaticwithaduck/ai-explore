@@ -9,7 +9,7 @@ import { paths } from './paths';
 const TOOL = 'midjourney';
 const OTHER_TOOL = 'chatgpt';
 
-describe.skip('INV-8: no writing another user’s review, no second review per tool', () => {
+describe('INV-8: no writing another user’s review, no second review per tool', () => {
   const rules = useRules();
 
   beforeEach(async () => {

@@ -6,7 +6,7 @@ import { reviewDoc, toolDoc } from './builders';
 import { ALICE, BOB, useRules } from './fixtures';
 import { paths } from './paths';
 
-describe.skip('INV-1: reviews are readable as a collection group by author', () => {
+describe('INV-1: reviews are readable as a collection group by author', () => {
   const rules = useRules();
 
   beforeEach(async () => {

@@ -7,7 +7,7 @@ import { paths } from './paths';
 
 const SEEN_AT = new Date('2026-02-01T08:00:00Z');
 
-describe.skip('INV-11: notificationsSeenAt is only ever written as request.time', () => {
+describe('INV-11: notificationsSeenAt is only ever written as request.time', () => {
   const rules = useRules();
 
   beforeEach(async () => {

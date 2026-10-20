@@ -18,7 +18,7 @@ import { paths } from './paths';
 const BUNDLE = 'startup-founder-pack';
 const OTHER_BUNDLE = 'ai-sdr-bundle';
 
-describe.skip('INV-12: bundleInterest is owner-write and admin-only as a collection group', () => {
+describe('INV-12: bundleInterest is owner-write and admin-only as a collection group', () => {
   const rules = useRules();
 
   beforeEach(async () => {

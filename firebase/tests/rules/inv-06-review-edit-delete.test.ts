@@ -17,7 +17,7 @@ import { paths } from './paths';
 
 const TOOL = 'midjourney';
 
-describe.skip('INV-6: editing moves sum by r2 − r1, deleting moves count by −1 and sum by −r', () => {
+describe('INV-6: editing moves sum by r2 − r1, deleting moves count by −1 and sum by −r', () => {
   const rules = useRules();
 
   beforeEach(async () => {

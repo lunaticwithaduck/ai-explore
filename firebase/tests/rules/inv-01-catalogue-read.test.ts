@@ -20,7 +20,7 @@ const DRAFT_TOOL = 'draft-tool';
 const BUNDLE = 'startup-founder-pack';
 const DRAFT_BUNDLE = 'draft-bundle';
 
-describe.skip('INV-1: visitors read the published catalogue, never drafts', () => {
+describe('INV-1: visitors read the published catalogue, never drafts', () => {
   const rules = useRules();
 
   beforeEach(async () => {

@@ -22,7 +22,7 @@ import { paths } from './paths';
 const TOOL = 'midjourney';
 const VOTED_AT = new Date('2026-01-16T10:00:00Z');
 
-describe.skip('INV-9: one helpful vote per voter, paired with helpfulCount ±1', () => {
+describe('INV-9: one helpful vote per voter, paired with helpfulCount ±1', () => {
   const rules = useRules();
 
   beforeEach(async () => {

@@ -9,7 +9,7 @@ const TOOL = 'midjourney';
 const NEW_TOOL = 'new-tool';
 const BUNDLE = 'startup-founder-pack';
 
-describe.skip('INV-2: only admins write the catalogue', () => {
+describe('INV-2: only admins write the catalogue', () => {
   const rules = useRules();
 
   beforeEach(async () => {

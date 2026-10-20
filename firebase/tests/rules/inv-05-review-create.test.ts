@@ -17,7 +17,7 @@ import { paths } from './paths';
 const TOOL = 'midjourney';
 const OTHER_TOOL = 'chatgpt';
 
-describe.skip('INV-5: a review is created only together with its rating aggregate', () => {
+describe('INV-5: a review is created only together with its rating aggregate', () => {
   const rules = useRules();
 
   beforeEach(async () => {

@@ -17,7 +17,7 @@ import { paths } from './paths';
 
 const BUNDLE = 'startup-founder-pack';
 
-describe.skip('INV-4: no client writes admins/* or users/*/subscriptions/*', () => {
+describe('INV-4: no client writes admins/* or users/*/subscriptions/*', () => {
   const rules = useRules();
 
   beforeEach(async () => {

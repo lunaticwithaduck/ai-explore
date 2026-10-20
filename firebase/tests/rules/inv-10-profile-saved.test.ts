@@ -16,7 +16,7 @@ import { paths } from './paths';
 const NEWCOMER = 'newcomer';
 const TOOL = 'midjourney';
 
-describe.skip('INV-10: profile and saved-tool documents reject unknown fields and bad values', () => {
+describe('INV-10: profile and saved-tool documents reject unknown fields and bad values', () => {
   const rules = useRules();
 
   beforeEach(async () => {

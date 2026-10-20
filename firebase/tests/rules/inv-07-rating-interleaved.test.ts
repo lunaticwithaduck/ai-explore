@@ -7,7 +7,7 @@ import { paths } from './paths';
 
 const TOOL = 'midjourney';
 
-describe.skip('INV-7: interleaved and concurrent review batches keep the aggregate exact', () => {
+describe('INV-7: interleaved and concurrent review batches keep the aggregate exact', () => {
   const rules = useRules();
 
   beforeEach(async () => {

@@ -16,7 +16,7 @@ import { paths } from './paths';
 const BUNDLE = 'startup-founder-pack';
 const toolIds = (count: number) => Array.from({ length: count }, (_, index) => `tool-${index}`);
 
-describe.skip('INV-10: collection and bundle-interest documents reject unknown fields and bad values', () => {
+describe('INV-10: collection and bundle-interest documents reject unknown fields and bad values', () => {
   const rules = useRules();
 
   beforeEach(async () => {
