@@ -1,15 +1,25 @@
 import { cva } from 'class-variance-authority';
 
-export const headingStyles = cva('font-semibold tracking-tight text-text', {
+export const headingStyles = cva('text-balance font-semibold text-text tracking-tight', {
   variants: {
-    level: {
-      1: 'text-3xl',
-      2: 'text-2xl',
-      3: 'text-xl',
-      4: 'text-lg',
-      5: 'text-base',
-      6: 'text-sm',
+    size: {
+      xs: 'text-sm',
+      sm: 'text-base',
+      md: 'text-lg',
+      lg: 'text-xl',
+      xl: 'text-2xl',
+      '2xl': 'text-2xl sm:text-3xl',
+      '3xl': 'text-3xl sm:text-4xl',
     },
   },
-  defaultVariants: { level: 2 },
+  defaultVariants: { size: 'xl' },
 });
+
+export const HEADING_LEVEL_SIZE = {
+  1: '2xl',
+  2: 'xl',
+  3: 'lg',
+  4: 'md',
+  5: 'sm',
+  6: 'xs',
+} as const;

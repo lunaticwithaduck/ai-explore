@@ -5,12 +5,17 @@ import { textStyles } from './Text.styles';
 
 export type TextProps = HTMLAttributes<HTMLParagraphElement> &
   VariantProps<typeof textStyles> & {
+    as?: 'p' | 'span' | 'div' | undefined;
     className?: string | undefined;
   };
 
 export const Text = forwardRef<HTMLParagraphElement, TextProps>(
-  ({ tone, size, className, ...props }, ref) => (
-    <p ref={ref} className={cn(textStyles({ tone, size }), className)} {...props} />
+  ({ as: Tag = 'p', tone, size, weight, clamp, numeric, className, ...props }, ref) => (
+    <Tag
+      ref={ref}
+      className={cn(textStyles({ tone, size, weight, clamp, numeric }), className)}
+      {...props}
+    />
   ),
 );
 

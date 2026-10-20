@@ -1,1 +1,254 @@
-{}
+{
+  "eyebrow": "Design system",
+  "title": "Primitives",
+  "intro": "Every primitive from @ai-explore/ui with its variants, on the dark theme. Feature code composes only these.",
+  "contents": "Sections",
+  "sizes": {
+    "sm": "Small",
+    "md": "Medium",
+    "lg": "Large"
+  },
+  "colors": {
+    "title": "Colour tokens",
+    "description": "Semantic surfaces, text, accent and status colours, plus the accent palette that collections and bundles use.",
+    "surfaces": "Surfaces and borders",
+    "accentStatus": "Accent, status and rating",
+    "text": "Text",
+    "palette": "Accent palette",
+    "sample": "Aa"
+  },
+  "typography": {
+    "title": "Typography",
+    "description": "System font stack, a fixed type scale and semantic text tones.",
+    "headings": "Headings",
+    "heading": "Heading level {level}",
+    "sizes": "Text sizes",
+    "sample": "The quick library of AI tools ({size})",
+    "tones": "Tones",
+    "tone": {
+      "default": "Default",
+      "muted": "Muted",
+      "subtle": "Subtle",
+      "accent": "Accent",
+      "success": "Success",
+      "warning": "Warning",
+      "danger": "Danger"
+    }
+  },
+  "buttons": {
+    "title": "Buttons",
+    "description": "Four variants in three sizes. Every state keeps the same height.",
+    "variants": "Variants",
+    "variant": {
+      "primary": "Primary",
+      "secondary": "Secondary",
+      "ghost": "Ghost",
+      "danger": "Danger"
+    },
+    "sizes": "Sizes",
+    "withIcons": "Icons and asChild",
+    "addToLibrary": "Add to library",
+    "asChildLink": "Browse bundles",
+    "states": "States",
+    "saving": "Saving",
+    "disabled": "Disabled",
+    "share": "Share",
+    "iconButtons": "Icon buttons",
+    "save": "Save",
+    "notifications": "Notifications",
+    "settings": "Settings"
+  },
+  "forms": {
+    "title": "Form controls",
+    "description": "High-contrast typed text, a quiet border and a soft focus ring.",
+    "search": "Search",
+    "searchValue": "Image generation",
+    "searchPlaceholder": "Search tools, tags or developers",
+    "clear": "Clear search",
+    "fields": "Inputs",
+    "nameLabel": "Display name",
+    "namePlaceholder": "Ada Lovelace",
+    "emailLabel": "Email",
+    "emailValue": "ada@",
+    "emailError": "Enter a valid email address.",
+    "disabledLabel": "Disabled",
+    "textarea": "Textarea",
+    "reviewPlaceholder": "What did you build with it?",
+    "select": "Select",
+    "sortLabel": "Sort by",
+    "selectPlaceholder": "Choose an order",
+    "sort": {
+      "rating": "Top rated",
+      "reviews": "Most reviewed",
+      "priceLow": "Price: low to high",
+      "priceHigh": "Price: high to low",
+      "newest": "Newest release"
+    },
+    "toggles": "Switches and checkboxes",
+    "notify": "Notify me about updates",
+    "emailDigest": "Email digest",
+    "terms": "I accept the terms",
+    "selectAll": "Select all"
+  },
+  "surfaces": {
+    "title": "Cards, badges and tags",
+    "description": "Raised, flat and interactive cards; status badges; pressable filter chips.",
+    "cards": "Cards",
+    "card": {
+      "raised": "Raised",
+      "flat": "Flat",
+      "interactive": "Interactive"
+    },
+    "cardHint": {
+      "raised": "Default container for content.",
+      "flat": "Sits flush with the page.",
+      "interactive": "Lifts on hover, focusable."
+    },
+    "badges": "Badges",
+    "badge": {
+      "neutral": "Neutral",
+      "accent": "Accent",
+      "solid": "Solid",
+      "success": "Success",
+      "warning": "Warning",
+      "danger": "Danger",
+      "outline": "Outline"
+    },
+    "free": "Free plan",
+    "new": "New",
+    "accentBadges": "Accent palette badges",
+    "accent": {
+      "blue": "Blue",
+      "violet": "Violet",
+      "pink": "Pink",
+      "amber": "Amber",
+      "emerald": "Emerald",
+      "cyan": "Cyan",
+      "rose": "Rose",
+      "slate": "Slate"
+    },
+    "tags": "Filter tags",
+    "tag": {
+      "image": "Image",
+      "video": "Video",
+      "writing": "Writing",
+      "code": "Code",
+      "audio": "Audio"
+    },
+    "tagPlain": "Plain tag"
+  },
+  "feedback": {
+    "title": "Avatars, skeletons and separators",
+    "description": "Identity, loading placeholders and dividers.",
+    "avatars": "Avatars",
+    "avatarName": "Ada Lovelace",
+    "initials": "AL",
+    "skeletons": "Skeletons",
+    "separators": "Separators",
+    "developer": "OpenAI",
+    "version": "2.1.0",
+    "category": "Writing"
+  },
+  "overlays": {
+    "title": "Overlays",
+    "description": "Dialog, side sheet, menu, popover, tooltip and toast, all on Radix.",
+    "modal": "Dialog and sheet",
+    "dialog": "Open dialog",
+    "dialogTitle": "Delete this review?",
+    "dialogDescription": "The review and its helpful votes are removed. This cannot be undone.",
+    "cancel": "Cancel",
+    "confirm": "Delete",
+    "close": "Close",
+    "sheet": "Open sheet",
+    "sheetTitle": "Menu",
+    "sheetLibrary": "Library",
+    "sheetBundles": "Bundles",
+    "floating": "Menu, popover and tooltip",
+    "menu": "Account",
+    "menuAccount": "Signed in",
+    "menuProfile": "Profile",
+    "menuSettings": "Settings",
+    "menuCollections": "Collections",
+    "menuCollection": "Design tools",
+    "menuSignOut": "Sign out",
+    "popover": "Open popover",
+    "popoverTitle": "Works well with",
+    "popoverBody": "Tools that complete the same workflow appear here.",
+    "tooltip": "More information",
+    "tooltipBody": "Prices are per month, billed in USD.",
+    "toastRow": "Toast",
+    "toast": "Show toast",
+    "toastLabel": "Notification",
+    "toastViewport": "Notifications",
+    "toastTitle": "Link copied",
+    "toastDescription": "Paste it anywhere to share this tool.",
+    "toastAction": "Undo"
+  },
+  "navigation": {
+    "title": "Navigation",
+    "description": "Tabs, a segmented control, text links and the shared back button.",
+    "tabs": "Tabs",
+    "tab": {
+      "plans": "Plans",
+      "tutorials": "Tutorials",
+      "reviews": "Reviews"
+    },
+    "tabBody": "{tab} content goes here.",
+    "pills": "Pill tabs",
+    "pill": {
+      "all": "All",
+      "saved": "Saved",
+      "recent": "Recent"
+    },
+    "segmented": "Segmented control",
+    "period": "Billing period",
+    "periods": {
+      "monthly": "Monthly",
+      "quarterly": "Quarterly",
+      "yearly": "Yearly"
+    },
+    "links": "Text links",
+    "linkAccent": "View all bundles",
+    "linkMuted": "Back to the library",
+    "linkIcon": "Compare tools",
+    "back": "Back button",
+    "backLabel": "Back"
+  },
+  "carousel": {
+    "title": "Carousel",
+    "description": "Horizontal, snapping, with previous and next disabled at the edges.",
+    "label": "Similar tools",
+    "heading": "Similar tools",
+    "previous": "Previous",
+    "next": "Next",
+    "slide": "Tool {index}",
+    "slideBody": "A compact card inside a carousel slide."
+  },
+  "media": {
+    "title": "Images and tool logos",
+    "description": "Logos keep their colours on a data-driven tile of fixed size; images load lazily.",
+    "logoSizes": "Logo sizes",
+    "logoAspect": "Any aspect ratio, same box",
+    "aspect": {
+      "square": "Square",
+      "wide": "Wide",
+      "tall": "Tall"
+    },
+    "logoAlt": "Sample logo",
+    "image": "Image",
+    "coverAlt": "Sample video thumbnail"
+  },
+  "ratings": {
+    "title": "Ratings",
+    "description": "Display stars in halves, and a keyboard-friendly rating input.",
+    "display": "Star rating",
+    "sizes": "Sizes",
+    "starsLabel": "Rated {value, number} out of 5",
+    "value": "{value, number, ::.0}",
+    "input": "Rating input",
+    "inputLabel": "Your rating",
+    "option": "{value, plural, one {# star} other {# stars}}",
+    "selected": "You chose {value, plural, one {# star} other {# stars}}",
+    "none": "No rating yet"
+  }
+}
