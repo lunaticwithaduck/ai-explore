@@ -33,6 +33,7 @@ test.fixme('INV-24: an admin publishes a tool and a non-admin sees the 403 view'
     await field('pricing.hasFreePlan').setChecked(true);
     await page.getByTestId(TEST_IDS.admin.publishToggle).setChecked(true);
     await page.getByTestId(TEST_IDS.admin.saveTool).click();
+    await expect(page.getByTestId(TEST_IDS.admin.saved)).toBeVisible();
 
     await page.goto(routes.library);
     await expect(

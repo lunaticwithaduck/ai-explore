@@ -115,6 +115,7 @@ export const TEST_IDS = {
     newTool: 'admin-new-tool',
     toolRow: 'admin-tool-row',
     saveTool: 'admin-save-tool',
+    saved: 'admin-saved',
     publishToggle: 'admin-publish-toggle',
     interestCount: 'admin-interest-count',
   },
