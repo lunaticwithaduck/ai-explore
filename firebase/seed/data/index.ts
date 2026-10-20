@@ -4,6 +4,7 @@ export const seedData: SeedData = {
   categories: {},
   tools: {},
   updates: {},
+  reviews: {},
   bundles: {},
   appConfig: { checkoutEnabled: false },
 };
