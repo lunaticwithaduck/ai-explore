@@ -1,1 +1,34 @@
-{}
+{
+  "title": "My library",
+  "subtitle": "The tools you saved and the collections you built.",
+  "tabsLabel": "Saved tools and collections",
+  "savedTab": "Saved",
+  "saveButton": "Save to my library",
+  "addToCollection": "Add to collection",
+  "collectionsLabel": "Your collections",
+  "noCollections": "You have no collections yet.",
+  "newCollection": "New collection",
+  "newCollectionTitle": "New collection",
+  "renameTitle": "Rename collection",
+  "nameLabel": "Name",
+  "namePlaceholder": "For example, Design tools",
+  "create": "Create",
+  "save": "Save",
+  "cancel": "Cancel",
+  "close": "Close",
+  "rename": "Rename",
+  "delete": "Delete",
+  "deleteTitle": "Delete \"{name}\"?",
+  "deleteBody": "The collection is removed. The tools in it stay in the library.",
+  "deleteConfirm": "Delete collection",
+  "toolCount": "{count, plural, =0 {No tools} one {# tool} other {# tools}}",
+  "emptySavedTitle": "Nothing saved yet",
+  "emptySavedBody": "Tap the heart on any tool to keep it here.",
+  "emptyCollectionTitle": "This collection is empty",
+  "emptyCollectionBody": "Open a tool and use Add to collection to put it here.",
+  "browse": "Browse tools",
+  "validation": {
+    "nameRequired": "Enter a name for the collection.",
+    "nameTooLong": "Use 40 characters or fewer."
+  }
+}
