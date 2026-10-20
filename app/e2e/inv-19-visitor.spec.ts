@@ -3,7 +3,7 @@ import { E2E_FIXTURES } from '../../firebase/seed/catalog-ids';
 import { routes } from '../src/config/routes';
 import { TEST_IDS } from '../src/config/test-ids';
 
-test.fixme('INV-19: visitor searches, filters, opens a tool, compares and copies the share link', async ({
+test('INV-19: visitor searches, filters, opens a tool, compares and copies the share link', async ({
   page,
   context,
 }) => {
