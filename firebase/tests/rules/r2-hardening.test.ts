@@ -9,7 +9,7 @@ import { paths } from './paths';
 const TOOL = 'midjourney';
 const LONG_URL = `https://example.com/${'a'.repeat(2100)}.png`;
 
-describe.skip('R2: rules hardening', () => {
+describe('R2: rules hardening', () => {
   const rules = useRules();
 
   beforeEach(async () => {

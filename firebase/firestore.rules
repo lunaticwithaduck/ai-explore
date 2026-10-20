@@ -39,8 +39,8 @@ service cloud.firestore {
       return value is string && value.size() >= min && value.size() <= max;
     }
 
-    function isNullableText(value) {
-      return value == null || value is string;
+    function isUrlText(value) {
+      return value == null || (value is string && value.size() <= 2048);
     }
 
     function isLocale(value) {
@@ -99,7 +99,7 @@ service cloud.firestore {
         && review.rating <= 5
         && isText(review.body, 0, 2000)
         && isText(review.authorName, 1, 60)
-        && isNullableText(review.authorPhotoUrl)
+        && isUrlText(review.authorPhotoUrl)
         && isLocale(review.locale)
         && review.helpfulCount is int
         && isServerTime(review.updatedAt);
@@ -129,6 +129,7 @@ service cloud.firestore {
       let delta = request.resource.data.helpfulCount - resource.data.helpfulCount;
       return isSignedIn()
         && request.auth.uid != authorUid
+        && request.resource.data.helpfulCount >= 0
         && changedOnly(['helpfulCount'])
         && (
           (delta == 1 && !exists(vote) && existsAfter(vote))
@@ -145,7 +146,7 @@ service cloud.firestore {
       let profile = request.resource.data;
       return exactKeys(['displayName', 'photoUrl', 'locale', 'prefs', 'notificationsSeenAt', 'createdAt'])
         && isText(profile.displayName, 1, 60)
-        && isNullableText(profile.photoUrl)
+        && isUrlText(profile.photoUrl)
         && isLocale(profile.locale)
         && profile.prefs is map
         && profile.prefs.keys().hasOnly(['productUpdates', 'emailDigest'])
@@ -177,6 +178,10 @@ service cloud.firestore {
     // INV-10
     function isValidCollection() {
       let entry = request.resource.data;
+      let ids = entry.toolIds;
+      let n = ids.size();
+      // Rules cannot loop and cap a request at 1000 expressions, so each of the 50 entries
+      // gets one anchored regex: slug shape, <= 64 alphanumerics (hyphens add up to 63 more).
       return exactKeys(['name', 'icon', 'color', 'toolIds', 'order', 'createdAt'])
         && entry.name is string
         && isText(entry.name.trim(), 1, 40)
@@ -186,6 +191,56 @@ service cloud.firestore {
         && entry.color in ['blue', 'violet', 'pink', 'amber', 'emerald', 'cyan', 'rose', 'slate']
         && entry.toolIds is list
         && entry.toolIds.size() <= 50
+        && (n <= 0 || ids[0].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 1 || ids[1].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 2 || ids[2].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 3 || ids[3].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 4 || ids[4].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 5 || ids[5].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 6 || ids[6].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 7 || ids[7].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 8 || ids[8].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 9 || ids[9].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 10 || ids[10].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 11 || ids[11].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 12 || ids[12].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 13 || ids[13].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 14 || ids[14].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 15 || ids[15].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 16 || ids[16].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 17 || ids[17].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 18 || ids[18].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 19 || ids[19].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 20 || ids[20].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 21 || ids[21].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 22 || ids[22].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 23 || ids[23].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 24 || ids[24].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 25 || ids[25].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 26 || ids[26].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 27 || ids[27].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 28 || ids[28].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 29 || ids[29].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 30 || ids[30].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 31 || ids[31].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 32 || ids[32].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 33 || ids[33].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 34 || ids[34].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 35 || ids[35].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 36 || ids[36].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 37 || ids[37].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 38 || ids[38].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 39 || ids[39].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 40 || ids[40].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 41 || ids[41].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 42 || ids[42].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 43 || ids[43].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 44 || ids[44].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 45 || ids[45].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 46 || ids[46].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 47 || ids[47].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 48 || ids[48].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
+        && (n <= 49 || ids[49].matches('^[a-z0-9](?:[a-z0-9]|-[a-z0-9]){0,63}$'))
         && entry.order is int
         && entry.order >= 0;
     }
