@@ -4,7 +4,7 @@ import { routes } from '../src/config/routes';
 import { TEST_IDS } from '../src/config/test-ids';
 import { openMobileMenu, signUp, uniqueUser } from './fixtures/auth';
 
-test.fixme('INV-20: user saves, collects, reviews, edits and deletes a review', async ({
+test('INV-20: user saves, collects, reviews, edits and deletes a review', async ({
   page,
 }, testInfo) => {
   // INV-20

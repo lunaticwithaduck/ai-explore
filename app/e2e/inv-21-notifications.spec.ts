@@ -4,7 +4,7 @@ import { routes } from '../src/config/routes';
 import { TEST_IDS } from '../src/config/test-ids';
 import { signUp, uniqueUser } from './fixtures/auth';
 
-test.fixme('INV-21: a seeded update for a saved tool shows as New and mark all read clears it', async ({
+test('INV-21: a seeded update for a saved tool shows as New and mark all read clears it', async ({
   page,
 }, testInfo) => {
   // INV-21
