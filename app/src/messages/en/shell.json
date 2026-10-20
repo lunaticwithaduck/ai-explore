@@ -1,1 +1,38 @@
-{}
+{
+  "brandHome": "AI Explore home",
+  "header": {
+    "searchLabel": "Search AI tools",
+    "searchPlaceholder": "Search tools, developers, tags…",
+    "clearSearch": "Clear search",
+    "openMenu": "Open menu",
+    "menuTitle": "Menu",
+    "closeMenu": "Close menu"
+  },
+  "locale": {
+    "label": "Language",
+    "en": "English",
+    "bg": "Български"
+  },
+  "account": {
+    "menuLabel": "Account menu for {name}",
+    "profile": "Profile",
+    "settings": "Settings",
+    "admin": "Admin",
+    "signOut": "Sign out",
+    "signIn": "Sign in",
+    "loading": "Checking your account"
+  },
+  "sidebar": {
+    "label": "Main",
+    "browse": "Browse",
+    "allTools": "All tools",
+    "myLibrary": "My library",
+    "saved": "Saved tools",
+    "discover": "Discover",
+    "bundles": "Bundles",
+    "compare": "Compare tools"
+  },
+  "gate": {
+    "loading": "Loading your account…"
+  }
+}

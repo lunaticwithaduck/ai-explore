@@ -5,7 +5,7 @@ import { routes } from '../src/config/routes';
 import { TEST_IDS } from '../src/config/test-ids';
 import { openMobileMenu, signIn, signOut, signUp, uniqueUser } from './fixtures/auth';
 
-test.fixme('INV-23: the Bulgarian preference survives sign-out and sign-in', async ({
+test('INV-23: the Bulgarian preference survives sign-out and sign-in', async ({
   page,
 }, testInfo) => {
   // INV-23

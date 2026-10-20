@@ -1,1 +1,38 @@
-{}
+{
+  "brandHome": "Начало на AI Explore",
+  "header": {
+    "searchLabel": "Търсене на AI инструменти",
+    "searchPlaceholder": "Търсете инструменти, разработчици, тагове…",
+    "clearSearch": "Изчистване на търсенето",
+    "openMenu": "Отваряне на менюто",
+    "menuTitle": "Меню",
+    "closeMenu": "Затваряне на менюто"
+  },
+  "locale": {
+    "label": "Език",
+    "en": "English",
+    "bg": "Български"
+  },
+  "account": {
+    "menuLabel": "Меню на профила на {name}",
+    "profile": "Профил",
+    "settings": "Настройки",
+    "admin": "Администрация",
+    "signOut": "Изход",
+    "signIn": "Вход",
+    "loading": "Проверяваме профила ви"
+  },
+  "sidebar": {
+    "label": "Основна",
+    "browse": "Разглеждане",
+    "allTools": "Всички инструменти",
+    "myLibrary": "Моята библиотека",
+    "saved": "Запазени инструменти",
+    "discover": "Открийте",
+    "bundles": "Пакети",
+    "compare": "Сравнение на инструменти"
+  },
+  "gate": {
+    "loading": "Зареждаме профила ви…"
+  }
+}
