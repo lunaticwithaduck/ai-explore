@@ -3,7 +3,8 @@
 import { type Category, pickLocalized, type Tool, type WithId } from '@ai-explore/schemas';
 import { useLocale } from 'next-intl';
 import { TEST_IDS } from '@/config/test-ids';
-import { ToolCard } from '../ToolCard/ToolCard';
+import { ToolCard } from '@/features/catalogue/components/ToolCard/ToolCard';
+import { SaveToolButton } from '@/features/my-library/components/SaveToolButton/SaveToolButton';
 
 export type LibraryGridProps = {
   tools: WithId<Tool>[];
@@ -19,7 +20,12 @@ export function LibraryGrid({ tools, categories }: LibraryGridProps) {
       className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
     >
       {tools.map((tool) => (
-        <ToolCard key={tool.id} tool={tool} categoryName={names.get(tool.categoryId)} />
+        <ToolCard
+          key={tool.id}
+          tool={tool}
+          categoryName={names.get(tool.categoryId)}
+          actions={<SaveToolButton toolId={tool.id} />}
+        />
       ))}
     </div>
   );

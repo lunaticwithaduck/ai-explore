@@ -3,9 +3,9 @@
 import { pickLocalized, type Tool, type WithId } from '@ai-explore/schemas';
 import { Card, Heading, Text, TextLink, ToolLogo } from '@ai-explore/ui';
 import { useLocale } from 'next-intl';
+import type { ReactNode } from 'react';
 import { routes } from '@/config/routes';
 import { TEST_IDS } from '@/config/test-ids';
-import { SaveToolButton } from '@/features/my-library/components/SaveToolButton/SaveToolButton';
 import { Link } from '@/i18n/navigation';
 import { ToolCardPrice } from './ToolCardPrice';
 import { ToolCardRating } from './ToolCardRating';
@@ -13,9 +13,10 @@ import { ToolCardRating } from './ToolCardRating';
 export type ToolCardProps = {
   tool: WithId<Tool>;
   categoryName?: string | undefined;
+  actions?: ReactNode;
 };
 
-export function ToolCard({ tool, categoryName }: ToolCardProps) {
+export function ToolCard({ tool, categoryName, actions }: ToolCardProps) {
   const locale = useLocale() === 'bg' ? 'bg' : 'en';
   return (
     <Card
@@ -59,9 +60,7 @@ export function ToolCard({ tool, categoryName }: ToolCardProps) {
         <ToolCardPrice pricing={tool.pricing} locale={locale} />
         <ToolCardRating rating={tool.rating} locale={locale} />
       </div>
-      <div className="absolute right-2 top-2 z-10">
-        <SaveToolButton toolId={tool.id} />
-      </div>
+      {actions && <div className="absolute right-2 top-2 z-10">{actions}</div>}
     </Card>
   );
 }
