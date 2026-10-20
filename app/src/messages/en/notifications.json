@@ -1,1 +1,10 @@
-{}
+{
+  "title": "Notifications",
+  "bell": "{count, plural, =0 {Notifications} one {Notifications, # new} other {Notifications, # new}}",
+  "overflow": "{max}+",
+  "newLabel": "New",
+  "newCount": "{count} new",
+  "markAllRead": "Mark all as read",
+  "emptyTitle": "You're all caught up",
+  "emptyBody": "Updates for the tools you save will show up here."
+}
