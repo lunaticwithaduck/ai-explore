@@ -7,7 +7,7 @@ import { PlanCard } from '../PlanCard/PlanCard';
 import { ToolSection } from '../ToolSection/ToolSection';
 
 export type ToolPlansProps = {
-  tool: Pick<Tool, 'plans' | 'pricing'>;
+  tool: Pick<Tool, 'plans' | 'pricing' | 'websiteUrl'>;
 };
 
 export function ToolPlans({ tool }: ToolPlansProps) {
@@ -35,7 +35,7 @@ export function ToolPlans({ tool }: ToolPlansProps) {
     >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {tool.plans.map((plan) => (
-          <PlanCard key={`${plan.name}-${plan.period}`} plan={plan} />
+          <PlanCard key={`${plan.name}-${plan.period}`} plan={plan} websiteUrl={tool.websiteUrl} />
         ))}
       </div>
     </ToolSection>

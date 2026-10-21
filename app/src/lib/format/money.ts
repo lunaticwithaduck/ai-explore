@@ -7,6 +7,7 @@ export function formatCents(cents: number, locale: Locale): string {
   return new Intl.NumberFormat(INTL_LOCALE[locale], {
     style: 'currency',
     currency: 'USD',
+    currencyDisplay: 'narrowSymbol',
     minimumFractionDigits: whole ? 0 : 2,
     maximumFractionDigits: 2,
   }).format(cents / 100);

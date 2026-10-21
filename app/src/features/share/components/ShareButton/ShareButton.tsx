@@ -65,7 +65,7 @@ export function ShareButton({ url, title }: ShareButtonProps) {
           {t('button')}
         </Button>
       </PopoverTrigger>
-      <PopoverContent align="end">
+      <PopoverContent align="start" collisionPadding={16}>
         <Heading level={3} size="sm" className={shareStyles.heading}>
           {t('title')}
         </Heading>

@@ -76,7 +76,7 @@ export const Carousel = forwardRef<HTMLElement, CarouselProps>(
       <section ref={ref} className={cn(carouselStyles(), className)} {...props}>
         <div className={carouselHeaderStyles()}>
           <div className="min-w-0 flex-1">{heading}</div>
-          <div className="flex shrink-0 gap-2">
+          <div className={cn('flex shrink-0 gap-2', !canPrevious && !canNext && 'hidden')}>
             <IconButton
               {...previousButtonProps}
               icon={ChevronLeft}

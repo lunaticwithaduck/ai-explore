@@ -10,5 +10,10 @@ type StoreProviderProps = {
 
 export function StoreProvider({ children }: StoreProviderProps) {
   const [store] = useState(makeStore);
-  return <Provider store={store}>{children}</Provider>;
+  const [serverState] = useState(() => store.getState());
+  return (
+    <Provider store={store} serverState={serverState}>
+      {children}
+    </Provider>
+  );
 }

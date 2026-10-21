@@ -13,7 +13,7 @@ export function AuthFooterLink({ prompt, label, href }: AuthFooterLinkProps) {
       <Text as="span" size="sm" tone="muted">
         {prompt}
       </Text>
-      <TextLink asChild size="sm">
+      <TextLink asChild size="sm" className="py-1.5">
         <Link href={href}>{label}</Link>
       </TextLink>
     </>

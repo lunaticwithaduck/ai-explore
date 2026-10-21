@@ -8,7 +8,7 @@ import { PlanCard } from './PlanCard';
 const renderPlan = (plan: Plan) =>
   render(
     <NextIntlClientProvider locale="en" messages={{ tool }}>
-      <PlanCard plan={plan} />
+      <PlanCard plan={plan} websiteUrl="https://example.com" />
     </NextIntlClientProvider>,
   );
 

@@ -77,7 +77,9 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
         )}
         {...triggerProps}
       >
-        <SelectPrimitive.Value placeholder={placeholder} />
+        <SelectPrimitive.Value placeholder={placeholder}>
+          {options.find((option) => option.value === (value ?? defaultValue))?.label}
+        </SelectPrimitive.Value>
         <SelectPrimitive.Icon asChild>
           <ChevronDown aria-hidden className="size-4 shrink-0 text-text-muted" />
         </SelectPrimitive.Icon>

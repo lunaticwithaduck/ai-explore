@@ -32,6 +32,6 @@ describe('ToolHeaderRating', () => {
   it('falls back to no rating when the live aggregate is gone', () => {
     vi.mocked(useToolRatingQuery).mockReturnValue({ currentData: null } as never);
     renderRating();
-    expect(screen.getAllByText('No ratings yet').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('No reviews yet').length).toBeGreaterThan(0);
   });
 });

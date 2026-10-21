@@ -23,12 +23,17 @@ export function ToolHeaderRating({ toolId, initial }: ToolHeaderRatingProps) {
     <div className="mt-3 flex items-center gap-2">
       <StarRating
         value={average ?? 0}
-        label={averageText === null ? t('noRating') : t('ratingLabel', { average: averageText })}
+        label={averageText === null ? t('noReviews') : t('ratingLabel', { average: averageText })}
         valueText={averageText ?? undefined}
       />
+      {rating && averageText !== null && (
+        <Text as="span" size="sm" tone="muted" numeric>
+          ({rating.count})
+        </Text>
+      )}
       {averageText === null && (
         <Text as="span" size="sm" tone="subtle">
-          {t('noRating')}
+          {t('noReviews')}
         </Text>
       )}
     </div>

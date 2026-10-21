@@ -91,7 +91,11 @@ const reviewsApi = firestoreApi.injectEndpoints({
         stream(lifecycle, () =>
           onSnapshot(
             toolRef(toolId),
-            (snap) => lifecycle.updateCachedData(() => readRating(snap)),
+            { includeMetadataChanges: true },
+            (snap) => {
+              if (snap.metadata.hasPendingWrites) return;
+              lifecycle.updateCachedData(() => readRating(snap));
+            },
             stopped(`Rating ${toolId}`),
           ),
         ),

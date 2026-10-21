@@ -3,7 +3,8 @@
     "developer": "by {developer}",
     "open": "Open",
     "ratingLabel": "Rated {average} out of 5",
-    "noRating": "No ratings yet"
+    "noReviews": "No reviews yet",
+    "tags": "Tags"
   },
   "about": {
     "title": "About this tool",

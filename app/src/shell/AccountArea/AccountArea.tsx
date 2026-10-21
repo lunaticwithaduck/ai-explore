@@ -15,9 +15,10 @@ export function AccountArea() {
 
   if (status === 'loading') return <Skeleton shape="circle" className="size-9" />;
   if (status === 'signedIn') return <UserMenu />;
+  if (isAuthRoute(pathname)) return null;
   return (
     <Button asChild size="sm" data-testid={TEST_IDS.shell.signIn}>
-      <Link href={signInHref(isAuthRoute(pathname) ? null : pathname)}>{t('account.signIn')}</Link>
+      <Link href={signInHref(pathname)}>{t('account.signIn')}</Link>
     </Button>
   );
 }

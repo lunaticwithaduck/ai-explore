@@ -58,7 +58,7 @@ export function SignInForm({ disabled = false, onBusyChange, onError }: SignInFo
         error={fieldError(formState.errors.password?.message)}
         data-testid={TEST_IDS.auth.password}
         labelAction={
-          <TextLink asChild size="xs" tone="muted">
+          <TextLink asChild size="xs" tone="muted" className="py-1.5">
             <Link href={routes.resetPassword}>{t('signIn.forgotPassword')}</Link>
           </TextLink>
         }

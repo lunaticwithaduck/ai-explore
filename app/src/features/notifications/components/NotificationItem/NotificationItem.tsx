@@ -2,7 +2,7 @@
 
 import { type Locale, pickLocalized } from '@ai-explore/schemas';
 import { Badge, PopoverClose, Text, TextLink, ToolLogo } from '@ai-explore/ui';
-import { useFormatter, useLocale, useTranslations } from 'next-intl';
+import { useFormatter, useLocale, useNow, useTranslations } from 'next-intl';
 import { routes } from '@/config/routes';
 import { TEST_IDS } from '@/config/test-ids';
 import { Link } from '@/i18n/navigation';
@@ -18,6 +18,7 @@ export function NotificationItem({ entry }: NotificationItemProps) {
   const t = useTranslations('notifications');
   const locale = useLocale() as Locale;
   const format = useFormatter();
+  const now = useNow({ updateInterval: 60_000 });
   const { update, tool, isNew } = entry;
   return (
     <li data-testid={TEST_IDS.notifications.item} data-id={update.id} className={itemStyles.root}>
@@ -51,7 +52,7 @@ export function NotificationItem({ entry }: NotificationItemProps) {
                   {formatVersion(update.version)}
                 </Badge>
                 <Text as="span" size="xs" tone="muted">
-                  {format.relativeTime(update.publishedAt)}
+                  {format.relativeTime(update.publishedAt, now)}
                 </Text>
               </span>
               <Text as="span" size="sm" tone="muted" clamp={2}>

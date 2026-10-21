@@ -1,12 +1,13 @@
 import type { Category, Locale, Tool, WithId } from '@ai-explore/schemas';
 import { pickLocalized } from '@ai-explore/schemas';
-import { Badge, Button, Card, Heading, Text, ToolLogo } from '@ai-explore/ui';
+import { Badge, Button, Card, Heading, Tag, Text, ToolLogo } from '@ai-explore/ui';
 import { ExternalLink } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { env } from '@/config/env';
 import { routes } from '@/config/routes';
 import { TEST_IDS } from '@/config/test-ids';
 import { CompareLink } from '@/features/compare/components/CompareLink/CompareLink';
+import { tagLabel } from '@/features/library/utils/tagOptions';
 import { AddToCollectionMenu } from '@/features/my-library/components/AddToCollectionMenu/AddToCollectionMenu';
 import { SaveToolButton } from '@/features/my-library/components/SaveToolButton/SaveToolButton';
 import { ShareButton } from '@/features/share/components/ShareButton/ShareButton';
@@ -43,6 +44,17 @@ export function ToolHeader({ tool, category, similar }: ToolHeaderProps) {
             <Text tone="muted" className="mt-3">
               {pickLocalized(tool.tagline, locale)}
             </Text>
+            {tool.tags.length > 0 && (
+              <ul aria-label={t('tags')} className="mt-3 flex flex-wrap gap-2">
+                {tool.tags.map((tag) => (
+                  <li key={tag}>
+                    <Tag asChild size="sm" data-id={tag}>
+                      <Link href={routes.libraryWith({ tags: [tag] })}>{tagLabel(tag)}</Link>
+                    </Tag>
+                  </li>
+                ))}
+              </ul>
+            )}
             <ToolHeaderRating toolId={tool.id} initial={tool.rating} />
           </div>
         </div>

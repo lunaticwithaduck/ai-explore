@@ -33,7 +33,6 @@ export function TutorialItem({ tutorial }: TutorialItemProps) {
             src={embedUrl(tutorial.youtubeId)}
             title={title}
             allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-            allowFullScreen
             className="absolute inset-0 size-full border-0"
           />
         ) : (

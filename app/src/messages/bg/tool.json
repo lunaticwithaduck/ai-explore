@@ -3,7 +3,8 @@
     "developer": "от {developer}",
     "open": "Отвори",
     "ratingLabel": "Оценка {average} от 5",
-    "noRating": "Все още няма оценки"
+    "noReviews": "Още няма отзиви",
+    "tags": "Етикети"
   },
   "about": {
     "title": "За този инструмент",

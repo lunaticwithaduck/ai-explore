@@ -14,7 +14,7 @@ export const tabsListStyles = cva('flex items-center', {
 export const tabsTriggerStyles = cva(
   [
     'relative inline-flex shrink-0 select-none items-center justify-center gap-2 whitespace-nowrap font-medium text-sm text-text-muted transition-colors duration-fast hover:text-text data-[state=active]:text-text',
-    focusRing,
+    'outline-hidden focus-visible:ring-3 focus-visible:ring-focus-ring focus-visible:ring-inset',
     'disabled:pointer-events-none disabled:opacity-50',
   ],
   {

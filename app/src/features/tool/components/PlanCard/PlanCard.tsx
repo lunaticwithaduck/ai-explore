@@ -1,7 +1,7 @@
 import type { Locale, Plan } from '@ai-explore/schemas';
 import { pickLocalized } from '@ai-explore/schemas';
-import { Badge, Card, cn, Heading, Text } from '@ai-explore/ui';
-import { Check } from 'lucide-react';
+import { Badge, Card, cn, Heading, Text, TextLink } from '@ai-explore/ui';
+import { Check, ExternalLink } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { usePlanPriceLabel } from '../../hooks/usePlanPriceLabel';
 import { getPlanPrice } from '../../utils/planPrice';
@@ -9,9 +9,10 @@ import { planCardStyles } from './PlanCard.styles';
 
 export type PlanCardProps = {
   plan: Plan;
+  websiteUrl: string;
 };
 
-export function PlanCard({ plan }: PlanCardProps) {
+export function PlanCard({ plan, websiteUrl }: PlanCardProps) {
   const t = useTranslations('tool.plans');
   const locale = useLocale() as Locale;
   const price = usePlanPriceLabel(plan);
@@ -50,8 +51,11 @@ export function PlanCard({ plan }: PlanCardProps) {
         ))}
       </ul>
       {getPlanPrice(plan).kind === 'custom' && (
-        <Text size="sm" tone="accent" weight="medium" className="mt-auto pt-3">
-          {t('contactSales')}
+        <Text size="sm" weight="medium" className="mt-auto pt-3">
+          <TextLink href={websiteUrl} target="_blank" rel="noopener noreferrer">
+            {t('contactSales')}
+            <ExternalLink aria-hidden className="ml-1 inline size-3.5" />
+          </TextLink>
         </Text>
       )}
     </Card>
