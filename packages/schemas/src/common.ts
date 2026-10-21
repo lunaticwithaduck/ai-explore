@@ -4,7 +4,10 @@ export const LOCALES = ['en', 'bg'] as const;
 export const localeSchema = z.enum(LOCALES);
 export type Locale = z.infer<typeof localeSchema>;
 
-export const slugSchema = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
+export const slugSchema = z
+  .string()
+  .max(64)
+  .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 export const hexColorSchema = z.string().regex(/^#[0-9A-Fa-f]{6}$/);
 export const centsSchema = z.number().int().nonnegative();
 

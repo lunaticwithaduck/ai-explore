@@ -107,6 +107,7 @@ step_oracle() {
       *.test.ts|*.test.tsx) git diff -U0 "$BASE..HEAD" -- "$f" | grep -qE '^[-+].*INV-' || continue ;;
       *) continue ;;
     esac
+    git cat-file -e "$BASE:$f" 2>/dev/null || continue
     diff="$(git diff -U0 "$BASE..HEAD" -- "$f")"
     removed="$(grep -E '^-' <<< "$diff" | grep -vE '^---' | sed -E 's/^-//')"
     added="$(grep -E '^\+' <<< "$diff" | grep -vE '^\+\+\+' | sed -E 's/^\+//')"

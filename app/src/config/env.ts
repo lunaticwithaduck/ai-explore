@@ -22,7 +22,7 @@ const envSchema = z.object({
   NEXT_PUBLIC_FIREBASE_APP_ID: optionalString,
   NEXT_PUBLIC_USE_EMULATORS: z.preprocess(
     emptyStringToUndefined,
-    z.enum(['true', 'false']).default('true'),
+    z.enum(['true', 'false']).default('false'),
   ),
   NEXT_PUBLIC_EMULATOR_HOST: z.preprocess(emptyStringToUndefined, z.string().default('127.0.0.1')),
   NEXT_PUBLIC_FIRESTORE_EMULATOR_PORT: port(8080),
