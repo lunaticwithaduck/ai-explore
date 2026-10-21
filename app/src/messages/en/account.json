@@ -61,5 +61,53 @@
       "title": "Danger zone",
       "description": "Actions here can't be undone."
     }
+  },
+  "delete": {
+    "title": "Delete account",
+    "description": "Permanently delete your account, your reviews and everything in your library.",
+    "button": "Delete account",
+    "dialog": {
+      "title": "Delete your account?",
+      "description": "This permanently deletes your account. It can't be undone.",
+      "close": "Close",
+      "willRemove": "We'll remove:",
+      "keeps": "Helpful votes you gave to other people's reviews stay in their counts.",
+      "emailLabel": "Type {email} to confirm",
+      "cancel": "Cancel",
+      "confirm": "Delete my account",
+      "passwordLabel": "Password",
+      "googleHint": "When you confirm, Google will ask you to sign in again."
+    },
+    "items": {
+      "reviews": "Your reviews, and their ratings from each tool's score",
+      "library": "Your saved tools, collections and bundle launch alerts",
+      "profile": "Your name, language and notification settings"
+    },
+    "finish": {
+      "title": "Finish deleting your account",
+      "description": "Your reviews, library and settings are already deleted. Only your sign-in is left.",
+      "password": "Enter your password to delete your sign-in and finish.",
+      "google": "Confirm it's you with Google to delete your sign-in and finish.",
+      "submitPassword": "Delete sign-in",
+      "submitGoogle": "Continue with Google"
+    },
+    "remains": {
+      "title": "Your account still exists",
+      "body": "Your reviews, library and settings were deleted, but your sign-in wasn't. Delete it to finish removing your account.",
+      "action": "Delete sign-in"
+    },
+    "progress": "Deleting your account. Keep this page open.",
+    "steps": {
+      "reviews": "Deleting your reviews",
+      "library": "Clearing your library",
+      "profile": "Removing your settings",
+      "account": "Deleting your sign-in"
+    },
+    "errors": {
+      "wrongPassword": "That password isn't right. Try again.",
+      "wrongGoogleAccount": "That's a different Google account. Choose the one you signed in with.",
+      "tooManyRequests": "Too many attempts. Wait a moment and try again.",
+      "popupBlocked": "Your browser blocked the Google window. Allow pop-ups and try again."
+    }
   }
 }

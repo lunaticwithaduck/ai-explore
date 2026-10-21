@@ -19,10 +19,11 @@ export function SettingsView(_props: SettingsViewProps) {
   const { user } = useCurrentUser();
   const { profile } = useCurrentProfile();
   return (
-    <main className="mx-auto flex w-full max-w-content flex-col gap-6 px-4 py-8">
+    <main className="mx-auto flex w-full max-w-content flex-col gap-6 px-4 py-8 sm:px-6">
       <AccountBackButton />
       <Heading level={1}>{t('settings.title')}</Heading>
-      {user && profile ? (
+      {(!user || profile === undefined) && <Skeleton shape="card" className="h-64" />}
+      {user && profile && (
         <>
           <AccountSection
             headingId="settings-profile-heading"
@@ -43,6 +44,10 @@ export function SettingsView(_props: SettingsViewProps) {
           >
             <NotificationSettings uid={user.uid} prefs={profile.prefs} />
           </AccountSection>
+        </>
+      )}
+      {user && profile !== undefined && (
+        <>
           <AccountSection headingId="settings-session-heading" title={t('settings.session.title')}>
             <SessionSettings email={user.email} />
           </AccountSection>
@@ -55,8 +60,6 @@ export function SettingsView(_props: SettingsViewProps) {
             <DeleteAccountSection />
           </AccountSection>
         </>
-      ) : (
-        <Skeleton shape="card" className="h-64" />
       )}
     </main>
   );
