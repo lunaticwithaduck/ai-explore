@@ -20,7 +20,7 @@ Beyond the invariants:
 ## §1 Run it and review it
 
 ```
-cd ~/Repos/ai-explore            # checkout is on overnight/trunk
+cd ~/Repos/ai-explore
 pnpm install
 pnpm dev                         # Firestore + Auth emulators, seed, next dev on http://localhost:3000
 ```
@@ -29,21 +29,21 @@ pnpm dev                         # Firestore + Auth emulators, seed, next dev on
 - **Gate:** `scripts/gate.sh --full`. Rules only: `scripts/test-rules.sh`. e2e: `scripts/test-e2e.sh`.
 - **Screenshots of every key page:** `artifacts/screens/final-*-{375,1280}.png`, regenerated with `scripts/capture-screens.mjs`
   (it needs a running `next start` inside the emulators; see its header).
-- **Review order:** `prompt/SPEC.md` → `git log --oneline main..overnight/trunk` (49 commits, one per task) →
+- **Review order:** `prompt/SPEC.md` → `git log --oneline` (one commit per task) →
   `artifacts/qa/report.md` and `artifacts/qa/Z1-report.md` → `prompt/overnight/follow-ups.md`.
-- **Merge when happy:** `git checkout main && git merge --ff-only overnight/trunk`.
+- **Merged:** `main` was fast-forwarded to `overnight/trunk` on 2026-10-21.
 
 ## §2 Where everything is
 
 | What | Where |
 |---|---|
-| Code | branch `overnight/trunk` (`main` holds only the plan commit) |
-| Per-task branches (kept) | `overnight/<id>`; worktrees removed |
+| Code | `main` (fast-forwarded from `overnight/trunk`) |
+| Per-task work | one squash commit per task on `main`, `[id]` in the subject; task branches and worktrees removed |
 | Briefs, hand-backs, gate logs, verdicts | `prompt/overnight/tasks/<id>/` |
 | Ledger: grant, decisions, events | `prompt/overnight/ledger.md` |
 | Follow-ups (36) | `prompt/overnight/follow-ups.md` |
 | Decisions that need you | `prompt/overnight/parked.md` (§5) |
-| QA report + console log | `artifacts/qa/report.md`, `Q1-console-errors.tsv`; 195 screenshots on branch `overnight/Q1` (20 MB, not merged) |
+| QA report + console log | `artifacts/qa/report.md`, `Q1-console-errors.tsv`; 195 screenshots on the local branch `overnight/Q1` (20 MB, not merged or pushed) |
 | Release audit | `artifacts/qa/Z1-report.md` |
 | Per-lane screenshots | `artifacts/screens/<task>-*.png` |
 
@@ -95,7 +95,6 @@ only through paired batches. Review bylines must mirror the author's profile.
 - **Payments provider for bundles:** `subscriptions` is reserved and client-unwritable.
 - **Real catalogue:** verified prices and tutorials, and more tools.
 - **M5 approach:** Firebase lazy-loading.
-- **Merge:** `overnight/trunk` → `main`.
 
 ## §6 Held or unmerged work
 
@@ -139,7 +138,7 @@ Branch `overnight/Q1` keeps the 195 QA screenshots on purpose.
 
 ## §10 Next steps to launch
 
-1. Review, then fast-forward `main`.
+1. ~~Review, then fast-forward `main`.~~ Done 2026-10-21.
 2. Create the Firebase project on Blaze and an App Hosting backend (H3 in `follow-ups.md`).
 3. Set the env in `apphosting.yaml` with `NEXT_PUBLIC_USE_EMULATORS=false`.
 4. Deploy `firebase/firestore.rules` and `firestore.indexes.json`.
