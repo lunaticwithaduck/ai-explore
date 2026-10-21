@@ -1,5 +1,7 @@
 export const sidebarCollectionStyles = {
-  base: 'relative justify-start gap-3 px-3 font-normal',
-  active:
-    'bg-surface-overlay font-medium text-text before:absolute before:inset-y-2 before:left-0 before:w-0.5 before:rounded-full before:bg-accent hover:bg-surface-overlay',
+  base: 'h-12 justify-start gap-3 px-4 text-base text-text',
+  active: 'bg-accent text-accent-foreground hover:bg-accent hover:text-accent-foreground',
+  icon: 'size-5 shrink-0',
+  label: 'truncate',
+  count: 'ml-auto rounded-xs bg-surface-overlay/50 px-2 py-1 text-xs tabular-nums',
 } as const;

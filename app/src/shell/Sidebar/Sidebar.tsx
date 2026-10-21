@@ -7,7 +7,9 @@ import { routes } from '@/config/routes';
 import { TEST_IDS } from '@/config/test-ids';
 import { useAppLocale } from '@/features/auth/hooks/useAppLocale';
 import { useCurrentUser } from '@/features/auth/hooks/useCurrentUser';
+import { NewCollectionButton } from '@/features/my-library/components/NewCollectionButton/NewCollectionButton';
 import { SidebarCollections } from '@/features/my-library/components/SidebarCollections/SidebarCollections';
+import { useSavedTools } from '@/features/my-library/hooks/useSavedTools';
 import { categoryIcon } from '../config/constants';
 import { useActiveNav } from '../hooks/useActiveNav';
 import { SidebarLink } from '../SidebarLink/SidebarLink';
@@ -21,8 +23,10 @@ export function Sidebar({ categories }: SidebarProps) {
   const t = useTranslations('shell');
   const locale = useAppLocale();
   const { status } = useCurrentUser();
+  const saved = useSavedTools();
   const { pathname, category, collection } = useActiveNav();
   const onLibrary = pathname === routes.library;
+  const signedIn = status === 'signedIn';
 
   return (
     <nav
@@ -30,7 +34,19 @@ export function Sidebar({ categories }: SidebarProps) {
       data-testid={TEST_IDS.shell.sidebar}
       className="flex flex-col gap-6"
     >
-      <SidebarSection title={t('sidebar.browse')}>
+      {signedIn && (
+        <SidebarSection title={t('sidebar.myLibrary')}>
+          <SidebarLink
+            href={routes.myLibrary}
+            icon={Heart}
+            active={pathname === routes.myLibrary && !collection}
+            count={saved.loaded ? saved.ids.size : undefined}
+          >
+            {t('sidebar.saved')}
+          </SidebarLink>
+        </SidebarSection>
+      )}
+      <SidebarSection title={t('sidebar.categories')}>
         <SidebarLink href={routes.library} icon={LayoutGrid} active={onLibrary && !category}>
           {t('sidebar.allTools')}
         </SidebarLink>
@@ -47,15 +63,8 @@ export function Sidebar({ categories }: SidebarProps) {
           </SidebarLink>
         ))}
       </SidebarSection>
-      {status === 'signedIn' && (
-        <SidebarSection title={t('sidebar.myLibrary')}>
-          <SidebarLink
-            href={routes.myLibrary}
-            icon={Heart}
-            active={pathname === routes.myLibrary && !collection}
-          >
-            {t('sidebar.saved')}
-          </SidebarLink>
+      {signedIn && (
+        <SidebarSection title={t('sidebar.collections')} action={<NewCollectionButton />}>
           <SidebarCollections />
         </SidebarSection>
       )}

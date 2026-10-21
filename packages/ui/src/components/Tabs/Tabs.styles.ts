@@ -5,7 +5,7 @@ export const tabsListStyles = cva('flex items-center', {
   variants: {
     variant: {
       underline: 'gap-1 overflow-x-auto border-border border-b',
-      pill: 'inline-flex gap-1 rounded-button border border-border bg-surface-sunken p-1',
+      pill: 'inline-flex gap-1 rounded-button bg-surface-overlay p-1',
     },
   },
   defaultVariants: { variant: 'underline' },
@@ -22,7 +22,7 @@ export const tabsTriggerStyles = cva(
       variant: {
         underline:
           'h-10 rounded-t-md px-3 after:absolute after:inset-x-2 after:-bottom-px after:h-0.5 after:rounded-full data-[state=active]:after:bg-accent',
-        pill: 'h-8 rounded-md px-3 data-[state=active]:bg-surface-overlay data-[state=active]:shadow-sm',
+        pill: 'h-8 rounded-md px-3 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground data-[state=active]:shadow-sm',
       },
     },
     defaultVariants: { variant: 'underline' },

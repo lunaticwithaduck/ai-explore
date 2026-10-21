@@ -11,6 +11,7 @@ export const TEST_IDS = {
     signOut: 'shell-sign-out',
     sidebarCategory: 'shell-sidebar-category',
     sidebarCollection: 'shell-sidebar-collection',
+    sidebarNewCollection: 'shell-sidebar-new-collection',
   },
   auth: {
     displayName: 'auth-display-name',

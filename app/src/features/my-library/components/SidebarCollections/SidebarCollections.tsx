@@ -38,9 +38,10 @@ export function SidebarCollections(_props: SidebarCollectionsProps) {
             >
               <Icon
                 aria-hidden
-                className={cn('size-4 shrink-0', accentTextClass[collection.color])}
+                className={cn(sidebarCollectionStyles.icon, accentTextClass[collection.color])}
               />
-              <span className="truncate">{collection.name}</span>
+              <span className={sidebarCollectionStyles.label}>{collection.name}</span>
+              <span className={sidebarCollectionStyles.count}>{collection.toolIds.length}</span>
             </Link>
           </Button>
         );

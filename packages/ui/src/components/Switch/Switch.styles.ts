@@ -19,7 +19,7 @@ export const switchStyles = cva(
 );
 
 export const switchThumbStyles = cva(
-  'pointer-events-none block rounded-full bg-text shadow-sm transition-transform duration-fast data-[state=unchecked]:translate-x-0.5',
+  'pointer-events-none block rounded-full bg-text shadow-sm transition-transform duration-fast data-[state=checked]:bg-accent-foreground data-[state=unchecked]:translate-x-0.5',
   {
     variants: {
       size: {

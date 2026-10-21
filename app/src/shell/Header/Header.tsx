@@ -33,7 +33,7 @@ export function Header({ categories, menuOpen, onMenuOpenChange }: HeaderProps) 
         <NotificationsBell />
         {!menuOpen && (
           <div className={headerStyles.locale}>
-            <LocaleSwitcher />
+            <LocaleSwitcher className={headerStyles.localeTrigger} />
           </div>
         )}
         <AccountArea />

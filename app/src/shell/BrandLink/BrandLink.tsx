@@ -1,5 +1,4 @@
 import { Text, TextLink } from '@ai-explore/ui';
-import { Sparkles } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { routes } from '@/config/routes';
 import { Link } from '@/i18n/navigation';
@@ -12,9 +11,9 @@ export function BrandLink() {
     <TextLink asChild tone="default" underline="none" className={brandLinkStyles.link}>
       <Link href={routes.library} aria-label={t('brandHome')}>
         <span aria-hidden className={brandLinkStyles.mark}>
-          <Sparkles className={brandLinkStyles.icon} />
+          {t('brandMark')}
         </span>
-        <Text as="span" size="lg" weight="semibold" className={brandLinkStyles.name}>
+        <Text as="span" weight="medium" className={brandLinkStyles.name}>
           {common('appName')}
         </Text>
       </Link>

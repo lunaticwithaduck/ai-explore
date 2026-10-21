@@ -10,9 +10,8 @@ export const tagStyles = cva(
   {
     variants: {
       pressed: {
-        true: 'border-accent bg-accent-subtle text-text',
-        false:
-          'border-border bg-surface-raised text-text-muted hover:border-border-strong hover:text-text',
+        true: 'border-transparent bg-accent text-accent-foreground',
+        false: 'border-transparent bg-surface-overlay text-text hover:bg-surface-overlay/80',
       },
       size: {
         sm: 'h-7 px-2.5 text-xs',

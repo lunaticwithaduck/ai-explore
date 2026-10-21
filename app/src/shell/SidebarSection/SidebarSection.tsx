@@ -3,21 +3,19 @@ import type { ReactNode } from 'react';
 
 export type SidebarSectionProps = {
   title: string;
+  action?: ReactNode;
   children: ReactNode;
 };
 
-export function SidebarSection({ title, children }: SidebarSectionProps) {
+export function SidebarSection({ title, action, children }: SidebarSectionProps) {
   return (
-    <div className="flex flex-col gap-0.5">
-      <Text
-        as="div"
-        size="xs"
-        tone="subtle"
-        weight="semibold"
-        className="mb-1.5 px-3 uppercase tracking-wider"
-      >
-        {title}
-      </Text>
+    <div className="flex flex-col gap-1">
+      <div className="mb-2 flex min-h-6 items-center justify-between">
+        <Text as="div" size="xs" tone="muted" weight="medium" className="uppercase tracking-wide">
+          {title}
+        </Text>
+        {action}
+      </div>
       {children}
     </div>
   );

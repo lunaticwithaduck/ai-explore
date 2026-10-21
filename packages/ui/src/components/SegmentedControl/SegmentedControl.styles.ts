@@ -2,7 +2,7 @@ import { cva } from 'class-variance-authority';
 import { focusRing } from '../../lib/focusRing';
 
 export const segmentedControlStyles = cva(
-  'inline-flex items-center gap-1 rounded-button border border-border bg-surface-sunken p-1',
+  'inline-flex items-center gap-1 rounded-button bg-surface-overlay p-1',
   {
     variants: {
       fullWidth: {
@@ -17,7 +17,7 @@ export const segmentedControlStyles = cva(
 export const segmentedItemStyles = cva(
   [
     'inline-flex shrink-0 select-none items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium text-text-muted transition-colors duration-fast hover:text-text',
-    'data-[state=on]:bg-surface-overlay data-[state=on]:text-text data-[state=on]:shadow-sm',
+    'data-[state=on]:bg-accent data-[state=on]:text-accent-foreground data-[state=on]:shadow-sm',
     focusRing,
     'disabled:pointer-events-none disabled:opacity-50',
   ],

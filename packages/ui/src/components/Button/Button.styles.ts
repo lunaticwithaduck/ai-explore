@@ -11,10 +11,9 @@ export const buttonStyles = cva(
     variants: {
       variant: {
         primary: 'border-transparent bg-accent text-accent-foreground hover:bg-accent-hover',
-        secondary:
-          'border-border bg-surface-overlay text-text hover:border-border-strong hover:bg-border',
+        secondary: 'border-transparent bg-surface-overlay text-text hover:bg-surface-overlay/80',
         ghost:
-          'border-transparent bg-transparent text-text-muted hover:bg-surface-raised hover:text-text',
+          'border-transparent bg-transparent text-text-muted hover:bg-surface-overlay hover:text-text',
         danger:
           'border-transparent bg-danger-subtle text-danger hover:bg-danger hover:text-text-inverse',
       },

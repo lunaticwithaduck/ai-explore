@@ -11,7 +11,7 @@ export const dropdownMenuItemStyles = cva(
   {
     variants: {
       tone: {
-        default: 'text-text data-highlighted:bg-surface-raised',
+        default: 'text-text data-highlighted:bg-surface-overlay',
         danger: 'text-danger data-highlighted:bg-danger-subtle',
       },
       indicator: {

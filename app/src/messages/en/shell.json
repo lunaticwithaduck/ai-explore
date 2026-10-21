@@ -22,7 +22,9 @@
     "signIn": "Sign in",
     "loading": "Checking your account",
     "signingOut": "Saving…",
-    "signOutUnsaved": "You were signed out before your latest changes finished saving."
+    "signOutUnsaved": "You were signed out before your latest changes finished saving.",
+    "roleMember": "Member",
+    "roleAdmin": "Admin"
   },
   "sidebar": {
     "label": "Main",
@@ -32,9 +34,12 @@
     "saved": "Saved tools",
     "discover": "Discover",
     "bundles": "Bundles",
-    "compare": "Compare tools"
+    "compare": "Compare tools",
+    "categories": "Categories",
+    "collections": "Collections"
   },
   "gate": {
     "loading": "Loading your account…"
-  }
+  },
+  "brandMark": "AI"
 }

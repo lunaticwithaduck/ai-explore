@@ -51,7 +51,7 @@ export const Tag = forwardRef<HTMLButtonElement, TagProps>(
         {Icon && <Icon aria-hidden className="size-3.5" />}
         <Slottable>{children}</Slottable>
         {count !== undefined && (
-          <span className="rounded-full bg-surface-sunken px-1.5 text-xs text-text-subtle tabular-nums">
+          <span className="rounded-full bg-surface px-1.5 text-xs text-text-muted tabular-nums">
             {count}
           </span>
         )}

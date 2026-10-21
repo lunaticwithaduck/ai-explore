@@ -8,6 +8,7 @@ export type SidebarLinkProps = {
   href: string;
   icon: LucideIcon;
   active?: boolean;
+  count?: number | undefined;
   children: ReactNode;
   'data-testid'?: string;
   'data-id'?: string;
@@ -17,6 +18,7 @@ export function SidebarLink({
   href,
   icon,
   active = false,
+  count,
   children,
   ...dataProps
 }: SidebarLinkProps) {
@@ -29,7 +31,8 @@ export function SidebarLink({
       className={cn(sidebarLinkStyles.base, active && sidebarLinkStyles.active)}
     >
       <Link href={href} aria-current={active ? 'page' : undefined} {...dataProps}>
-        <span className="truncate">{children}</span>
+        <span className={sidebarLinkStyles.label}>{children}</span>
+        {count !== undefined && <span className={sidebarLinkStyles.count}>{count}</span>}
       </Link>
     </Button>
   );

@@ -1,24 +1,28 @@
 @theme static {
   --color-*: initial;
 
-  --color-surface: oklch(0.165 0.008 265);
-  --color-surface-raised: oklch(0.215 0.011 265);
-  --color-surface-sunken: oklch(0.135 0.007 265);
-  --color-surface-overlay: oklch(0.245 0.012 265);
-  --color-scrim: oklch(0.08 0.006 265 / 0.72);
+  --color-surface: oklch(0.145 0 0);
+  --color-surface-raised: oklch(0.145 0 0);
+  --color-surface-sunken: oklch(0.145 0 0);
+  --color-surface-overlay: oklch(0.269 0 0);
+  --color-scrim: oklch(0 0 0 / 0.6);
 
-  --color-border: oklch(0.295 0.012 265);
-  --color-border-strong: oklch(0.39 0.014 265);
+  --color-border: oklch(0.269 0 0);
+  --color-border-strong: oklch(0.371 0 0);
 
-  --color-text: oklch(0.975 0.003 265);
-  --color-text-muted: oklch(0.75 0.012 265);
-  --color-text-subtle: oklch(0.66 0.014 265);
-  --color-text-inverse: oklch(0.17 0.01 265);
+  --color-text: oklch(0.985 0 0);
+  --color-text-muted: oklch(0.708 0 0);
+  --color-text-subtle: oklch(0.62 0 0);
+  --color-text-inverse: oklch(0.205 0 0);
 
-  --color-accent: oklch(0.72 0.15 268);
-  --color-accent-hover: oklch(0.78 0.13 268);
-  --color-accent-subtle: oklch(0.3 0.07 268);
-  --color-accent-foreground: oklch(0.17 0.03 268);
+  --color-accent: oklch(0.985 0 0);
+  --color-accent-hover: oklch(0.9 0 0);
+  --color-accent-subtle: oklch(0.269 0 0);
+  --color-accent-foreground: oklch(0.205 0 0);
+
+  --color-field: oklch(0.965 0.002 286);
+  --color-field-text: oklch(0.145 0 0);
+  --color-field-placeholder: oklch(0.52 0 0);
 
   --color-success: oklch(0.76 0.15 155);
   --color-success-subtle: oklch(0.29 0.06 155);
@@ -27,7 +31,7 @@
   --color-danger: oklch(0.7 0.18 22);
   --color-danger-subtle: oklch(0.29 0.07 22);
 
-  --color-focus-ring: oklch(0.72 0.15 268 / 0.6);
+  --color-focus-ring: oklch(0.708 0 0 / 0.6);
   --color-star: oklch(0.83 0.16 85);
 
   --color-accent-blue: oklch(0.72 0.14 250);
@@ -46,6 +50,42 @@
   --color-accent-rose-subtle: oklch(0.29 0.07 15);
   --color-accent-slate: oklch(0.74 0.03 260);
   --color-accent-slate-subtle: oklch(0.29 0.015 260);
+
+  /* Prototype palette: the Tailwind defaults the Figma Make design uses, by their Tailwind names. */
+  --color-black: oklch(0 0 0);
+  --color-white: oklch(1 0 0);
+  --color-red-400: oklch(0.704 0.191 22.216);
+  --color-red-500: oklch(0.637 0.237 25.331);
+  --color-red-600: oklch(0.577 0.245 27.325);
+  --color-orange-400: oklch(0.75 0.183 55.934);
+  --color-orange-500: oklch(0.705 0.213 47.604);
+  --color-orange-600: oklch(0.646 0.222 41.116);
+  --color-yellow-400: oklch(0.852 0.199 91.936);
+  --color-yellow-500: oklch(0.795 0.184 86.047);
+  --color-green-400: oklch(0.792 0.209 151.711);
+  --color-green-500: oklch(0.723 0.219 149.579);
+  --color-green-600: oklch(0.627 0.194 149.214);
+  --color-emerald-600: oklch(0.596 0.145 163.225);
+  --color-cyan-500: oklch(0.715 0.143 215.221);
+  --color-cyan-600: oklch(0.609 0.126 221.723);
+  --color-sky-400: oklch(0.746 0.16 232.661);
+  --color-blue-400: oklch(0.707 0.165 254.624);
+  --color-blue-500: oklch(0.623 0.214 259.815);
+  --color-blue-600: oklch(0.546 0.245 262.881);
+  --color-blue-700: oklch(0.488 0.243 264.376);
+  --color-indigo-600: oklch(0.511 0.262 276.966);
+  --color-purple-400: oklch(0.714 0.203 305.504);
+  --color-purple-500: oklch(0.627 0.265 303.9);
+  --color-purple-600: oklch(0.558 0.288 302.321);
+  --color-pink-500: oklch(0.656 0.241 354.308);
+  --color-pink-600: oklch(0.592 0.249 0.584);
+  --color-slate-600: oklch(0.446 0.043 257.281);
+  --color-gray-100: oklch(0.967 0.003 264.542);
+  --color-zinc-300: oklch(0.871 0.006 286.286);
+  --color-zinc-600: oklch(0.442 0.017 285.786);
+  --color-zinc-700: oklch(0.37 0.013 285.805);
+  --color-zinc-800: oklch(0.274 0.006 286.033);
+  --color-zinc-900: oklch(0.21 0.006 285.885);
 
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans",
@@ -107,8 +147,8 @@
   --shadow-sm: 0 1px 2px 0 oklch(0 0 0 / 0.4);
   --shadow-md: 0 4px 12px -2px oklch(0 0 0 / 0.45);
   --shadow-lg: 0 12px 32px -8px oklch(0 0 0 / 0.55);
-  --shadow-card: inset 0 1px 0 0 oklch(1 0 0 / 0.04), 0 1px 2px 0 oklch(0 0 0 / 0.35);
-  --shadow-card-hover: inset 0 1px 0 0 oklch(1 0 0 / 0.06), 0 14px 32px -12px oklch(0 0 0 / 0.7);
+  --shadow-card: 0 0 #0000;
+  --shadow-card-hover: 0 0 #0000;
   --shadow-overlay: 0 18px 48px -12px oklch(0 0 0 / 0.75), 0 2px 6px 0 oklch(0 0 0 / 0.35);
 
   --transition-duration-fast: 120ms;

@@ -7,7 +7,7 @@ export const overlayStyles = cva(
 export const dialogOverlayStyles = cva('grid place-items-center overflow-y-auto p-4 sm:p-6');
 
 export const dialogContentStyles = cva(
-  'relative w-full rounded-xl border border-border bg-surface-overlay p-6 text-text shadow-overlay outline-hidden data-[state=closed]:animate-pop-out data-[state=open]:animate-pop-in',
+  'relative w-full rounded-xl border border-border bg-surface-raised p-6 text-text shadow-overlay outline-hidden data-[state=closed]:animate-pop-out data-[state=open]:animate-pop-in',
   {
     variants: {
       size: {

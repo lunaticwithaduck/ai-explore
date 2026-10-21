@@ -4,11 +4,11 @@ import { focusRing } from '../../lib/focusRing';
 export const cardStyles = cva('relative rounded-card border text-text', {
   variants: {
     variant: {
-      raised: 'border-border bg-surface-raised shadow-card',
+      raised: 'border-border bg-surface-raised',
       flat: 'border-border bg-surface',
       interactive: [
-        'cursor-pointer border-border bg-surface-raised shadow-card transition duration-base',
-        'hover:-translate-y-0.5 hover:border-border-strong hover:shadow-card-hover',
+        'cursor-pointer border-border bg-surface-raised transition-all duration-base',
+        'hover:scale-102 hover:border-accent/50',
         'has-[a:focus-visible]:ring-3 has-[a:focus-visible]:ring-focus-ring',
         focusRing,
       ],

@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
   Text,
 } from '@ai-explore/ui';
-import { ChevronDown, LogOut, Settings, ShieldCheck, User } from 'lucide-react';
+import { LogOut, Settings, ShieldCheck, User } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { routes } from '@/config/routes';
 import { TEST_IDS } from '@/config/test-ids';
@@ -44,11 +44,16 @@ export function UserMenu() {
             src={photo}
             alt={t('account.menuLabel', { name })}
             fallback={initials(name)}
+            className={userMenuStyles.avatar}
           />
-          <Text as="span" aria-hidden size="sm" weight="medium" className={userMenuStyles.name}>
-            {name}
-          </Text>
-          <ChevronDown aria-hidden className={userMenuStyles.chevron} />
+          <span aria-hidden className={userMenuStyles.identityLabel}>
+            <Text as="span" size="sm" className={userMenuStyles.name}>
+              {name}
+            </Text>
+            <Text as="span" size="xs" tone="muted" className={userMenuStyles.role}>
+              {isAdmin ? t('account.roleAdmin') : t('account.roleMember')}
+            </Text>
+          </span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className={userMenuStyles.content}>
