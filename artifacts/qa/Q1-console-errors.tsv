@@ -1,0 +1,196 @@
+screenshot	url	console_and_page_errors	axe_serious_critical
+Q1-404-1280-bg.png	/bg/this-page-does-not-exist	http.404: GET /bg/this-page-does-not-exist; console.error: Failed to load resource: 404	html-has-lang (serious, 1)
+Q1-404-1280.png	/this-page-does-not-exist	http.404: GET /this-page-does-not-exist; console.error: Failed to load resource: 404	html-has-lang (serious, 1)
+Q1-404-375-bg.png	/bg/this-page-does-not-exist	http.404: GET /bg/this-page-does-not-exist; console.error: Failed to load resource: 404	html-has-lang (serious, 1)
+Q1-404-375.png	/this-page-does-not-exist	http.404: GET /this-page-does-not-exist; console.error: Failed to load resource: 404	html-has-lang (serious, 1)
+Q1-404-tool-1280.png	/tools/not-a-real-tool	none	none
+Q1-404-tool-375.png	/tools/not-a-real-tool	none	none
+Q1-add-to-collection-empty-1280-bg.png	/bg/tools/jasper	none	aria-hidden-focus (serious, 7); color-contrast (serious, 2)
+Q1-add-to-collection-empty-1280.png	/tools/jasper	none	aria-hidden-focus (serious, 7); color-contrast (serious, 2)
+Q1-add-to-collection-empty-375-bg.png	/bg/tools/jasper	none	aria-hidden-focus (serious, 6); color-contrast (serious, 2)
+Q1-add-to-collection-empty-375.png	/tools/jasper	none	aria-hidden-focus (serious, 6); color-contrast (serious, 2)
+Q1-add-to-collection-menu-1280.png	/tools/jasper	none	aria-hidden-focus (serious, 7); color-contrast (serious, 1)
+Q1-add-to-collection-menu-375.png	/tools/jasper	none	aria-hidden-focus (serious, 6); color-contrast (serious, 1)
+Q1-admin-403-1280-bg.png	/bg/admin	none	none
+Q1-admin-403-1280.png	/admin	none	none
+Q1-admin-403-375-bg.png	/bg/admin	none	none
+Q1-admin-403-375.png	/admin	none	none
+Q1-admin-bundles-1280.png	/admin	none	none
+Q1-admin-bundles-375.png	/admin	none	none
+Q1-admin-edit-missing-1280.png	/admin/tools/does-not-exist	none	none
+Q1-admin-edit-missing-375.png	/admin/tools/does-not-exist	none	none
+Q1-admin-edit-tool-1280.png	/admin/tools/midjourney	none	none
+Q1-admin-edit-tool-375.png	/admin/tools/midjourney	none	none
+Q1-admin-interest-1280.png	/admin	none	none
+Q1-admin-interest-375.png	/admin	none	none
+Q1-admin-new-bundle-1280.png	/admin/bundles/new	none	none
+Q1-admin-new-bundle-375.png	/admin/bundles/new	none	none
+Q1-admin-new-tool-1280.png	/admin/tools/new	none	none
+Q1-admin-new-tool-375.png	/admin/tools/new	none	none
+Q1-admin-new-tool-errors-1280.png	/admin/tools/new	none	none
+Q1-admin-new-tool-errors-375.png	/admin/tools/new	none	none
+Q1-admin-new-update-1280.png	/admin/updates/new	none	none
+Q1-admin-new-update-375.png	/admin/updates/new	none	none
+Q1-admin-tools-1280.png	/admin	none	none
+Q1-admin-tools-375.png	/admin	none	none
+Q1-admin-updates-1280.png	/admin	none	none
+Q1-admin-updates-375.png	/admin	none	none
+Q1-admin-user-menu-1280.png	/	none	aria-hidden-focus (serious, 1)
+Q1-admin-user-menu-375.png	/	none	aria-hidden-focus (serious, 1)
+Q1-after-collection-create-1280.png	/tools/jasper	none	none
+Q1-after-collection-create-375.png	/tools/jasper	none	none
+Q1-after-sign-out-1280.png	/	none	none
+Q1-after-sign-out-375.png	/	none	none
+Q1-after-sign-up-1280.png	/	none	none
+Q1-after-sign-up-375.png	/	none	none
+Q1-bundle-detail-1280-bg.png	/bg/bundles/startup-founder-pack	none	none
+Q1-bundle-detail-1280.png	/bundles/startup-founder-pack	none	none
+Q1-bundle-detail-375-bg.png	/bg/bundles/startup-founder-pack	none	none
+Q1-bundle-detail-375.png	/bundles/startup-founder-pack	none	none
+Q1-bundle-detail-yearly-1280.png	/bundles/startup-founder-pack	none	none
+Q1-bundle-detail-yearly-375.png	/bundles/startup-founder-pack	none	none
+Q1-bundle-notify-registered-1280.png	/bundles/startup-founder-pack	none	none
+Q1-bundle-notify-registered-375.png	/bundles/startup-founder-pack	none	none
+Q1-bundles-1280-bg.png	/bg/bundles	none	none
+Q1-bundles-1280.png	/bundles	none	none
+Q1-bundles-375-bg.png	/bg/bundles	none	none
+Q1-bundles-375.png	/bundles	none	none
+Q1-card-focus-1280.png	/	none	none
+Q1-card-focus-375.png	/	none	none
+Q1-compare-1280-bg.png	/bg/compare?a=midjourney&b=stable-diffusion	none	none
+Q1-compare-1280.png	/compare?a=midjourney&b=stable-diffusion	none	none
+Q1-compare-375-bg.png	/bg/compare?a=midjourney&b=stable-diffusion	none	none
+Q1-compare-375.png	/compare?a=midjourney&b=stable-diffusion	none	none
+Q1-compare-chatgpt-1280.png	/compare?a=midjourney&b=chatgpt	none	none
+Q1-compare-chatgpt-375.png	/compare?a=midjourney&b=chatgpt	none	none
+Q1-compare-empty-1280.png	/compare	none	none
+Q1-compare-empty-375.png	/compare	none	none
+Q1-compare-picker-open-1280.png	/compare?a=midjourney&b=stable-diffusion	none	none
+Q1-compare-picker-open-375.png	/compare?a=midjourney&b=stable-diffusion	none	none
+Q1-header-search-result-1280.png	/?q=jasper	none	none
+Q1-header-signed-in-1280.png	/	none	none
+Q1-header-signed-in-375.png	/	none	none
+Q1-header-with-badge-1280.png	/	none	none
+Q1-header-with-badge-375.png	/	none	none
+Q1-library-1280-bg.png	/bg	none	aria-allowed-attr (critical, 8)
+Q1-library-1280.png	/	none	aria-allowed-attr (critical, 8)
+Q1-library-375-bg.png	/bg	none	aria-allowed-attr (critical, 8)
+Q1-library-375.png	/	none	aria-allowed-attr (critical, 8)
+Q1-library-empty-search-1280.png	/?q=zzqxv	none	none
+Q1-library-empty-search-375.png	/?q=zzqxv	none	none
+Q1-library-filtered-1280.png	/?category=image&sort=price-asc&price=free	none	aria-allowed-attr (critical, 1)
+Q1-library-filtered-375.png	/?category=image&sort=price-asc&price=free	none	aria-allowed-attr (critical, 1)
+Q1-library-signed-out-1280.png	/sign-in?next=%2Flibrary	none	none
+Q1-library-signed-out-375.png	/sign-in?next=%2Flibrary	none	none
+Q1-library-tags-1280.png	/?tags=design,generation	none	aria-allowed-attr (critical, 1)
+Q1-library-tags-375.png	/?tags=design,generation	none	aria-allowed-attr (critical, 1)
+Q1-locale-switcher-open-1280.png	/tools/midjourney	none	none
+Q1-locale-switcher-open-375.png	/tools/midjourney	none	none
+Q1-member-admin-403-1280.png	/admin	none	none
+Q1-member-admin-403-375.png	/admin	none	none
+Q1-member-home-1280.png	/	none	none
+Q1-member-home-375.png	/	none	none
+Q1-member-library-1280.png	/library	none	none
+Q1-member-library-375.png	/library	none	none
+Q1-member-notifications-1280.png	/	console.error: next-intl ENVIRONMENT_FALLBACK (relativeTime without now)	color-contrast (serious, 1)
+Q1-member-notifications-375.png	/	console.error: next-intl ENVIRONMENT_FALLBACK (relativeTime without now)	color-contrast (serious, 1)
+Q1-mobile-menu-375-bg.png	/bg	none	none
+Q1-mobile-menu-375.png	/	none	none
+Q1-my-library-1280-bg.png	/bg/library	none	none
+Q1-my-library-1280.png	/library	none	none
+Q1-my-library-375-bg.png	/bg/library	none	none
+Q1-my-library-375.png	/library	none	none
+Q1-my-library-collection-1280-bg.png	/bg/library?collection=0fPNPLFLd2acnnxq3fT1	none	none
+Q1-my-library-collection-1280.png	/library?collection=ZrbGavsw2mS7j1hALdOh	none	none
+Q1-my-library-collection-375-bg.png	/bg/library?collection=lkwjSQ0YcBCb4p6JnM0P	none	none
+Q1-my-library-collection-375.png	/library?collection=zVKoVBG9VuKisEHg3Viz	none	none
+Q1-my-library-empty-1280.png	/library	none	none
+Q1-my-library-empty-375.png	/library	none	none
+Q1-new-collection-dialog-1280-bg.png	/bg/tools/jasper	none	none
+Q1-new-collection-dialog-1280.png	/tools/jasper	none	none
+Q1-new-collection-dialog-375-bg.png	/bg/tools/jasper	none	none
+Q1-new-collection-dialog-375.png	/tools/jasper	none	none
+Q1-new-collection-dialog-empty-submit-1280.png	/tools/jasper	none	none
+Q1-new-collection-dialog-empty-submit-375.png	/tools/jasper	none	none
+Q1-notifications-empty-1280.png	/library	none	none
+Q1-notifications-empty-375.png	/library	none	none
+Q1-notifications-open-1280-bg.png	/bg/library?collection=0fPNPLFLd2acnnxq3fT1	console.error: next-intl ENVIRONMENT_FALLBACK (relativeTime without now)	color-contrast (serious, 2)
+Q1-notifications-open-1280.png	/	console.error: next-intl ENVIRONMENT_FALLBACK (relativeTime without now)	color-contrast (serious, 2)
+Q1-notifications-open-375-bg.png	/bg/library?collection=lkwjSQ0YcBCb4p6JnM0P	console.error: next-intl ENVIRONMENT_FALLBACK (relativeTime without now)	color-contrast (serious, 2)
+Q1-notifications-open-375.png	/	console.error: next-intl ENVIRONMENT_FALLBACK (relativeTime without now)	color-contrast (serious, 2)
+Q1-notifications-read-1280.png	/	console.error: next-intl ENVIRONMENT_FALLBACK (relativeTime without now)	none
+Q1-notifications-read-375.png	/	console.error: next-intl ENVIRONMENT_FALLBACK (relativeTime without now)	none
+Q1-profile-1280-bg.png	/bg/profile	none	none
+Q1-profile-1280.png	/profile	none	none
+Q1-profile-375-bg.png	/bg/profile	none	none
+Q1-profile-375.png	/profile	none	none
+Q1-profile-empty-1280.png	/profile	none	none
+Q1-profile-empty-375.png	/profile	none	none
+Q1-reset-password-1280.png	/reset-password	none	none
+Q1-reset-password-375.png	/reset-password	none	none
+Q1-reset-password-sent-1280.png	/reset-password	none	none
+Q1-reset-password-sent-375.png	/reset-password	none	none
+Q1-review-compose-1280.png	/tools/jasper	none	none
+Q1-review-compose-375.png	/tools/jasper	none	none
+Q1-review-delete-dialog-1280-bg.png	/bg/tools/jasper	none	none
+Q1-review-delete-dialog-1280.png	/tools/jasper	none	none
+Q1-review-delete-dialog-375-bg.png	/bg/tools/jasper	none	none
+Q1-review-delete-dialog-375.png	/tools/jasper	none	none
+Q1-review-deleted-1280.png	/tools/jasper	none	none
+Q1-review-deleted-375.png	/tools/jasper	none	none
+Q1-review-edit-1280.png	/tools/jasper	none	none
+Q1-review-edit-375.png	/tools/jasper	none	none
+Q1-review-empty-submit-1280-bg.png	/bg/tools/jasper	none	none
+Q1-review-empty-submit-1280.png	/tools/jasper	none	none
+Q1-review-empty-submit-375-bg.png	/bg/tools/jasper	none	none
+Q1-review-empty-submit-375.png	/tools/jasper	none	none
+Q1-review-posted-1280-bg.png	/bg/tools/jasper	none	none
+Q1-review-posted-1280.png	/tools/jasper	none	none
+Q1-review-posted-375-bg.png	/bg/tools/jasper	none	none
+Q1-review-posted-375.png	/tools/jasper	none	none
+Q1-search-focus-1280.png	/?q=mid	none	none
+Q1-search-focus-375.png	/?q=mid	none	none
+Q1-settings-1280-bg.png	/bg/settings	none	none
+Q1-settings-1280.png	/settings	none	none
+Q1-settings-375-bg.png	/bg/settings	none	none
+Q1-settings-375.png	/settings	none	none
+Q1-share-copied-1280.png	/tools/midjourney	pageerror: React #418 hydration mismatch (HTML)	none
+Q1-share-copied-375.png	/tools/midjourney	pageerror: React #418 hydration mismatch (HTML)	none
+Q1-share-open-1280-bg.png	/bg/tools/midjourney	none	aria-allowed-attr (critical, 1)
+Q1-share-open-1280.png	/tools/midjourney	none	aria-allowed-attr (critical, 1)
+Q1-share-open-375-bg.png	/bg/tools/midjourney	pageerror: React #418 hydration mismatch (HTML)	aria-allowed-attr (critical, 1)
+Q1-share-open-375.png	/tools/midjourney	none	aria-allowed-attr (critical, 1)
+Q1-sign-in-1280-bg.png	/bg/sign-in	none	none
+Q1-sign-in-1280.png	/sign-in	none	none
+Q1-sign-in-375-bg.png	/bg/sign-in	none	none
+Q1-sign-in-375.png	/sign-in	none	none
+Q1-sign-in-error-1280.png	/sign-in	http.400: POST http://127.0.0.1:9129/identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=demo-api-key; console.error: Failed to load resource: 400	none
+Q1-sign-in-error-375.png	/sign-in	http.400: POST http://127.0.0.1:9129/identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=demo-api-key; console.error: Failed to load resource: 400	none
+Q1-sign-up-1280-bg.png	/bg/sign-up	none	none
+Q1-sign-up-1280.png	/sign-up	none	none
+Q1-sign-up-375-bg.png	/bg/sign-up	none	none
+Q1-sign-up-375.png	/sign-up	none	none
+Q1-sign-up-errors-1280-bg.png	/bg/sign-up	none	none
+Q1-sign-up-errors-1280.png	/sign-up	none	none
+Q1-sign-up-errors-375-bg.png	/bg/sign-up	none	none
+Q1-sign-up-errors-375.png	/sign-up	none	none
+Q1-tool-jasper-1280.png	/tools/jasper	none	aria-allowed-attr (critical, 1)
+Q1-tool-jasper-375.png	/tools/jasper	none	aria-allowed-attr (critical, 1)
+Q1-tool-midjourney-1280-bg.png	/bg/tools/midjourney	none	aria-allowed-attr (critical, 1)
+Q1-tool-midjourney-1280.png	/tools/midjourney	none	aria-allowed-attr (critical, 1)
+Q1-tool-midjourney-375-bg.png	/bg/tools/midjourney	none	aria-allowed-attr (critical, 1)
+Q1-tool-midjourney-375.png	/tools/midjourney	pageerror: React #418 hydration mismatch (HTML)	aria-allowed-attr (critical, 1)
+Q1-tool-saved-1280.png	/tools/jasper	none	none
+Q1-tool-saved-375.png	/tools/jasper	none	none
+Q1-tool-signed-in-1280.png	/tools/jasper	none	none
+Q1-tool-signed-in-375.png	/tools/jasper	none	none
+Q1-tool-with-own-review-1280.png	/tools/jasper	none	none
+Q1-tool-with-own-review-375.png	/tools/jasper	none	none
+Q1-tutorial-playing-1280.png	/tools/midjourney	console.warning: Allow attribute will take precedence over 'allowfullscreen'.; console.warning: No available adapters.	none
+Q1-tutorial-playing-375.png	/tools/midjourney	console.warning: Allow attribute will take precedence over 'allowfullscreen'.; console.warning: No available adapters.	none
+Q1-user-menu-1280-bg.png	/bg	none	aria-hidden-focus (serious, 1)
+Q1-user-menu-1280.png	/	none	aria-hidden-focus (serious, 1)
+Q1-user-menu-375-bg.png	/bg	none	aria-hidden-focus (serious, 1)
+Q1-user-menu-375.png	/	none	aria-hidden-focus (serious, 1)
+Q1-tool-loading-1280.png	/tools/midjourney	not recorded (throttled-network capture)	not run
+Q1-tool-loading-375.png	/tools/midjourney	not recorded (throttled-network capture)	not run
