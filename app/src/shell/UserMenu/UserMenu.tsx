@@ -17,7 +17,7 @@ import { TEST_IDS } from '@/config/test-ids';
 import { useCurrentProfile } from '@/features/auth/hooks/useCurrentProfile';
 import { useCurrentUser } from '@/features/auth/hooks/useCurrentUser';
 import { useIsAdmin } from '@/features/auth/hooks/useIsAdmin';
-import { useSignOut } from '@/features/auth/hooks/useSignOut';
+import { useSignOutFlow } from '@/features/auth/hooks/useSignOut';
 import { initials } from '@/features/auth/utils/initials';
 import { Link } from '@/i18n/navigation';
 import { userMenuStyles } from './UserMenu.styles';
@@ -27,7 +27,7 @@ export function UserMenu() {
   const { user } = useCurrentUser();
   const { profile } = useCurrentProfile();
   const { isAdmin } = useIsAdmin();
-  const signOut = useSignOut();
+  const { signOut, isSaving } = useSignOutFlow();
   const name = profile?.displayName ?? user?.displayName ?? user?.email ?? '';
   const photo = profile?.photoUrl ?? user?.photoUrl ?? null;
 
@@ -81,10 +81,14 @@ export function UserMenu() {
         <DropdownMenuItem
           icon={LogOut}
           tone="danger"
-          onSelect={() => void signOut()}
+          disabled={isSaving}
+          onSelect={(event) => {
+            event.preventDefault();
+            void signOut();
+          }}
           data-testid={TEST_IDS.shell.signOut}
         >
-          {t('account.signOut')}
+          {isSaving ? t('account.signingOut') : t('account.signOut')}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

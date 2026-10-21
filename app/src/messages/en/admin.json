@@ -32,7 +32,6 @@
     "new": "New bundle"
   },
   "updates": {
-    "hint": "Publish a release note for a tool.",
     "new": "New update",
     "count": "{count, plural, one {# update} other {# updates}}"
   },

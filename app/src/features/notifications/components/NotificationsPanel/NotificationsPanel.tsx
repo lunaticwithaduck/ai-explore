@@ -1,9 +1,11 @@
 'use client';
 
-import { Button, Heading, PopoverContent, Skeleton, Text } from '@ai-explore/ui';
+import { Button, Heading, PopoverContent, Skeleton, Text, TextLink } from '@ai-explore/ui';
 import { BellOff } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { routes } from '@/config/routes';
 import { TEST_IDS } from '@/config/test-ids';
+import { Link } from '@/i18n/navigation';
 import type { NotificationEntry } from '../../hooks/useNotifications';
 import { NotificationItem } from '../NotificationItem/NotificationItem';
 import { panelStyles } from './NotificationsPanel.styles';
@@ -11,6 +13,7 @@ import { panelStyles } from './NotificationsPanel.styles';
 export type NotificationsPanelProps = {
   items: NotificationEntry[];
   newCount: number;
+  updatesOff: boolean;
   isLoading: boolean;
   isFailed: boolean;
   isMarking: boolean;
@@ -20,6 +23,7 @@ export type NotificationsPanelProps = {
 export function NotificationsPanel({
   items,
   newCount,
+  updatesOff,
   isLoading,
   isFailed,
   isMarking,
@@ -56,7 +60,20 @@ export function NotificationsPanel({
           {t('markAllRead')}
         </Button>
       </div>
-      {isFailed ? (
+      {updatesOff ? (
+        <div className={panelStyles.empty}>
+          <BellOff aria-hidden className={panelStyles.emptyIcon} />
+          <Text size="sm" weight="medium">
+            {t('offTitle')}
+          </Text>
+          <Text size="xs" tone="muted">
+            {t('offBody')}
+          </Text>
+          <TextLink asChild>
+            <Link href={routes.settings}>{t('offLink')}</Link>
+          </TextLink>
+        </div>
+      ) : isFailed ? (
         <Text tone="danger" size="sm" className={panelStyles.status}>
           {tErrors('unknown')}
         </Text>

@@ -1,5 +1,4 @@
 import type { ToolUpdate } from '@ai-explore/schemas';
-import { routes } from '@/config/routes';
 import type { UpdateFormValues } from '../config/updateForm';
 import { fromLocalized, toLocalized } from './toolDocument';
 
@@ -27,6 +26,3 @@ export const updateToFormValues = (update: ToolUpdate): UpdateFormValues => ({
   title: fromLocalized(update.title),
   changes: update.changes.map(fromLocalized),
 });
-
-export const adminUpdateHref = (toolId: string, updateId: string) =>
-  `${routes.admin}/updates/${encodeURIComponent(toolId)}/${encodeURIComponent(updateId)}`;

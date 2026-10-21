@@ -7,7 +7,6 @@ import { useAdminToolsQuery, useAdminUpdatesQuery } from '@/api/endpoints/admin'
 import { routes } from '@/config/routes';
 import { Link } from '@/i18n/navigation';
 import { formatVersion } from '@/lib/format/version';
-import { adminUpdateHref } from '../../utils/updateDocument';
 import { AdminRow } from '../AdminRow/AdminRow';
 import { adminRowStyles } from '../AdminRow/AdminRow.styles';
 import { QueryNotice } from '../QueryNotice/QueryNotice';
@@ -42,7 +41,7 @@ export function UpdatesTab() {
             <div className={adminRowStyles.side}>
               <Badge tone="neutral">{t(`update.kinds.${update.kind}`)}</Badge>
               <Button asChild size="sm" variant="secondary" iconLeft={Pencil}>
-                <Link href={adminUpdateHref(toolId, updateId)}>{t('actions.edit')}</Link>
+                <Link href={routes.adminUpdate(toolId, updateId)}>{t('actions.edit')}</Link>
               </Button>
             </div>
           </AdminRow>

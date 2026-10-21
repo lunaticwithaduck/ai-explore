@@ -20,6 +20,8 @@ import { ToolPlanRows } from '../ToolPlanRows/ToolPlanRows';
 import { ToolTutorialRows } from '../ToolTutorialRows/ToolTutorialRows';
 import { toolFormStyles } from './ToolForm.styles';
 
+export type ToolFormSubmitResult = 'taken' | undefined;
+
 export type ToolFormProps = {
   mode: 'create' | 'edit';
   initial: ToolFormValues;
@@ -28,7 +30,7 @@ export type ToolFormProps = {
   takenSlugs: readonly string[];
   error: unknown;
   saved: boolean;
-  onSubmit: (values: ToolFormValues) => Promise<void>;
+  onSubmit: (values: ToolFormValues) => Promise<ToolFormSubmitResult>;
 };
 
 export function ToolForm({
@@ -51,7 +53,7 @@ export function ToolForm({
       methods.setError('slug', { type: 'taken' });
       return;
     }
-    await onSubmit(values);
+    if ((await onSubmit(values)) === 'taken') methods.setError('slug', { type: 'taken' });
   });
   const field = (name: string) => adminToolField(name);
   const related = tools.filter((entry) => entry.id !== initial.slug);

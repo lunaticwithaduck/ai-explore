@@ -6,5 +6,8 @@
   "newCount": "{count} new",
   "markAllRead": "Mark all as read",
   "emptyTitle": "You're all caught up",
-  "emptyBody": "Updates for the tools you save will show up here."
+  "emptyBody": "Updates for the tools you save will show up here.",
+  "offTitle": "Product updates are turned off",
+  "offBody": "You won't see updates about the tools you follow.",
+  "offLink": "Change this in settings"
 }

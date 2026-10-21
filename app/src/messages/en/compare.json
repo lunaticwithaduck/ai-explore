@@ -30,13 +30,13 @@
     "unknown": "Not listed",
     "free": "Free",
     "perMonth": "{price}/mo",
-    "trialDays": "{days} days",
+    "trialDays": "{days, plural, one {# day} other {# days}}",
     "api": {
       "none": "None",
       "limited": "Limited",
       "full": "Full"
     },
-    "integrations": "{count}+ tools",
+    "integrations": "{count, plural, one {#+ tool} other {#+ tools}}",
     "fraction": "{value}/5",
     "meter": "{value} out of 5",
     "noFeatures": "Not listed"

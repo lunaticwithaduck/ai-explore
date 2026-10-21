@@ -9,16 +9,19 @@ import {
   type User,
   updateProfile,
 } from 'firebase/auth';
+import { waitForPendingWrites } from 'firebase/firestore';
 import type { Locale } from '@/i18n/routing';
-import { clientAuth } from '@/lib/firebase/client';
+import { clientAuth, clientDb } from '@/lib/firebase/client';
+import { DISPLAY_NAME_MAX_LENGTH } from '../config/constants';
 import type { AuthUser } from '../state/authSlice';
+import { clipDisplayName } from './displayName';
 
 export type SignUpInput = { displayName: string; email: string; password: string };
 
 export const toAuthUser = (user: User): AuthUser => ({
   uid: user.uid,
   email: user.email,
-  displayName: user.displayName,
+  displayName: user.displayName ? clipDisplayName(user.displayName, DISPLAY_NAME_MAX_LENGTH) : null,
   photoUrl: user.photoURL,
 });
 
@@ -53,4 +56,23 @@ export async function requestPasswordReset(email: string, locale: Locale): Promi
   await sendPasswordResetEmail(auth, email);
 }
 
-export const signOutUser = () => signOut(clientAuth());
+export const SIGN_OUT_WRITES_TIMEOUT_MS = 5000;
+
+export type SignOutResult = 'clean' | 'timedOut';
+
+export async function signOutUser(
+  timeoutMs: number = SIGN_OUT_WRITES_TIMEOUT_MS,
+): Promise<SignOutResult> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const expiry = new Promise<'timedOut'>((resolve) => {
+    timer = setTimeout(() => resolve('timedOut'), timeoutMs);
+  });
+  const settled = waitForPendingWrites(clientDb()).then(
+    () => 'clean' as const,
+    () => 'timedOut' as const,
+  );
+  const result = await Promise.race([settled, expiry]);
+  clearTimeout(timer);
+  await signOut(clientAuth());
+  return result;
+}

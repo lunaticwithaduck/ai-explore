@@ -14,8 +14,9 @@ import {
 } from '@/api/endpoints/admin';
 import { AdminPage } from '../components/AdminPage/AdminPage';
 import { QueryNotice } from '../components/QueryNotice/QueryNotice';
-import { ToolForm } from '../components/ToolForm/ToolForm';
+import { ToolForm, type ToolFormSubmitResult } from '../components/ToolForm/ToolForm';
 import { defaultToolFormValues, type ToolFormValues } from '../config/toolForm';
+import { useCreateTool, useJustCreated } from '../hooks/useCreateTool';
 import { buildToolDocument, buildToolPatch, toolToFormValues } from '../utils/toolDocument';
 
 export type ToolFormViewProps = {
@@ -27,6 +28,8 @@ export function ToolFormView({ slug }: ToolFormViewProps) {
   const locale = useLocale() as Locale;
   const editing = slug !== undefined;
   const tool = useAdminToolQuery(slug ?? skipToken);
+  const { create, error: createError } = useCreateTool();
+  const justCreated = useJustCreated(slug);
   const tools = useAdminToolsQuery();
   const categories = useAdminCategoriesQuery();
   const [save, { error: saveError, isSuccess: saved }] = useSaveToolMutation();
@@ -48,10 +51,19 @@ export function ToolFormView({ slug }: ToolFormViewProps) {
     [tool.data],
   );
 
-  const onSubmit = async (values: ToolFormValues) => {
-    const stamp = adminTimestamp();
-    const data = editing ? buildToolPatch(values, stamp) : buildToolDocument(values, stamp);
-    await save({ slug: values.slug, mode: editing ? 'update' : 'create', data });
+  const onSubmit = async (values: ToolFormValues): Promise<ToolFormSubmitResult> => {
+    if (!editing) {
+      const outcome = await create(values.slug, (createdAt) =>
+        buildToolDocument(values, createdAt),
+      );
+      return outcome === 'taken' ? 'taken' : undefined;
+    }
+    await save({
+      slug: values.slug,
+      mode: 'update',
+      data: buildToolPatch(values, adminTimestamp()),
+    });
+    return undefined;
   };
 
   const ready = categories.isSuccess && tools.isSuccess && (!editing || tool.isSuccess);
@@ -71,8 +83,8 @@ export function ToolFormView({ slug }: ToolFormViewProps) {
           categories={options}
           tools={toolOptions}
           takenSlugs={tools.data?.map((entry) => entry.id) ?? []}
-          error={saveError}
-          saved={saved}
+          error={saveError ?? createError}
+          saved={saved || justCreated}
           onSubmit={onSubmit}
         />
       )}

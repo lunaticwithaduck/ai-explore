@@ -20,7 +20,9 @@
     "admin": "Admin",
     "signOut": "Sign out",
     "signIn": "Sign in",
-    "loading": "Checking your account"
+    "loading": "Checking your account",
+    "signingOut": "Saving…",
+    "signOutUnsaved": "You were signed out before your latest changes finished saving."
   },
   "sidebar": {
     "label": "Main",

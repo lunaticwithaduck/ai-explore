@@ -40,6 +40,7 @@ export function NotificationsMenu({ uid }: NotificationsMenuProps) {
       <NotificationsPanel
         items={state.items}
         newCount={state.newCount}
+        updatesOff={state.updatesOff}
         isLoading={state.isLoading}
         isFailed={state.isFailed}
         isMarking={state.isMarking}

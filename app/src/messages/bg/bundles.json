@@ -2,7 +2,7 @@
   "section": {
     "title": "Пакети",
     "subtitle": "Готови набори от инструменти за конкретни цели",
-    "seeAll": "Виж всички"
+    "seeAll": "Вижте всички"
   },
   "list": {
     "title": "Пакети",
@@ -14,11 +14,11 @@
   "card": {
     "perMonth": "на месец",
     "save": "Спестете {percent}%",
-    "toolsIncluded": "{count, plural, one {# инструмент} other {# инструмента}} включени"
+    "toolsIncluded": "{count, plural, one {# включен инструмент} other {# включени инструмента}}"
   },
   "detail": {
     "back": "Всички пакети",
-    "subscribe": "Абонирай се",
+    "subscribe": "Абонирайте се",
     "included": "{count, plural, one {# включен инструмент} other {# включени инструмента}}",
     "emptyTitle": "Няма инструменти в този пакет",
     "emptyBody": "В момента този пакет няма публикувани инструменти."

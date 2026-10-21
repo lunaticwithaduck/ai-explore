@@ -1,11 +1,12 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { NextIntlClientProvider } from 'next-intl';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import messages from '../../../../messages/en/notifications.json';
 import { NotificationsBell } from './NotificationsBell';
 
 const auth = vi.hoisted(() => ({ value: { status: 'signedOut', user: null } as unknown }));
-const feed = vi.hoisted(() => ({ newCount: 0 }));
+const feed = vi.hoisted(() => ({ newCount: 0, updatesOff: false }));
 
 vi.mock('@/features/auth/hooks/useCurrentUser', () => ({ useCurrentUser: () => auth.value }));
 vi.mock('@/i18n/navigation', () => ({
@@ -17,6 +18,7 @@ vi.mock('../../hooks/useNotifications', () => ({
   useNotifications: () => ({
     items: [],
     newCount: feed.newCount,
+    updatesOff: feed.updatesOff,
     isLoading: false,
     isFailed: false,
     isMarking: false,
@@ -34,6 +36,7 @@ const renderBell = () =>
 describe('NotificationsBell', () => {
   beforeEach(() => {
     feed.newCount = 0;
+    feed.updatesOff = false;
   });
 
   it('renders nothing when signed out', () => {
@@ -51,5 +54,18 @@ describe('NotificationsBell', () => {
     feed.newCount = 3;
     renderBell();
     expect(screen.getByTestId('notifications-badge')).toHaveTextContent('3');
+  });
+
+  it('shows no badge and links to settings when product updates are off', async () => {
+    auth.value = { status: 'signedIn', user: { uid: 'u1' } };
+    feed.updatesOff = true;
+    renderBell();
+    expect(screen.queryByTestId('notifications-badge')).toBeNull();
+    await userEvent.click(screen.getByTestId('notifications-bell'));
+    expect(screen.getByText(messages.offTitle)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: messages.offLink })).toHaveAttribute(
+      'href',
+      '/settings',
+    );
   });
 });

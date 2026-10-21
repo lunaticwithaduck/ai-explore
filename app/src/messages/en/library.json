@@ -27,7 +27,7 @@
     "free": "Free",
     "from": "From {price}/mo",
     "paid": "Paid",
-    "trial": "{days}d trial",
+    "trial": "{days, plural, one {# day trial} other {# day trial}}",
     "noReviews": "No reviews",
     "reviewCount": "({count})"
   },

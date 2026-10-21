@@ -40,4 +40,6 @@ export const routes = {
   adminNewBundle: '/admin/bundles/new',
   adminBundle: (slug: string) => `/admin/bundles/${encodeURIComponent(slug)}`,
   adminNewUpdate: '/admin/updates/new',
+  adminUpdate: (toolId: string, updateId: string) =>
+    `/admin/updates/${encodeURIComponent(toolId)}/${encodeURIComponent(updateId)}`,
 } as const;

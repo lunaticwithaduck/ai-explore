@@ -1,8 +1,8 @@
 import { toolUpdateSchema } from '@ai-explore/schemas';
 import { describe, expect, it } from 'vitest';
+import { routes } from '@/config/routes';
 import type { UpdateFormValues } from '../config/updateForm';
 import {
-  adminUpdateHref,
   buildUpdateDocument,
   buildUpdatePatch,
   updateDocumentId,
@@ -38,6 +38,6 @@ describe('update document', () => {
   });
 
   it('links to the edit page under the admin route', () => {
-    expect(adminUpdateHref('midjourney', 'v7-1')).toBe('/admin/updates/midjourney/v7-1');
+    expect(routes.adminUpdate('midjourney', 'v7-1')).toBe('/admin/updates/midjourney/v7-1');
   });
 });

@@ -1,12 +1,12 @@
 {
   "searchLabel": "Търсене на инструменти",
   "searchPlaceholder": "Търсене по име, етикет или разработчик",
-  "clearSearch": "Изчисти търсенето",
+  "clearSearch": "Изчистете търсенето",
   "categoryLabel": "Филтър по категория",
   "allCategories": "Всички",
   "tagLabel": "Филтър по етикет",
   "priceLabel": "Филтър по цена",
-  "sortLabel": "Подреди по",
+  "sortLabel": "Подредете по",
   "price": {
     "all": "Всякаква цена",
     "free": "Безплатен план",
@@ -22,19 +22,19 @@
   },
   "emptyTitle": "Няма инструменти, които да съвпадат",
   "emptyBody": "Опитайте с друго търсене или изчистете филтрите.",
-  "reset": "Изчисти филтрите",
+  "reset": "Изчистете филтрите",
   "card": {
     "free": "Безплатно",
     "from": "От {price}/мес.",
     "paid": "Платен",
-    "trial": "{days} дни проба",
+    "trial": "{days, plural, one {# ден пробен период} other {# дни пробен период}}",
     "noReviews": "Без отзиви",
     "reviewCount": "({count})"
   },
   "filters": {
     "toggle": "Филтри",
     "withCount": "Филтри ({count})",
-    "clear": "Изчисти филтрите ({count})"
+    "clear": "Изчистете филтрите ({count})"
   },
   "resultsTitle": "Инструменти"
 }

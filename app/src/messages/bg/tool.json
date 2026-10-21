@@ -1,7 +1,7 @@
 {
   "header": {
     "developer": "от {developer}",
-    "open": "Отвори",
+    "open": "Отворете",
     "ratingLabel": "Оценка {average} от 5",
     "noReviews": "Още няма отзиви",
     "tags": "Етикети"
@@ -25,7 +25,7 @@
     "title": "Уроци",
     "previous": "Предишни уроци",
     "next": "Следващи уроци",
-    "play": "Пусни урока: {title}",
+    "play": "Пуснете урока: {title}",
     "duration": "{minutes} мин",
     "difficulty": {
       "beginner": "Начинаещ",
@@ -48,7 +48,7 @@
     "next": "Следващи подобни инструменти"
   },
   "complementary": {
-    "title": "Върви добре с",
+    "title": "Работи добре с",
     "description": "Изградете цялостен работен процес около {name}.",
     "current": "Текущ инструмент",
     "then": "после"
