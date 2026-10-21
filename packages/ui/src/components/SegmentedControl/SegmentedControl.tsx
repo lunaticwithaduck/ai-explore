@@ -4,11 +4,16 @@ import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
 import type { LucideIcon } from 'lucide-react';
 import { type ComponentPropsWithoutRef, forwardRef } from 'react';
 import { cn } from '../../lib/cn';
-import { segmentedControlStyles, segmentedItemStyles } from './SegmentedControl.styles';
+import {
+  segmentedControlStyles,
+  segmentedDescriptionStyles,
+  segmentedItemStyles,
+} from './SegmentedControl.styles';
 
 export type SegmentedOption = {
   value: string;
   label: string;
+  description?: string | undefined;
   icon?: LucideIcon | undefined;
   disabled?: boolean | undefined;
   testId?: string | undefined;
@@ -39,19 +44,24 @@ export const SegmentedControl = forwardRef<HTMLDivElement, SegmentedControlProps
       className={cn(segmentedControlStyles({ fullWidth }), className)}
       {...props}
     >
-      {options.map(({ value: optionValue, label: optionLabel, icon: Icon, disabled, testId }) => (
-        <ToggleGroupPrimitive.Item
-          key={optionValue}
-          value={optionValue}
-          disabled={disabled}
-          data-id={optionValue}
-          data-testid={testId}
-          className={segmentedItemStyles({ size, fullWidth })}
-        >
-          {Icon && <Icon aria-hidden className="size-4" />}
-          {optionLabel}
-        </ToggleGroupPrimitive.Item>
-      ))}
+      {options.map(
+        ({ value: optionValue, label: optionLabel, description, icon: Icon, disabled, testId }) => (
+          <ToggleGroupPrimitive.Item
+            key={optionValue}
+            value={optionValue}
+            disabled={disabled}
+            data-id={optionValue}
+            data-testid={testId}
+            className={segmentedItemStyles({ size, fullWidth, stacked: description !== undefined })}
+          >
+            {Icon && <Icon aria-hidden className="size-4" />}
+            {optionLabel}
+            {description !== undefined && (
+              <span className={segmentedDescriptionStyles()}>{description}</span>
+            )}
+          </ToggleGroupPrimitive.Item>
+        ),
+      )}
     </ToggleGroupPrimitive.Root>
   ),
 );

@@ -9,7 +9,7 @@ export function BrandLink() {
   const t = useTranslations('shell');
   return (
     <TextLink asChild tone="default" underline="none" className={brandLinkStyles.link}>
-      <Link href={routes.library} aria-label={t('brandHome')}>
+      <Link href={routes.library}>
         <span aria-hidden className={brandLinkStyles.mark}>
           {t('brandMark')}
         </span>

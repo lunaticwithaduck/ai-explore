@@ -31,7 +31,13 @@ export const segmentedItemStyles = cva(
         true: 'flex-1',
         false: '',
       },
+      stacked: {
+        true: 'h-auto flex-col gap-0.5 py-2 leading-tight',
+        false: '',
+      },
     },
-    defaultVariants: { size: 'md', fullWidth: false },
+    defaultVariants: { size: 'md', fullWidth: false, stacked: false },
   },
 );
+
+export const segmentedDescriptionStyles = cva('font-normal text-xs opacity-80');

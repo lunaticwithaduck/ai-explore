@@ -17,9 +17,9 @@ export const headingStyles = cva('text-balance font-medium text-text', {
 
 export const HEADING_LEVEL_SIZE = {
   1: '2xl',
-  2: 'xl',
-  3: 'lg',
-  4: 'md',
-  5: 'sm',
+  2: 'lg',
+  3: 'md',
+  4: 'sm',
+  5: 'xs',
   6: 'xs',
 } as const;
