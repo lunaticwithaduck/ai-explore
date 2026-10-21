@@ -129,6 +129,13 @@ export function profileDoc(overrides: Partial<UserProfile> = {}): UserProfile {
   };
 }
 
+export function authorProfileDoc(
+  uid: string,
+  photoUrl: string | null = 'https://example.com/avatar.png',
+): UserProfile {
+  return profileDoc({ displayName: `User ${uid}`, photoUrl });
+}
+
 export function newProfile(): DocumentData {
   return {
     displayName: 'Alice',

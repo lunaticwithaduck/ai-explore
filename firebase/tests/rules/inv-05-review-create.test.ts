@@ -10,7 +10,7 @@ import {
 } from 'firebase/firestore';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { createReview, ratingDelta, sumDelta } from './batches';
-import { newReview, reviewDoc, toolDoc, without } from './builders';
+import { authorProfileDoc, newReview, reviewDoc, toolDoc, without } from './builders';
 import { ALICE, BOB, CAROL, useRules } from './fixtures';
 import { paths } from './paths';
 
@@ -24,6 +24,8 @@ describe('INV-5: a review is created only together with its rating aggregate', (
     await rules.seed({
       [paths.tool(TOOL)]: toolDoc(TOOL, { rating: { count: 1, sum: 4 } }),
       [paths.tool(OTHER_TOOL)]: toolDoc(OTHER_TOOL),
+      [paths.user(ALICE)]: authorProfileDoc(ALICE),
+      [paths.user(BOB)]: authorProfileDoc(BOB),
       [paths.review(TOOL, CAROL)]: reviewDoc(TOOL, CAROL, 4),
     });
   });
@@ -39,6 +41,7 @@ describe('INV-5: a review is created only together with its rating aggregate', (
   });
 
   it('allows the lowest rating, an empty body and a null photo', async () => {
+    await rules.seed({ [paths.user(ALICE)]: authorProfileDoc(ALICE, null) });
     const body = { ...newReview(TOOL, ALICE, 1), body: '', authorPhotoUrl: null };
     await assertSucceeds(createReview(rules.as(ALICE), TOOL, ALICE, 1, body));
     expect((await rules.read(paths.tool(TOOL)))?.rating).toEqual({ count: 2, sum: 5 });

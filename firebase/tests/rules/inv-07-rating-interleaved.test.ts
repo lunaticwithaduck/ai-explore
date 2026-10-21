@@ -1,7 +1,7 @@
 import { assertSucceeds } from '@firebase/rules-unit-testing';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { concurrently, createReview, deleteReview, editReview } from './batches';
-import { toolDoc } from './builders';
+import { authorProfileDoc, toolDoc } from './builders';
 import { ALICE, BOB, useRules } from './fixtures';
 import { paths } from './paths';
 
@@ -11,7 +11,11 @@ describe('INV-7: interleaved and concurrent review batches keep the aggregate ex
   const rules = useRules();
 
   beforeEach(async () => {
-    await rules.seed({ [paths.tool(TOOL)]: toolDoc(TOOL) });
+    await rules.seed({
+      [paths.tool(TOOL)]: toolDoc(TOOL),
+      [paths.user(ALICE)]: authorProfileDoc(ALICE),
+      [paths.user(BOB)]: authorProfileDoc(BOB),
+    });
   });
 
   const expectAggregateMatchesReviews = async (expected: { count: number; sum: number }) => {

@@ -2,7 +2,7 @@ import { assertFails, assertSucceeds } from '@firebase/rules-unit-testing';
 import { doc, setDoc, writeBatch } from 'firebase/firestore';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { createReview, deleteReview, editReview, ratingDelta } from './batches';
-import { newReview, reviewDoc, toolDoc } from './builders';
+import { authorProfileDoc, newReview, reviewDoc, toolDoc } from './builders';
 import { ALICE, BOB, CAROL, useRules } from './fixtures';
 import { paths } from './paths';
 
@@ -16,6 +16,8 @@ describe('INV-8: no writing another user’s review, no second review per tool',
     await rules.seed({
       [paths.tool(TOOL)]: toolDoc(TOOL, { rating: { count: 1, sum: 4 } }),
       [paths.tool(OTHER_TOOL)]: toolDoc(OTHER_TOOL),
+      [paths.user(ALICE)]: authorProfileDoc(ALICE),
+      [paths.user(BOB)]: authorProfileDoc(BOB),
       [paths.review(TOOL, BOB)]: reviewDoc(TOOL, BOB, 4),
     });
   });
