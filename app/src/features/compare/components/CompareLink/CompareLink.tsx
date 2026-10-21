@@ -10,12 +10,13 @@ import { Link } from '@/i18n/navigation';
 export type CompareLinkProps = {
   toolId: string;
   otherToolId: string | undefined;
+  className?: string | undefined;
 };
 
-export function CompareLink({ toolId, otherToolId }: CompareLinkProps) {
+export function CompareLink({ toolId, otherToolId, className }: CompareLinkProps) {
   const t = useTranslations('compare');
   return (
-    <Button asChild variant="secondary" iconLeft={GitCompareArrows}>
+    <Button asChild variant="secondary" iconLeft={GitCompareArrows} className={className}>
       <Link href={routes.compare(toolId, otherToolId)} data-testid={TEST_IDS.compare.link}>
         {t('link')}
       </Link>

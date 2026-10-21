@@ -33,7 +33,7 @@ export function ReviewsSection({ toolId }: ReviewsSectionProps) {
   );
 
   return (
-    <Card asChild padding="lg">
+    <Card asChild padding="none">
       <section
         aria-labelledby={headingId}
         className={styles.root}

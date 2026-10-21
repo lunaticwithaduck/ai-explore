@@ -1,10 +1,23 @@
 {
   "header": {
-    "developer": "от {developer}",
+    "back": "Назад",
+    "developerLabel": "Разработчик:",
+    "updated": "Обновено: {date}",
+    "priceLabel": "Начална цена:",
     "open": "Отворете",
+    "save": "Запазете",
+    "saved": "Запазено",
     "ratingLabel": "Оценка {average} от 5",
     "noReviews": "Още няма отзиви",
     "tags": "Етикети"
+  },
+  "stats": {
+    "title": "Статистика",
+    "rating": "Обща оценка",
+    "reviews": "Отзиви",
+    "category": "Категория",
+    "pricing": "Цени",
+    "paidOnly": "Само платени планове"
   },
   "about": {
     "title": "За този инструмент",
@@ -17,8 +30,10 @@
     "popular": "Най-популярен",
     "free": "Безплатно",
     "custom": "Цена по договаряне",
-    "perMonth": "на месец",
-    "perYear": "на година",
+    "perMonth": "{price}/месец",
+    "perYear": "{price}/година",
+    "choose": "Изберете план",
+    "getStarted": "Започнете",
     "contactSales": "Свържете се с продажбите"
   },
   "tutorials": {
@@ -36,6 +51,7 @@
   "updates": {
     "title": "Последни обновления",
     "empty": "Все още няма публикувани обновления.",
+    "version": "v{version}",
     "kind": {
       "feature": "Нова функция",
       "improvement": "Подобрение",
@@ -49,8 +65,10 @@
   },
   "complementary": {
     "title": "Работи добре с",
-    "description": "Изградете цялостен работен процес около {name}.",
-    "current": "Текущ инструмент",
-    "then": "после"
+    "description": "Тези инструменти работят чудесно заедно с {name}.",
+    "workflow": "Предложен работен процес",
+    "current": "Текущ",
+    "then": "после",
+    "combine": "заедно с"
   }
 }

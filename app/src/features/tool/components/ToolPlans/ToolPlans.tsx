@@ -21,19 +21,19 @@ export function ToolPlans({ tool }: ToolPlansProps) {
       aside={
         <div className="flex flex-wrap gap-2">
           {hasFreePlan && (
-            <Badge tone="success" icon={Gift}>
+            <Badge icon={Gift} className="bg-green-500/20 px-3 text-green-400">
               {t('freeBadge')}
             </Badge>
           )}
           {trialDays !== undefined && (
-            <Badge tone="accent" icon={CalendarClock}>
+            <Badge icon={CalendarClock} className="bg-blue-500/20 px-3 text-blue-400">
               {t('trialBadge', { days: trialDays })}
             </Badge>
           )}
         </div>
       }
     >
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {tool.plans.map((plan) => (
           <PlanCard key={`${plan.name}-${plan.period}`} plan={plan} websiteUrl={tool.websiteUrl} />
         ))}

@@ -2,13 +2,13 @@
 
 import type { Locale, Tutorial } from '@ai-explore/schemas';
 import { pickLocalized } from '@ai-explore/schemas';
-import { Badge, Button, Card, Image, Text } from '@ai-explore/ui';
-import { Clock, Play } from 'lucide-react';
+import { Button, Card, Image, Text } from '@ai-explore/ui';
+import { Clock, GraduationCap, Play } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { TEST_IDS } from '@/config/test-ids';
-import { DIFFICULTY_TONE } from '../../config/constants';
 import { embedUrl, thumbnailUrl } from '../../utils/youtube';
+import { tutorialItemStyles as styles } from './TutorialItem.styles';
 
 export type TutorialItemProps = {
   tutorial: Tutorial;
@@ -23,24 +23,24 @@ export function TutorialItem({ tutorial }: TutorialItemProps) {
     <Card
       variant="flat"
       padding="none"
-      className="flex h-full flex-col overflow-hidden"
+      className={styles.root}
       data-testid={TEST_IDS.tool.tutorialItem}
       data-id={tutorial.youtubeId}
     >
-      <div className="relative aspect-video w-full bg-surface-sunken">
+      <div className={styles.media}>
         {playing ? (
           <iframe
             src={embedUrl(tutorial.youtubeId)}
             title={title}
             allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-            className="absolute inset-0 size-full border-0"
+            className={styles.frame}
           />
         ) : (
           <Button
             variant="ghost"
             aria-label={t('play', { title })}
             onClick={() => setPlaying(true)}
-            className="group absolute inset-0 size-full rounded-none p-0"
+            className={styles.play}
           >
             <Image
               src={thumbnailUrl(tutorial.youtubeId)}
@@ -48,24 +48,25 @@ export function TutorialItem({ tutorial }: TutorialItemProps) {
               fit="cover"
               className="size-full"
             />
-            <span
-              aria-hidden
-              className="absolute flex size-12 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-overlay transition-transform duration-fast group-hover:scale-110"
-            >
-              <Play className="size-5" />
+            <span aria-hidden className={styles.playIcon}>
+              <Play className="size-5 fill-current" />
             </span>
           </Button>
         )}
       </div>
-      <div className="flex flex-1 flex-col gap-3 p-4">
-        <Text weight="medium" clamp={2}>
+      <div className={styles.body}>
+        <Text size="sm" weight="medium" clamp={2}>
           {title}
         </Text>
-        <div className="mt-auto flex flex-wrap items-center gap-2">
-          <Badge icon={Clock}>{t('duration', { minutes: tutorial.durationMin })}</Badge>
-          <Badge tone={DIFFICULTY_TONE[tutorial.difficulty]}>
+        <div className={styles.meta}>
+          <Text as="span" size="xs" tone="muted" className={styles.metaItem}>
+            <Clock aria-hidden className={styles.metaIcon} />
+            {t('duration', { minutes: tutorial.durationMin })}
+          </Text>
+          <Text as="span" size="xs" tone="muted" className={styles.metaItem}>
+            <GraduationCap aria-hidden className={styles.metaIcon} />
             {t(`difficulty.${tutorial.difficulty}`)}
-          </Badge>
+          </Text>
         </div>
       </div>
     </Card>

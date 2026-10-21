@@ -33,9 +33,14 @@ export function ReviewItem({ toolId, review, viewerUid, actions }: ReviewItemPro
         />
         <div className={styles.meta}>
           <div className={styles.nameRow}>
-            <Text as="span" weight="semibold" className={styles.name}>
+            <Text as="span" className={styles.name}>
               {review.authorName}
             </Text>
+            <StarRating
+              size="sm"
+              value={review.rating}
+              label={t('ratingLabel', { rating: review.rating })}
+            />
             {own && (
               <Badge tone="accent" size="sm">
                 {t('yours')}
@@ -43,12 +48,7 @@ export function ReviewItem({ toolId, review, viewerUid, actions }: ReviewItemPro
             )}
           </div>
           <div className={styles.detailRow}>
-            <StarRating
-              size="sm"
-              value={review.rating}
-              label={t('ratingLabel', { rating: review.rating })}
-            />
-            <Text as="span" size="xs" tone="subtle">
+            <Text as="span" size="sm" tone="muted">
               <time dateTime={review.createdAt.toISOString()}>
                 {format.dateTime(review.createdAt, { dateStyle: 'medium' })}
               </time>
@@ -56,7 +56,7 @@ export function ReviewItem({ toolId, review, viewerUid, actions }: ReviewItemPro
             {isEdited(review) && (
               <>
                 <span aria-hidden className={styles.separator} />
-                <Text as="span" size="xs" tone="subtle">
+                <Text as="span" size="sm" tone="muted">
                   {t('edited')}
                 </Text>
               </>

@@ -21,11 +21,12 @@ import { shareStyles } from './ShareButton.styles';
 export type ShareButtonProps = {
   url: string;
   title: string;
+  className?: string | undefined;
 };
 
 const COPIED_MS = 2000;
 
-export function ShareButton({ url, title }: ShareButtonProps) {
+export function ShareButton({ url, title, className }: ShareButtonProps) {
   const t = useTranslations('share');
   const [copied, setCopied] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -61,7 +62,12 @@ export function ShareButton({ url, title }: ShareButtonProps) {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="secondary" iconLeft={Share2} data-testid={TEST_IDS.share.button}>
+        <Button
+          variant="secondary"
+          iconLeft={Share2}
+          className={className}
+          data-testid={TEST_IDS.share.button}
+        >
           {t('button')}
         </Button>
       </PopoverTrigger>

@@ -1,5 +1,5 @@
-import { ToolSkeleton } from '@/features/system/loading/ToolSkeleton';
+import { ToolDetailSkeleton } from '@/features/tool/detail/ToolDetailSkeleton';
 
 export default function ToolLoading() {
-  return <ToolSkeleton />;
+  return <ToolDetailSkeleton />;
 }

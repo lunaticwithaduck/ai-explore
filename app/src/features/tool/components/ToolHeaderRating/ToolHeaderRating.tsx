@@ -1,11 +1,10 @@
 'use client';
 
 import type { RatingAggregate } from '@ai-explore/schemas';
-import { StarRating, Text } from '@ai-explore/ui';
+import { Text } from '@ai-explore/ui';
+import { Star } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useToolRatingQuery } from '@/api/endpoints/reviews';
-import { useAppLocale } from '@/features/auth/hooks/useAppLocale';
-import { averageRating, formatAverage } from '@/lib/format/rating';
+import { useLiveRating } from '../../hooks/useLiveRating';
 
 export type ToolHeaderRatingProps = {
   toolId: string;
@@ -14,28 +13,28 @@ export type ToolHeaderRatingProps = {
 
 export function ToolHeaderRating({ toolId, initial }: ToolHeaderRatingProps) {
   const t = useTranslations('tool.header');
-  const locale = useAppLocale();
-  const { currentData } = useToolRatingQuery(toolId);
-  const rating = currentData === undefined ? initial : currentData;
-  const average = rating ? averageRating(rating) : null;
-  const averageText = average === null ? null : formatAverage(average, locale);
+  const { averageText, count } = useLiveRating(toolId, initial);
+  if (averageText === null)
+    return (
+      <Text as="span" size="sm" tone="subtle">
+        {t('noReviews')}
+      </Text>
+    );
   return (
-    <div className="mt-3 flex items-center gap-2">
-      <StarRating
-        value={average ?? 0}
-        label={averageText === null ? t('noReviews') : t('ratingLabel', { average: averageText })}
-        valueText={averageText ?? undefined}
-      />
-      {rating && averageText !== null && (
-        <Text as="span" size="sm" tone="muted" numeric>
-          ({rating.count})
+    <div className="flex items-center gap-2 sm:justify-end">
+      <span
+        role="img"
+        aria-label={t('ratingLabel', { average: averageText })}
+        className="flex items-center gap-2"
+      >
+        <Star aria-hidden className="size-5 fill-star text-star" />
+        <Text as="span" size="lg" numeric>
+          {averageText}
         </Text>
-      )}
-      {averageText === null && (
-        <Text as="span" size="sm" tone="subtle">
-          {t('noReviews')}
-        </Text>
-      )}
+      </span>
+      <Text as="span" tone="muted" numeric>
+        ({count})
+      </Text>
     </div>
   );
 }

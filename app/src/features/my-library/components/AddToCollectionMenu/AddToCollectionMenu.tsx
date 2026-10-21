@@ -31,9 +31,10 @@ import { CollectionNameDialog } from '../CollectionNameDialog/CollectionNameDial
 
 export type AddToCollectionMenuProps = {
   toolId: string;
+  className?: string | undefined;
 };
 
-export function AddToCollectionMenu({ toolId }: AddToCollectionMenuProps) {
+export function AddToCollectionMenu({ toolId, className }: AddToCollectionMenuProps) {
   const t = useTranslations('myLibrary');
   const te = useTranslations('errors');
   const { uid, collections } = useUserCollections();
@@ -71,6 +72,7 @@ export function AddToCollectionMenu({ toolId }: AddToCollectionMenuProps) {
           <Button
             variant="secondary"
             iconLeft={FolderPlus}
+            className={className}
             data-testid={TEST_IDS.myLibrary.addToCollection}
           >
             {t('addToCollection')}

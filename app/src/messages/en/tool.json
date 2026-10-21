@@ -1,10 +1,23 @@
 {
   "header": {
-    "developer": "by {developer}",
+    "back": "Back",
+    "developerLabel": "Developer:",
+    "updated": "Updated: {date}",
+    "priceLabel": "Starting price:",
     "open": "Open",
+    "save": "Save",
+    "saved": "Saved",
     "ratingLabel": "Rated {average} out of 5",
     "noReviews": "No reviews yet",
     "tags": "Tags"
+  },
+  "stats": {
+    "title": "Statistics",
+    "rating": "Overall rating",
+    "reviews": "Reviews",
+    "category": "Category",
+    "pricing": "Pricing",
+    "paidOnly": "Paid plans only"
   },
   "about": {
     "title": "About this tool",
@@ -17,8 +30,10 @@
     "popular": "Most popular",
     "free": "Free",
     "custom": "Custom pricing",
-    "perMonth": "per month",
-    "perYear": "per year",
+    "perMonth": "{price}/month",
+    "perYear": "{price}/year",
+    "choose": "Choose plan",
+    "getStarted": "Get started",
     "contactSales": "Contact sales"
   },
   "tutorials": {
@@ -36,6 +51,7 @@
   "updates": {
     "title": "Recent updates",
     "empty": "No updates published yet.",
+    "version": "v{version}",
     "kind": {
       "feature": "New feature",
       "improvement": "Improvement",
@@ -49,8 +65,10 @@
   },
   "complementary": {
     "title": "Works well with",
-    "description": "Build a complete workflow around {name}.",
-    "current": "Current tool",
-    "then": "then"
+    "description": "These tools work great together with {name}.",
+    "workflow": "Suggested workflow",
+    "current": "Current",
+    "then": "then use",
+    "combine": "combine with"
   }
 }

@@ -1,3 +1,3 @@
 export const ownReviewStyles = {
-  root: 'rounded-lg border border-accent-subtle bg-surface p-4 sm:p-5',
+  root: 'rounded-button border border-accent/30 bg-surface-overlay/30 p-4 sm:p-5',
 } as const;
