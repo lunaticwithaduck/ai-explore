@@ -11,7 +11,7 @@ export type LibraryTabsProps = {
 export function LibraryTabs({ collections }: LibraryTabsProps) {
   const t = useTranslations('myLibrary');
   return (
-    <TabsList aria-label={t('tabsLabel')}>
+    <TabsList aria-label={t('tabsLabel')} className="max-w-full self-start overflow-x-auto">
       <TabsTrigger value={SAVED_TAB} icon={Heart} data-id={SAVED_TAB}>
         {t('savedTab')}
       </TabsTrigger>

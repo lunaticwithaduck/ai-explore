@@ -1,10 +1,11 @@
-import { Card, cn, Heading, Text } from '@ai-explore/ui';
+import { Card, cn, Heading } from '@ai-explore/ui';
+import type { LucideIcon } from 'lucide-react';
 import type { ReactNode } from 'react';
-import { accountSectionStyles } from './AccountSection.styles';
+import { accountSectionStyles as styles } from './AccountSection.styles';
 
 export type AccountSectionProps = {
   title: string;
-  description?: string | undefined;
+  icon?: LucideIcon | undefined;
   tone?: 'default' | 'danger';
   headingId: string;
   action?: ReactNode;
@@ -13,29 +14,21 @@ export type AccountSectionProps = {
 
 export function AccountSection({
   title,
-  description,
+  icon: Icon,
   tone = 'default',
   headingId,
   action,
   children,
 }: AccountSectionProps) {
   return (
-    <Card
-      asChild
-      padding="lg"
-      className={cn(accountSectionStyles.base, accountSectionStyles[tone])}
-    >
+    <Card asChild padding="none" className={cn(styles.root, styles.border[tone])}>
       <section aria-labelledby={headingId}>
-        <div className={accountSectionStyles.header}>
-          <div className={accountSectionStyles.titles}>
-            <Heading level={2} size="md" id={headingId}>
+        <div className={styles.header}>
+          <div className={styles.titleRow}>
+            {Icon && <Icon aria-hidden className={styles.icon} />}
+            <Heading level={2} size="lg" id={headingId} className={styles.heading[tone]}>
               {title}
             </Heading>
-            {description && (
-              <Text size="sm" tone="muted">
-                {description}
-              </Text>
-            )}
           </div>
           {action}
         </div>

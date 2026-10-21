@@ -1,6 +1,6 @@
 'use client';
 
-import { accentSubtleClass, Button, cn, Heading, Text } from '@ai-explore/ui';
+import { Button } from '@ai-explore/ui';
 import { Pencil, Trash2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -9,10 +9,10 @@ import {
   useDeleteCollectionMutation,
   useRenameCollectionMutation,
 } from '@/api/endpoints/myLibrary';
-import { collectionIcon } from '../../config/constants';
 import { resultErrorCode } from '../../utils/resultError';
 import { CollectionNameDialog } from '../CollectionNameDialog/CollectionNameDialog';
 import { DeleteCollectionDialog } from '../DeleteCollectionDialog/DeleteCollectionDialog';
+import { LibraryHeader } from '../LibraryHeader/LibraryHeader';
 
 export type CollectionHeaderProps = {
   uid: string;
@@ -28,7 +28,6 @@ export function CollectionHeader({ uid, collection, toolCount, onDeleted }: Coll
   const [renaming, setRenaming] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [deleteError, setDeleteError] = useState<string | null>(null);
-  const Icon = collectionIcon(collection.icon);
 
   const submitRename = async (name: string) => {
     const result = await rename({ uid, collectionId: collection.id, name });
@@ -47,33 +46,26 @@ export function CollectionHeader({ uid, collection, toolCount, onDeleted }: Coll
   };
 
   return (
-    <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-      <div className="flex min-w-0 flex-1 items-center gap-3">
-        <span
-          className={cn(
-            'flex size-10 shrink-0 items-center justify-center rounded-button',
-            accentSubtleClass[collection.color],
-          )}
-        >
-          <Icon aria-hidden className="size-5" />
-        </span>
-        <div className="min-w-0 flex-1">
-          <Heading level={2} size="md" className="break-words">
-            {collection.name}
-          </Heading>
-          <Text size="sm" tone="subtle">
-            {t('toolCount', { count: toolCount })}
-          </Text>
-        </div>
-      </div>
-      <div className="flex gap-2">
-        <Button variant="secondary" size="sm" iconLeft={Pencil} onClick={() => setRenaming(true)}>
-          {t('rename')}
-        </Button>
-        <Button variant="danger" size="sm" iconLeft={Trash2} onClick={() => setDeleting(true)}>
-          {t('delete')}
-        </Button>
-      </div>
+    <>
+      <LibraryHeader
+        title={collection.name}
+        subtitle={t('collectionSubtitle', { count: toolCount })}
+        actions={
+          <>
+            <Button
+              variant="secondary"
+              size="sm"
+              iconLeft={Pencil}
+              onClick={() => setRenaming(true)}
+            >
+              {t('rename')}
+            </Button>
+            <Button variant="danger" size="sm" iconLeft={Trash2} onClick={() => setDeleting(true)}>
+              {t('delete')}
+            </Button>
+          </>
+        }
+      />
       <CollectionNameDialog
         open={renaming}
         onOpenChange={setRenaming}
@@ -89,6 +81,6 @@ export function CollectionHeader({ uid, collection, toolCount, onDeleted }: Coll
         errorCode={deleteError}
         onConfirm={confirmDelete}
       />
-    </div>
+    </>
   );
 }

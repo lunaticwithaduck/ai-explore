@@ -1,6 +1,7 @@
 {
-  "title": "My library",
-  "subtitle": "The tools you saved and the collections you built.",
+  "title": "Saved tools",
+  "subtitle": "Your saved AI tools and the collections you built.",
+  "collectionSubtitle": "{count, plural, =0 {No tools in this collection yet} one {# tool in this collection} other {# tools in this collection}}",
   "tabsLabel": "Saved tools and collections",
   "savedTab": "Saved",
   "saveButton": "Save to my library",
@@ -21,7 +22,6 @@
   "deleteTitle": "Delete \"{name}\"?",
   "deleteBody": "The collection is removed. The tools in it stay in the library.",
   "deleteConfirm": "Delete collection",
-  "toolCount": "{count, plural, =0 {No tools} one {# tool} other {# tools}}",
   "emptySavedTitle": "Nothing saved yet",
   "emptySavedBody": "Use the heart on any tool to keep it here.",
   "emptyCollectionTitle": "This collection is empty",

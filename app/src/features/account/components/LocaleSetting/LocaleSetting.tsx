@@ -6,6 +6,7 @@ import { useAppLocale } from '@/features/auth/hooks/useAppLocale';
 import { useLocaleSwitch } from '@/features/auth/hooks/useLocaleSwitch';
 import { toAppLocale } from '@/features/auth/utils/appLocale';
 import { routing } from '@/i18n/routing';
+import { SettingRow } from '../SettingRow/SettingRow';
 
 export function LocaleSetting() {
   const t = useTranslations('account');
@@ -16,14 +17,17 @@ export function LocaleSetting() {
     label: t(`settings.locale.options.${value}`),
   }));
   return (
-    <div className="flex max-w-sm flex-col gap-1.5">
-      <Label htmlFor="settings-locale">{t('settings.locale.label')}</Label>
+    <SettingRow
+      title={<Label htmlFor="settings-locale">{t('settings.locale.label')}</Label>}
+      description={t('settings.locale.description')}
+    >
       <Select
         id="settings-locale"
+        className="w-40"
         options={options}
         value={locale}
         onValueChange={(value) => switchLocale(toAppLocale(value))}
       />
-    </div>
+    </SettingRow>
   );
 }

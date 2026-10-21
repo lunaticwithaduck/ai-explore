@@ -1,16 +1,26 @@
 {
   "backButton": "Back",
+  "backToLibrary": "Back to library",
   "save": "Save changes",
   "validation": {
     "displayNameRequired": "Enter a display name.",
     "displayNameTooLong": "Display names can be up to 60 characters."
   },
   "profile": {
-    "memberSince": "Member since {date}",
+    "joined": "Joined {date}",
+    "editProfile": "Edit profile",
     "stats": {
-      "saved": "Saved",
+      "saved": "Saved tools",
       "collections": "Collections",
-      "reviews": "Reviews"
+      "memberSince": "Member since",
+      "reviews": "Reviews written",
+      "unknown": "—"
+    },
+    "saved": {
+      "title": "Saved tools",
+      "viewAll": "View all",
+      "empty": "No saved tools yet",
+      "explore": "Explore tools"
     },
     "reviews": {
       "title": "Recent reviews",
@@ -19,17 +29,25 @@
       "viewTool": "View {name}"
     },
     "collections": {
-      "title": "Your collections",
+      "title": "My collections",
+      "count": "{count, plural, =0 {No collections} one {# collection} other {# collections}}",
       "empty": "You haven't created any collections yet.",
       "toolCount": "{count, plural, =0 {No tools} one {# tool} other {# tools}}"
     }
   },
   "settings": {
     "title": "Settings",
+    "subtitle": "Manage your account settings and preferences.",
     "saved": "Your changes were saved.",
+    "account": {
+      "title": "Account settings"
+    },
     "displayName": {
-      "title": "Profile",
       "label": "Display name"
+    },
+    "email": {
+      "label": "Email address",
+      "hint": "The email you sign in with. It can't be changed here."
     },
     "locale": {
       "title": "Language",
@@ -54,12 +72,13 @@
     },
     "session": {
       "title": "Session",
+      "signedIn": "Signed in",
       "signedInAs": "Signed in as {email}",
+      "description": "Sign out of AI Explore on this device.",
       "signOut": "Sign out"
     },
     "danger": {
-      "title": "Danger zone",
-      "description": "Actions here can't be undone."
+      "title": "Danger zone"
     }
   },
   "delete": {

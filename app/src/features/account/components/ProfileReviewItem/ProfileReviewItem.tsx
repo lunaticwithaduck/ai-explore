@@ -12,11 +12,13 @@ export type ProfileReviewItemProps = {
 export function ProfileReviewItem({ review, tool }: ProfileReviewItemProps) {
   const t = useTranslations('account');
   return (
-    <li data-id={review.id} className="flex gap-4 py-4 first:pt-0 last:pb-0">
+    <li data-id={review.id} className="flex gap-4 rounded-button border border-border p-4">
       <ToolLogo src={tool.logo.path} alt={tool.name} background={tool.logo.background} size="md" />
       <div className="flex min-w-0 flex-1 flex-col gap-1.5">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-          <Text weight="semibold">{tool.name}</Text>
+          <Text size="sm" weight="medium">
+            {tool.name}
+          </Text>
           <StarRating
             value={review.rating}
             size="sm"

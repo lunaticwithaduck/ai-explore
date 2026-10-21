@@ -23,7 +23,7 @@ export function ProfileReviews({ reviews, tools }: ProfileReviewsProps) {
       ) : rows.length === 0 ? (
         <Text tone="muted">{t('profile.reviews.empty')}</Text>
       ) : (
-        <ul className="flex flex-col divide-y divide-border">
+        <ul className="flex flex-col gap-3">
           {rows.map(({ review, tool }) => (
             <ProfileReviewItem key={review.id} review={review} tool={tool} />
           ))}

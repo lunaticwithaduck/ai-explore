@@ -11,15 +11,17 @@ import { TEST_IDS } from '@/config/test-ids';
 import { AuthAlert } from '@/features/auth/components/AuthAlert/AuthAlert';
 import { type DisplayNameValues, displayNameSchema } from '../../config/schemas';
 import { updateAuthDisplayName } from '../../utils/accountActions';
+import { AccountEmailField } from '../AccountEmailField/AccountEmailField';
 
 export type DisplayNameFormProps = {
   uid: string;
   displayName: string;
+  email?: string | null | undefined;
 };
 
 type Status = { tone: 'success' } | { tone: 'danger'; code: AppErrorCode } | null;
 
-export function DisplayNameForm({ uid, displayName }: DisplayNameFormProps) {
+export function DisplayNameForm({ uid, displayName, email }: DisplayNameFormProps) {
   const t = useTranslations('account');
   const tErrors = useTranslations('errors');
   const [updateProfile] = useUpdateProfileMutation();
@@ -65,6 +67,7 @@ export function DisplayNameForm({ uid, displayName }: DisplayNameFormProps) {
           </Text>
         )}
       </div>
+      {email && <AccountEmailField email={email} />}
       {status?.tone === 'success' && <AuthAlert tone="success" message={t('settings.saved')} />}
       {status?.tone === 'danger' && <AuthAlert message={tErrors(status.code)} />}
       <Button
