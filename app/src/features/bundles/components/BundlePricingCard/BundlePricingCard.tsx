@@ -13,6 +13,7 @@ import { bundlePricingCardStyles } from './BundlePricingCard.styles';
 type BundlePricingCardProps = {
   bundleId: string;
   summary: BundlePeriodSummary;
+  savingsByPeriod: Record<BundlePeriod, number>;
   tools: WithId<Tool>[];
   onPeriodChange: (period: BundlePeriod) => void;
 };
@@ -20,6 +21,7 @@ type BundlePricingCardProps = {
 export function BundlePricingCard({
   bundleId,
   summary,
+  savingsByPeriod,
   tools,
   onPeriodChange,
 }: BundlePricingCardProps) {
@@ -27,6 +29,8 @@ export function BundlePricingCard({
   const options = BUNDLE_PERIODS.map((value) => ({
     value,
     label: t(`period.${value}`),
+    description:
+      savingsByPeriod[value] > 0 ? t('card.save', { percent: savingsByPeriod[value] }) : undefined,
     testId: TEST_IDS.bundles.periodOption,
   }));
   return (

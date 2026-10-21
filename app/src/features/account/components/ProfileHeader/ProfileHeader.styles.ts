@@ -1,7 +1,7 @@
 export const profileHeaderStyles = {
   root: 'flex flex-col items-start gap-5 sm:flex-row sm:gap-6',
   avatar:
-    'size-24 border-0 bg-linear-to-br from-blue-500 to-cyan-500 text-3xl *:text-white sm:size-32 sm:text-4xl',
+    'size-24 border-0 bg-linear-to-br from-blue-500 to-cyan-500 text-3xl text-white sm:size-32 sm:text-4xl',
   info: 'flex w-full min-w-0 flex-1 flex-col gap-4 sm:flex-row sm:items-start sm:justify-between',
   identity: 'flex min-w-0 flex-col gap-2',
   name: 'break-words',

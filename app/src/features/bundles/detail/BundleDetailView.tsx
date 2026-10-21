@@ -22,9 +22,10 @@ export function BundleDetailView({ bundle, tools }: BundleDetailViewProps) {
   const [period, setPeriod] = useState<BundlePeriod>('monthly');
   const included = includedTools(bundle, tools);
   const summary = summarizeBundle(bundle, included, period);
-  const bestSavings = Math.max(
-    ...BUNDLE_PERIODS.map((value) => summarizeBundle(bundle, included, value).savingsPercent),
-  );
+  const savingsByPeriod = Object.fromEntries(
+    BUNDLE_PERIODS.map((value) => [value, summarizeBundle(bundle, included, value).savingsPercent]),
+  ) as Record<BundlePeriod, number>;
+  const bestSavings = Math.max(...Object.values(savingsByPeriod));
   return (
     <main className="flex w-full flex-col pb-8">
       <BundleHeader bundle={bundle} />
@@ -32,6 +33,7 @@ export function BundleDetailView({ bundle, tools }: BundleDetailViewProps) {
         <BundlePricingCard
           bundleId={bundle.id}
           summary={summary}
+          savingsByPeriod={savingsByPeriod}
           tools={included}
           onPeriodChange={setPeriod}
         />
