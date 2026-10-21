@@ -1,4 +1,4 @@
-**Template:** brief-v1 · **Task:** U3 · **Phase:** 5 · **Model:** opus (verified) · **Base sha:** <set at spawn>
+**Template:** brief-v1 · **Task:** U3 · **Phase:** 5 · **Model:** opus (verified) · **Base sha:** 35f9212
 
 # U3 — Delete account
 
@@ -29,4 +29,4 @@ Show progress and handle errors through `errors.*`.
   2. Delete the account.
   3. The chatgpt rating returns to its prior value, and signing in with the old credentials fails.
   Record how you ran it in the hand-back.
-- [ ] `scripts/gate.sh --full --task U3 --base <base> --expect-pending <given at spawn>` → `GATE PASS`.
+- [ ] `scripts/gate.sh --full --task U3 --base 35f9212 --expect-pending 20-21,25` → `GATE PASS`.

@@ -1,4 +1,4 @@
-**Template:** brief-v1 · **Task:** M1 · **Phase:** 5 · **Model:** sonnet · **Base sha:** <set at spawn>
+**Template:** brief-v1 · **Task:** M1 · **Phase:** 5 · **Model:** sonnet · **Base sha:** 60e02c9 (branched from overnight/A1, verification in progress)
 
 # M1 — Admin curation and bundle interest
 
@@ -58,5 +58,5 @@ INV-22 and INV-24.
 - [ ] INV-22 and INV-24 are un-fixme'd and green.
 - [ ] Unit tests: the tool-form defaults produce a document that passes `toolSchema` (with Dates
       substituted for the server timestamps), and the interest counting.
-- [ ] `scripts/gate.sh --full --task M1 --base <base> --expect-pending <given at spawn>` → `GATE PASS`.
+- [ ] `scripts/gate.sh --full --task M1 --base 60e02c9 --expect-pending 20-21,25` → `GATE PASS`.
 - [ ] Screenshots: the admin tools tab and the new-tool form at 1280, and the bundle detail with Notify me registered at 375.

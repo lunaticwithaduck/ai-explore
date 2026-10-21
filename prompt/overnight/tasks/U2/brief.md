@@ -1,4 +1,4 @@
-**Template:** brief-v1 · **Task:** U2 · **Phase:** 5 · **Model:** sonnet · **Base sha:** <set at spawn>
+**Template:** brief-v1 · **Task:** U2 · **Phase:** 5 · **Model:** sonnet · **Base sha:** 60e02c9 (branched from overnight/A1, verification in progress)
 
 # U2 — Profile and settings
 
@@ -29,5 +29,5 @@ Stubs you replace: `features/account/profile/ProfileView.tsx` (`{ tools }`) and 
 
 ## Acceptance
 - [ ] Unit test: settings form validation (display name 1–60).
-- [ ] `scripts/gate.sh --full --task U2 --base <base> --expect-pending <given at spawn>` → `GATE PASS`.
+- [ ] `scripts/gate.sh --full --task U2 --base 60e02c9 --expect-pending 20-22,24-25` → `GATE PASS`.
 - [ ] Screenshots: profile and settings at 375 and 1280.

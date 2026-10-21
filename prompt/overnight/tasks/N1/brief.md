@@ -1,4 +1,4 @@
-**Template:** brief-v1 · **Task:** N1 · **Phase:** 5 · **Model:** sonnet · **Base sha:** <set at spawn>
+**Template:** brief-v1 · **Task:** N1 · **Phase:** 5 · **Model:** sonnet · **Base sha:** 60e02c9 (branched from overnight/A1, verification in progress)
 
 # N1 — Notifications bell and derived feed
 
@@ -39,5 +39,5 @@ The UI of INV-21 (`app/e2e/inv-21-notifications.spec.ts`). E5 un-fixmes it.
 
 ## Acceptance
 - [ ] Unit tests: the New computation, chunking at 30, and merge order.
-- [ ] `scripts/gate.sh --full --task N1 --base <base> --expect-pending <given at spawn>` → `GATE PASS`.
+- [ ] `scripts/gate.sh --full --task N1 --base 60e02c9 --expect-pending 20-22,24-25` → `GATE PASS`.
 - [ ] Screenshots: the bell with a badge and the open panel, at 375 and 1280.

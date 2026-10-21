@@ -1,4 +1,4 @@
-**Template:** brief-v1 · **Task:** E5 · **Phase:** 5 · **Model:** sonnet · **Base sha:** <set at spawn>
+**Template:** brief-v1 · **Task:** E5 · **Phase:** 5 · **Model:** sonnet · **Base sha:** 20ce5be
 
 # E5 — Signed-in journeys end to end (INV-20, INV-21)
 
@@ -15,5 +15,5 @@ their folders are in your scope for **fixes only**.
 
 ## Acceptance
 - [ ] INV-20 and INV-21 are green on mobile and desktop.
-- [ ] `scripts/gate.sh --full --task E5 --base <base> --expect-pending <given at spawn>` → `GATE PASS`.
+- [ ] `scripts/gate.sh --full --task E5 --base 20ce5be --expect-pending 25` → `GATE PASS`.
 - [ ] Hand-back: list every seam fixed with file:line.

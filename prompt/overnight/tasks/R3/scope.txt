@@ -1,0 +1,9 @@
+firebase/firestore.rules
+firebase/tests/rules/r3-review-author.test.ts
+app/src/features/reviews/utils/reviewAuthor.ts
+app/src/features/reviews/utils/reviewAuthor.test.ts
+app/src/features/reviews/components/**
+app/src/messages/en/reviews.json
+app/src/messages/bg/reviews.json
+app/src/features/auth/utils/profileSeed.ts
+app/src/features/auth/utils/profileSeed.test.ts

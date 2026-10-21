@@ -1,0 +1,6 @@
+app/src/features/admin/**
+app/src/app/[[]locale]/(admin)/**
+app/src/api/endpoints/admin.ts
+app/src/messages/en/admin.json
+app/src/messages/bg/admin.json
+artifacts/screens/Z2c-*

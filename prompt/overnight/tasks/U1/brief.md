@@ -1,4 +1,4 @@
-**Template:** brief-v1 · **Task:** U1 · **Phase:** 5 · **Model:** sonnet · **Base sha:** <set at spawn>
+**Template:** brief-v1 · **Task:** U1 · **Phase:** 5 · **Model:** sonnet · **Base sha:** 60e02c9 (branched from overnight/A1, verification in progress)
 
 # U1 — Saved tools, collections, and My Library
 
@@ -41,5 +41,5 @@ The save and collection parts of INV-20 and the save step of INV-21. E5 un-fixme
 
 ## Acceptance
 - [ ] Unit tests: collection name validation, and the 50-tool cap behaviour.
-- [ ] `scripts/gate.sh --full --task U1 --base <base> --expect-pending <given at spawn>` → `GATE PASS`.
+- [ ] `scripts/gate.sh --full --task U1 --base 60e02c9 --expect-pending 20-22,24-25` → `GATE PASS`.
 - [ ] Screenshots: `/library` with one collection at 375 and 1280, and the add-to-collection menu open.

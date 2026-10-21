@@ -1,4 +1,4 @@
-**Template:** brief-v1 · **Task:** V1 · **Phase:** 5 · **Model:** opus (verified) · **Base sha:** <set at spawn>
+**Template:** brief-v1 · **Task:** V1 · **Phase:** 5 · **Model:** opus (verified) · **Base sha:** 60e02c9 (branched from overnight/A1, verification in progress)
 
 # V1 — Reviews, live rating summary, and helpful votes
 
@@ -50,5 +50,5 @@ U3 reuses `deleteReview` for account deletion, so keep its signature stable.
 ## Acceptance
 - [ ] Run INV-20's review steps locally (temporarily un-fixme it in the worktree, without committing
       that; the save and collection steps may still fail until U1 merges) and confirm the review part passes.
-- [ ] `scripts/gate.sh --full --task V1 --base <base> --expect-pending <given at spawn>` → `GATE PASS`.
+- [ ] `scripts/gate.sh --full --task V1 --base 60e02c9 --expect-pending 20-22,24-25` → `GATE PASS`.
 - [ ] Screenshots: the reviews section at 375 and 1280, signed in with your own review.

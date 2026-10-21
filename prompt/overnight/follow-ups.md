@@ -18,3 +18,24 @@ Format: `- <source task> · <what> · <why it matters>`
 - R2 · collection toolIds entries with hyphens may reach 127 chars (exact ≤64 per entry exceeds the rules expression budget at 50 entries)
 - H1a · tap targets: filter chips and carousel arrows are 32 px, inline tool links on bundle/compare ~21–24 px; meets WCAG 2.2 AA minimum (24 px) mostly but below the 40 px comfort target
 - H1a · moderate axe heading-order on library and /bundles (card h3 after h1); minor image-redundant-alt on compare
+- A1 verifier · useEnsureProfile does not retry a failed profile creation in-session; useLocaleSwitch write before profile exists fails quietly
+- A1 verifier · brief lesson: any redirect sanitiser criterion must list normalisation payloads (dot segments, encodings, backslashes)
+- V1 · header rating in ToolHeader is server-rendered and trails the live summary until the next request
+- V1 · reviews list reads the whole subcollection (no pagination)
+- V1 verifier · reviewAuthor.ts:20 clips names by code points; rules count UTF-16 units → use .slice(0, 60) (queued into H1)
+- V1 verifier · tool header (T1) shows the server-read average next to the live summary; they disagree until reload
+- V1 verifier · composer keeps its skeleton if the reviews query fails
+- U3 · helpful votes the deleted user gave stay counted (no votes collection-group rule)
+- U3 · users/{uid}/subscriptions cannot be deleted by clients (rules read-only)
+- U3 · auth emulator does not enforce requires-recent-login; the step-4 reauth fallback is unit-tested only
+- U3 · INV-20 flake: RatingSummary shows a latency-compensated local value before the batch commits, so navigating to the SSR library can show the old rating; show only server-confirmed aggregates (queued into Z2), and INV-20 should clean up its review if it fails mid-way (oracle hardening, manager)
+- U3 verifier · a second tab opened during an in-flight account delete re-creates users/{uid} (auto-create should be limited to new accounts)
+- Z2c · add routes.adminUpdate(toolId, updateId) to config/routes and use it (edit-update link is built inside the feature today); drop unused admin.updates.hint
+- Z1 M5 · visitors download Firebase Auth + Firestore (~200 KB gzip) on every page; plan: lazy-load the auth listener and Firestore client behind a dynamic import so public pages ship without them until a user signs in or a client query is needed; deferred as too broad for the last hours of an unattended run
+- Z3 · bundle and update create still use plain setDoc (only tool create is overwrite-safe); admin create uses the full SDK from features/admin rather than an api/endpoints writer
+- R3 · rules accept a few https strings the client schema rejects (e.g. https://[) → a review can be hidden yet counted; align packages/schemas photo validation with the rule and fall back to initials on image error
+- R3 · any https host is allowed for photos (tracker risk remains): allow-list or CSP img-src at deploy time
+- R3 · reviewAuthor keeps an ignored _fallbackName parameter until useReviewAuthor is cleaned up
+- R3 · bylines stay stale after a rename by design; updateReview could rewrite them (rules already allow)
+- R3 · any pre-existing profile with a non-https photo would block its later updates (none in demo/seed)
+- W1 · INV-24 [mobile] flaked once in the final gate: signOut helper waited 30 s for shell-user-menu to become visible/enabled/stable after the admin create → library navigation; 10/10 passed on immediate repeat; error context saved in artifacts/qa/flake-inv24-mobile.md (suspects: header re-render or the M4 sign-out "saving…" state under load)
