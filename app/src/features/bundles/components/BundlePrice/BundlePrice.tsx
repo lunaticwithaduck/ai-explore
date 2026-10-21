@@ -19,6 +19,9 @@ export function BundlePrice({ summary, children }: BundlePriceProps) {
         <Text as="span" size="lg" weight="semibold" numeric data-testid={TEST_IDS.bundles.price}>
           {formatCents(summary.priceCents, locale)}
         </Text>
+        <Text as="span" size="sm" tone="muted">
+          {t(`price.suffix.${summary.period}`)}
+        </Text>
         <Text
           as="span"
           size="sm"

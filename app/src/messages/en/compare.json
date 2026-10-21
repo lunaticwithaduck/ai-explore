@@ -28,6 +28,7 @@
     "yes": "Yes",
     "no": "No",
     "unknown": "Not listed",
+    "free": "Free",
     "perMonth": "{price}/mo",
     "trialDays": "{days} days",
     "api": {
@@ -40,6 +41,9 @@
     "meter": "{value} out of 5",
     "noFeatures": "Not listed"
   },
+  "emptyHint": "Choose two tools above to see them side by side.",
+  "suggestionsTitle": "Popular comparisons",
+  "suggestion": "{first} vs {second}",
   "emptyTitle": "Not enough tools to compare",
   "emptyBody": "At least two published tools are needed for a comparison."
 }

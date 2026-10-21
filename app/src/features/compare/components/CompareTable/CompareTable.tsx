@@ -60,9 +60,10 @@ export function CompareTable({ first, second, locale }: CompareTableProps) {
   const renderCell = (key: RowKey, tool: WithId<Tool>): ReactNode => {
     switch (key) {
       case 'price':
-        return tool.pricing.fromPriceCents === undefined
-          ? t('values.unknown')
-          : t('values.perMonth', { price: formatCents(tool.pricing.fromPriceCents, locale) });
+        if (tool.pricing.fromPriceCents !== undefined) {
+          return t('values.perMonth', { price: formatCents(tool.pricing.fromPriceCents, locale) });
+        }
+        return tool.pricing.hasFreePlan ? t('values.free') : t('values.unknown');
       case 'freePlan':
         return yesNo(tool.pricing.hasFreePlan);
       case 'trial':
@@ -99,8 +100,8 @@ export function CompareTable({ first, second, locale }: CompareTableProps) {
         className={tableStyles.table}
         data-testid={TEST_IDS.compare.table}
       >
-        <thead>
-          <tr>
+        <thead className={tableStyles.head}>
+          <tr className={tableStyles.headRow}>
             <th scope="col" className={tableStyles.corner}>
               <Text size="xs" tone="subtle" className="uppercase tracking-wide">
                 {t('featureColumn')}
@@ -132,9 +133,9 @@ export function CompareTable({ first, second, locale }: CompareTableProps) {
             ))}
           </tr>
         </thead>
-        <tbody>
+        <tbody className={tableStyles.body}>
           {ROW_KEYS.map((key) => (
-            <tr key={key} data-id={key}>
+            <tr key={key} data-id={key} className={tableStyles.bodyRow}>
               <th scope="row" className={tableStyles.rowLabel}>
                 {t(`rows.${key}`)}
               </th>

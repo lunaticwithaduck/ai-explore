@@ -8,7 +8,7 @@ import { LibraryEmpty } from '../components/LibraryEmpty/LibraryEmpty';
 import { LibraryFilters } from '../components/LibraryFilters/LibraryFilters';
 import { LibraryGrid } from '../components/LibraryGrid/LibraryGrid';
 import { useLibraryFilters } from '../hooks/useLibraryFilters';
-import { filterTools } from '../utils/libraryFilters';
+import { filterTools, hasActiveFilters } from '../utils/libraryFilters';
 import { sortTools } from '../utils/sortTools';
 
 export type LibraryViewProps = {
@@ -39,7 +39,7 @@ export function LibraryView({ tools, categories, bundles }: LibraryViewProps) {
           <LibraryGrid tools={visible} categories={categories} />
         </>
       )}
-      <BundlesSection bundles={bundles} tools={tools} />
+      {!hasActiveFilters(filters) && <BundlesSection bundles={bundles} tools={tools} />}
     </main>
   );
 }

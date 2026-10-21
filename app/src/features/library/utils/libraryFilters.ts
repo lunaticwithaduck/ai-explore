@@ -59,6 +59,23 @@ export function hasActiveFilters(filters: LibraryFilters): boolean {
   );
 }
 
+export function activeFilterCount(filters: LibraryFilters): number {
+  return (
+    (filters.q.trim() !== '' ? 1 : 0) +
+    (filters.category !== '' ? 1 : 0) +
+    filters.tags.length +
+    (filters.price !== DEFAULT_PRICE ? 1 : 0)
+  );
+}
+
+export function panelFilterCount(filters: LibraryFilters): number {
+  return (
+    filters.tags.length +
+    (filters.price !== DEFAULT_PRICE ? 1 : 0) +
+    (filters.sort !== DEFAULT_SORT ? 1 : 0)
+  );
+}
+
 export function matchesQuery(tool: Tool, query: string): boolean {
   const needle = query.trim().toLowerCase();
   if (!needle) return true;

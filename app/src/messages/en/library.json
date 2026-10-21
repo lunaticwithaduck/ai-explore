@@ -27,9 +27,14 @@
     "free": "Free",
     "from": "From {price}/mo",
     "paid": "Paid",
-    "trial": "{days}-day trial",
-    "noReviews": "No reviews yet",
+    "trial": "{days}d trial",
+    "noReviews": "No reviews",
     "reviewCount": "({count})"
+  },
+  "filters": {
+    "toggle": "Filters",
+    "withCount": "Filters ({count})",
+    "clear": "Clear filters ({count})"
   },
   "resultsTitle": "Tools"
 }

@@ -1,5 +1,5 @@
 import type { Locale, Tool } from '@ai-explore/schemas';
-import { Badge, Text } from '@ai-explore/ui';
+import { Text } from '@ai-explore/ui';
 import { useTranslations } from 'next-intl';
 import { formatCents } from '@/lib/format/money';
 
@@ -16,14 +16,14 @@ export function ToolCardPrice({ pricing, locale }: ToolCardPriceProps) {
       ? t('card.from', { price: formatCents(pricing.fromPriceCents, locale) })
       : t('card.paid');
   return (
-    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-      <Text weight="medium" numeric>
+    <div className="flex h-5 min-w-0 flex-wrap items-baseline gap-x-2 overflow-hidden whitespace-nowrap">
+      <Text size="sm" weight="medium" numeric>
         {label}
       </Text>
       {pricing.trialDays !== undefined && (
-        <Badge tone="accent" size="sm">
+        <Text size="xs" tone="subtle">
           {t('card.trial', { days: pricing.trialDays })}
-        </Badge>
+        </Text>
       )}
     </div>
   );

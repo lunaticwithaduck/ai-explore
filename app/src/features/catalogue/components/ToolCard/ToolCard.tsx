@@ -38,7 +38,10 @@ export function ToolCard({ tool, categoryName, actions }: ToolCardProps) {
         <div className="flex min-w-0 flex-col">
           <Heading level={3} size="sm" className="truncate">
             <TextLink asChild tone="inherit" underline="none">
-              <Link href={routes.tool(tool.slug)} className="after:absolute after:inset-0">
+              <Link
+                href={routes.tool(tool.slug)}
+                className="outline-none after:absolute after:inset-0"
+              >
                 {tool.name}
               </Link>
             </TextLink>
@@ -55,7 +58,7 @@ export function ToolCard({ tool, categoryName, actions }: ToolCardProps) {
       </Text>
       <div
         data-testid={TEST_IDS.library.cardPriceRow}
-        className="mt-auto flex flex-wrap items-center justify-between gap-x-3 gap-y-1"
+        className="mt-auto flex flex-nowrap items-center justify-between gap-x-2"
       >
         <ToolCardPrice pricing={tool.pricing} locale={locale} />
         <ToolCardRating rating={tool.rating} locale={locale} />

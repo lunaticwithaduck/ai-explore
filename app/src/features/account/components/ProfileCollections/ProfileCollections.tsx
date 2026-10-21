@@ -22,28 +22,25 @@ export function ProfileCollections({ collections }: ProfileCollectionsProps) {
         <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {collections.map((collection) => (
             <li key={collection.id} data-id={collection.id}>
-              <Card variant="interactive" padding="sm" className="flex items-center gap-3">
-                <span
-                  className={cn(
-                    'flex size-10 shrink-0 items-center justify-center rounded-button',
-                    accentSubtleClass[collection.color],
-                  )}
-                >
-                  <Folder aria-hidden className="size-5" />
-                </span>
-                <div className="flex min-w-0 flex-col">
-                  <Text weight="semibold" clamp={1}>
-                    <Link
-                      href={routes.myCollection(collection.id)}
-                      className="after:absolute after:inset-0"
-                    >
+              <Card asChild variant="interactive" padding="sm">
+                <Link href={routes.myCollection(collection.id)} className="flex items-center gap-3">
+                  <span
+                    className={cn(
+                      'flex size-10 shrink-0 items-center justify-center rounded-button',
+                      accentSubtleClass[collection.color],
+                    )}
+                  >
+                    <Folder aria-hidden className="size-5" />
+                  </span>
+                  <div className="flex min-w-0 flex-col">
+                    <Text weight="semibold" clamp={1}>
                       {collection.name}
-                    </Link>
-                  </Text>
-                  <Text size="xs" tone="muted">
-                    {t('profile.collections.toolCount', { count: collection.toolIds.length })}
-                  </Text>
-                </div>
+                    </Text>
+                    <Text size="xs" tone="muted">
+                      {t('profile.collections.toolCount', { count: collection.toolIds.length })}
+                    </Text>
+                  </div>
+                </Link>
               </Card>
             </li>
           ))}

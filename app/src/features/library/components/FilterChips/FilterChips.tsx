@@ -1,4 +1,4 @@
-import { Tag } from '@ai-explore/ui';
+import { cn, Tag } from '@ai-explore/ui';
 
 export type FilterChip = { id: string; label: string };
 
@@ -8,14 +8,22 @@ export type FilterChipsProps = {
   onToggle: (id: string) => void;
   label: string;
   testId: string;
+  className?: string | undefined;
 };
 
-export function FilterChips({ chips, isPressed, onToggle, label, testId }: FilterChipsProps) {
+export function FilterChips({
+  chips,
+  isPressed,
+  onToggle,
+  label,
+  testId,
+  className,
+}: FilterChipsProps) {
   return (
     <fieldset
       aria-label={label}
       data-testid={testId}
-      className="m-0 flex min-w-0 flex-wrap gap-2 border-0 p-0"
+      className={cn('m-0 flex min-w-0 gap-2 border-0 p-0', className)}
     >
       {chips.map((chip) => (
         <Tag

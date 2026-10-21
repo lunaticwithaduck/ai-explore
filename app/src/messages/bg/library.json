@@ -27,9 +27,14 @@
     "free": "Безплатно",
     "from": "От {price}/мес.",
     "paid": "Платен",
-    "trial": "{days} дни пробен период",
-    "noReviews": "Още няма отзиви",
+    "trial": "{days} дни проба",
+    "noReviews": "Без отзиви",
     "reviewCount": "({count})"
+  },
+  "filters": {
+    "toggle": "Филтри",
+    "withCount": "Филтри ({count})",
+    "clear": "Изчисти филтрите ({count})"
   },
   "resultsTitle": "Инструменти"
 }

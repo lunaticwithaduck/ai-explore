@@ -8,6 +8,7 @@ import { routes } from '@/config/routes';
 import { EmptyState } from '@/features/system/components/EmptyState/EmptyState';
 import { useRouter } from '@/i18n/navigation';
 import { ComparePicker } from '../components/ComparePicker/ComparePicker';
+import { CompareSuggestions } from '../components/CompareSuggestions/CompareSuggestions';
 import { CompareTable } from '../components/CompareTable/CompareTable';
 import { resolveCompare } from '../utils/resolveCompare';
 import { compareViewStyles } from './CompareView.styles';
@@ -75,6 +76,7 @@ export function CompareView({ tools, firstId, secondId }: CompareViewProps) {
               onSelect={(id) => router.replace(routes.compare(undefined, id))}
             />
           </div>
+          <CompareSuggestions tools={tools} />
         </div>
       )}
     </main>

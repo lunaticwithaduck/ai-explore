@@ -53,7 +53,7 @@ export const chatGpt: Tool = {
   },
   categoryId: 'text',
   tags: ['chat', 'writing', 'analysis'],
-  logo: { path: '/logos/chatgpt.png', background: '#1A1A1A' },
+  logo: { path: '/logos/chatgpt.png', background: '#3A3F4B' },
   pricing: buildPricing(plans, true),
   plans: plans,
   features: [

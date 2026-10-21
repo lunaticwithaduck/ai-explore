@@ -14,7 +14,10 @@ export function ToolCardRating({ rating, locale }: ToolCardRatingProps) {
   const t = useTranslations('library');
   const average = averageRating(rating);
   return (
-    <div data-testid={TEST_IDS.library.cardRating} className="flex items-center gap-1">
+    <div
+      data-testid={TEST_IDS.library.cardRating}
+      className="flex shrink-0 items-center gap-1 whitespace-nowrap"
+    >
       {average === null ? (
         <Text size="xs" tone="subtle">
           {t('card.noReviews')}

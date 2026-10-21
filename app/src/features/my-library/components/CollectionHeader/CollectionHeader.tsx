@@ -47,22 +47,24 @@ export function CollectionHeader({ uid, collection, toolCount, onDeleted }: Coll
   };
 
   return (
-    <div className="flex flex-wrap items-center gap-3">
-      <span
-        className={cn(
-          'flex size-10 shrink-0 items-center justify-center rounded-button',
-          accentSubtleClass[collection.color],
-        )}
-      >
-        <Icon aria-hidden className="size-5" />
-      </span>
-      <div className="min-w-0 flex-1">
-        <Heading level={2} size="md" className="truncate">
-          {collection.name}
-        </Heading>
-        <Text size="sm" tone="subtle">
-          {t('toolCount', { count: toolCount })}
-        </Text>
+    <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+      <div className="flex min-w-0 flex-1 items-center gap-3">
+        <span
+          className={cn(
+            'flex size-10 shrink-0 items-center justify-center rounded-button',
+            accentSubtleClass[collection.color],
+          )}
+        >
+          <Icon aria-hidden className="size-5" />
+        </span>
+        <div className="min-w-0 flex-1">
+          <Heading level={2} size="md" className="break-words">
+            {collection.name}
+          </Heading>
+          <Text size="sm" tone="subtle">
+            {t('toolCount', { count: toolCount })}
+          </Text>
+        </div>
       </div>
       <div className="flex gap-2">
         <Button variant="secondary" size="sm" iconLeft={Pencil} onClick={() => setRenaming(true)}>
