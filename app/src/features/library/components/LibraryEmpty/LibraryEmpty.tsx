@@ -1,11 +1,11 @@
 'use client';
 
-import { Button, Heading, Text } from '@ai-explore/ui';
+import { Button, Text } from '@ai-explore/ui';
 import { useTranslations } from 'next-intl';
 import { TEST_IDS } from '@/config/test-ids';
 
 export type LibraryEmptyProps = {
-  onReset: () => void;
+  onReset?: (() => void) | undefined;
 };
 
 export function LibraryEmpty({ onReset }: LibraryEmptyProps) {
@@ -13,15 +13,10 @@ export function LibraryEmpty({ onReset }: LibraryEmptyProps) {
   return (
     <div
       data-testid={TEST_IDS.library.empty}
-      className="flex flex-col items-center gap-3 rounded-card border border-border px-4 py-12 text-center"
+      className="flex flex-col items-center gap-4 py-16 text-center"
     >
-      <Heading level={2} size="md">
-        {t('emptyTitle')}
-      </Heading>
-      <Text tone="muted">{t('emptyBody')}</Text>
-      <Button variant="secondary" onClick={onReset}>
-        {t('reset')}
-      </Button>
+      <Text tone="muted">{t('emptyTitle')}</Text>
+      {onReset && <Button onClick={onReset}>{t('reset')}</Button>}
     </div>
   );
 }

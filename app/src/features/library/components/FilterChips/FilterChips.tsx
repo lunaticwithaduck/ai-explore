@@ -1,6 +1,7 @@
 import { cn, Tag } from '@ai-explore/ui';
+import type { LucideIcon } from 'lucide-react';
 
-export type FilterChip = { id: string; label: string };
+export type FilterChip = { id: string; label: string; icon?: LucideIcon | undefined };
 
 export type FilterChipsProps = {
   chips: readonly FilterChip[];
@@ -9,6 +10,7 @@ export type FilterChipsProps = {
   label: string;
   testId: string;
   className?: string | undefined;
+  chipClassName?: string | undefined;
 };
 
 export function FilterChips({
@@ -18,6 +20,7 @@ export function FilterChips({
   label,
   testId,
   className,
+  chipClassName,
 }: FilterChipsProps) {
   return (
     <fieldset
@@ -29,8 +32,10 @@ export function FilterChips({
         <Tag
           key={chip.id}
           data-id={chip.id}
+          icon={chip.icon}
           pressed={isPressed(chip.id)}
           onPressedChange={() => onToggle(chip.id)}
+          className={chipClassName}
         >
           {chip.label}
         </Tag>

@@ -20,9 +20,12 @@ test('INV-19: visitor searches, filters, opens a tool, compares and copies the s
   await search.fill('');
   await expect(card('stable-diffusion')).toBeVisible();
 
+  const categoryId = `[data-id="${E2E_FIXTURES.searchCategoryId}"]`;
   await page
     .getByTestId(TEST_IDS.library.categoryFilter)
-    .locator(`[data-id="${E2E_FIXTURES.searchCategoryId}"]`)
+    .locator(categoryId)
+    .or(page.getByTestId(TEST_IDS.shell.sidebarCategory).and(page.locator(categoryId)))
+    .filter({ visible: true })
     .click();
   await expect(card('midjourney')).toBeVisible();
   await expect(card('stable-diffusion')).toBeVisible();

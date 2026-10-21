@@ -1,10 +1,10 @@
 {
   "searchLabel": "Search tools",
-  "searchPlaceholder": "Search by name, tag or developer",
+  "searchPlaceholder": "Search AI tools by name, tag or developer…",
   "clearSearch": "Clear search",
   "categoryLabel": "Filter by category",
   "allCategories": "All",
-  "tagLabel": "Filter by tag",
+  "tagLabel": "Filter by tags",
   "priceLabel": "Filter by price",
   "sortLabel": "Sort by",
   "price": {
@@ -16,25 +16,24 @@
   "sort": {
     "rating": "Top rated",
     "reviews": "Most reviewed",
-    "priceAsc": "Price: low to high",
-    "priceDesc": "Price: high to low",
+    "priceAsc": "Lowest price",
+    "priceDesc": "Highest price",
     "newest": "Newest"
   },
-  "emptyTitle": "No tools match your search",
-  "emptyBody": "Try a different search or clear the filters.",
-  "reset": "Reset filters",
+  "emptyTitle": "No tools found matching your criteria",
+  "reset": "Clear filters",
   "card": {
     "free": "Free",
-    "from": "From {price}/mo",
+    "price": "{price}/mo",
     "paid": "Paid",
-    "trial": "{days, plural, one {# day trial} other {# day trial}}",
-    "noReviews": "No reviews",
-    "reviewCount": "({count})"
+    "trial": "{days}d trial",
+    "ratingLabel": "Average rating",
+    "reviewCount": "{count, plural, =0 {No reviews} one {# review} other {# reviews}}"
   },
   "filters": {
     "toggle": "Filters",
-    "withCount": "Filters ({count})",
-    "clear": "Clear filters ({count})"
+    "clearAll": "Clear all"
   },
+  "allTools": "All tools",
   "resultsTitle": "Tools"
 }
