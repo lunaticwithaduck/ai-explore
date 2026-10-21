@@ -1,10 +1,12 @@
 import type { Bundle, Locale, WithId } from '@ai-explore/schemas';
 import { pickLocalized } from '@ai-explore/schemas';
-import { accentSubtleClass, BackButton, cn, Heading, Text } from '@ai-explore/ui';
+import { BackButton, cn, Heading, Text } from '@ai-explore/ui';
 import { useLocale, useTranslations } from 'next-intl';
 import { routes } from '@/config/routes';
 import { Link } from '@/i18n/navigation';
+import { BUNDLE_GRADIENTS } from '../../config/gradients';
 import { bundleIcon } from '../../config/icons';
+import { bundleHeaderStyles } from './BundleHeader.styles';
 
 type BundleHeaderProps = {
   bundle: WithId<Bundle>;
@@ -13,27 +15,24 @@ type BundleHeaderProps = {
 export function BundleHeader({ bundle }: BundleHeaderProps) {
   const t = useTranslations('bundles');
   const locale = useLocale() as Locale;
+  const gradient = BUNDLE_GRADIENTS[bundle.accent];
   const Icon = bundleIcon(bundle.icon);
   return (
-    <header className="flex flex-col gap-4">
-      <BackButton asChild label={t('detail.back')} size="sm" className="self-start">
-        <Link href={routes.bundles} />
-      </BackButton>
-      <div className="flex items-start gap-4">
-        <span
-          className={cn(
-            'flex size-14 shrink-0 items-center justify-center rounded-card',
-            accentSubtleClass[bundle.accent],
-          )}
-        >
-          <Icon aria-hidden className="size-7" />
+    <header className={bundleHeaderStyles.root}>
+      <div className={cn(bundleHeaderStyles.banner, gradient)}>
+        <span aria-hidden className={bundleHeaderStyles.fade} />
+        <BackButton asChild label={t('detail.back')} size="md" className={bundleHeaderStyles.back}>
+          <Link href={routes.bundles} />
+        </BackButton>
+        <span className={cn(bundleHeaderStyles.tile, gradient)}>
+          <Icon aria-hidden className={bundleHeaderStyles.icon} />
         </span>
-        <div className="flex flex-col gap-2">
-          <Heading level={1}>{pickLocalized(bundle.name, locale)}</Heading>
-          <Text tone="muted" className="max-w-prose">
-            {pickLocalized(bundle.description, locale)}
-          </Text>
-        </div>
+      </div>
+      <div className={bundleHeaderStyles.intro}>
+        <Heading level={1}>{pickLocalized(bundle.name, locale)}</Heading>
+        <Text size="lg" tone="muted">
+          {pickLocalized(bundle.description, locale)}
+        </Text>
       </div>
     </header>
   );

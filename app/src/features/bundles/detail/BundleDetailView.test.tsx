@@ -64,18 +64,18 @@ describe('BundleDetailView', () => {
     renderView(false);
     expect(text('bundles-price')).toBe('$30');
     expect(text('bundles-list-price')).toBe('$50');
-    expect(text('bundles-savings')).toBe('Save 40%');
+    expect(text('bundles-savings')).toBe('Save 40% on this bundle');
 
     fireEvent.click(document.querySelector('[data-id="quarterly"]') as HTMLElement);
     expect(text('bundles-price')).toBe('$80');
     expect(text('bundles-list-price')).toBe('$150');
-    expect(text('bundles-savings')).toBe('Save 47%');
-    expect(screen.getByText('$26.67 per month')).toBeInTheDocument();
+    expect(text('bundles-savings')).toBe('Save 47% on this bundle');
+    expect(screen.getByText('$26.67/month')).toBeInTheDocument();
 
     fireEvent.click(document.querySelector('[data-id="yearly"]') as HTMLElement);
     expect(text('bundles-price')).toBe('$300');
     expect(text('bundles-list-price')).toBe('$600');
-    expect(text('bundles-savings')).toBe('Save 50%');
+    expect(text('bundles-savings')).toBe('Save 50% on this bundle');
   });
 
   it('marks the selected period with aria-checked', () => {

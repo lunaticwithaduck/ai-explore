@@ -2,15 +2,14 @@
 
 import type { Bundle, BundlePeriod, Tool, WithId } from '@ai-explore/schemas';
 import { BUNDLE_PERIODS } from '@ai-explore/schemas';
-import { Heading, SegmentedControl } from '@ai-explore/ui';
+import { Heading } from '@ai-explore/ui';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
-import { TEST_IDS } from '@/config/test-ids';
 import { ToolCard } from '@/features/catalogue/components/ToolCard/ToolCard';
 import { EmptyState } from '@/features/system/components/EmptyState/EmptyState';
-import { BundleCta } from '../components/BundleCta/BundleCta';
+import { BundleBenefits } from '../components/BundleBenefits/BundleBenefits';
 import { BundleHeader } from '../components/BundleHeader/BundleHeader';
-import { BundlePrice } from '../components/BundlePrice/BundlePrice';
+import { BundlePricingCard } from '../components/BundlePricingCard/BundlePricingCard';
 import { includedTools, summarizeBundle } from '../utils/bundleSummary';
 
 export type BundleDetailViewProps = {
@@ -23,40 +22,35 @@ export function BundleDetailView({ bundle, tools }: BundleDetailViewProps) {
   const [period, setPeriod] = useState<BundlePeriod>('monthly');
   const included = includedTools(bundle, tools);
   const summary = summarizeBundle(bundle, included, period);
-  const options = BUNDLE_PERIODS.map((value) => ({
-    value,
-    label: t(`period.${value}`),
-    testId: TEST_IDS.bundles.periodOption,
-  }));
+  const bestSavings = Math.max(
+    ...BUNDLE_PERIODS.map((value) => summarizeBundle(bundle, included, value).savingsPercent),
+  );
   return (
-    <main className="mx-auto flex w-full max-w-content flex-col gap-8 px-4 py-8 sm:px-6">
+    <main className="flex w-full flex-col pb-8">
       <BundleHeader bundle={bundle} />
-      <section className="flex max-w-xl flex-col gap-4">
-        <SegmentedControl
-          options={options}
-          value={period}
-          onValueChange={(value) => setPeriod(value as BundlePeriod)}
-          label={t('period.label')}
-          fullWidth
+      <div className="mx-auto flex w-full max-w-content flex-col gap-12 px-4 pt-8 sm:px-8">
+        <BundlePricingCard
+          bundleId={bundle.id}
+          summary={summary}
+          tools={included}
+          onPeriodChange={setPeriod}
         />
-        <BundlePrice summary={summary}>
-          <BundleCta bundleId={bundle.id} period={period} />
-        </BundlePrice>
-      </section>
-      <section className="flex flex-col gap-4" aria-labelledby="bundle-included-title">
-        <Heading level={2} id="bundle-included-title">
-          {t('detail.included', { count: included.length })}
-        </Heading>
-        {included.length === 0 ? (
-          <EmptyState title={t('detail.emptyTitle')} body={t('detail.emptyBody')} />
-        ) : (
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {included.map((tool) => (
-              <ToolCard key={tool.id} tool={tool} />
-            ))}
-          </div>
-        )}
-      </section>
+        <section className="flex flex-col gap-6" aria-labelledby="bundle-included-title">
+          <Heading level={2} size="lg" id="bundle-included-title">
+            {t('detail.included', { count: included.length })}
+          </Heading>
+          {included.length === 0 ? (
+            <EmptyState title={t('detail.emptyTitle')} body={t('detail.emptyBody')} />
+          ) : (
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {included.map((tool) => (
+                <ToolCard key={tool.id} tool={tool} />
+              ))}
+            </div>
+          )}
+        </section>
+        <BundleBenefits savingsPercent={bestSavings} />
+      </div>
     </main>
   );
 }

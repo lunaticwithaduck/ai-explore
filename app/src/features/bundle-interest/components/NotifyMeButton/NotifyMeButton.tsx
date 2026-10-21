@@ -31,13 +31,7 @@ export function NotifyMeButton({ bundleId, period }: NotifyMeButtonProps) {
 
   if (status === 'signedOut') {
     return (
-      <Button
-        size="lg"
-        fullWidth
-        iconLeft={BellRing}
-        asChild
-        className="h-auto min-h-12 whitespace-normal px-4 py-2 text-center"
-      >
+      <Button size="lg" fullWidth iconLeft={BellRing} asChild className={notifyMeStyles.button}>
         <Link
           href={signInHref(routes.bundle(bundleId))}
           data-testid={TEST_IDS.bundleInterest.notifyMe}
@@ -72,7 +66,7 @@ export function NotifyMeButton({ bundleId, period }: NotifyMeButtonProps) {
         iconLeft={BellRing}
         loading
         disabled
-        className="h-auto min-h-12 whitespace-normal px-4 py-2 text-center"
+        className={notifyMeStyles.button}
       >
         {t('notifyMe')}
       </Button>
@@ -85,7 +79,7 @@ export function NotifyMeButton({ bundleId, period }: NotifyMeButtonProps) {
         size="lg"
         fullWidth
         iconLeft={BellRing}
-        className="h-auto min-h-12 whitespace-normal px-4 py-2 text-center"
+        className={notifyMeStyles.button}
         loading={isSaving}
         data-testid={TEST_IDS.bundleInterest.notifyMe}
         onClick={() => register({ uid, bundleId, period })}

@@ -1,6 +1,6 @@
 {
   "section": {
-    "title": "Bundles",
+    "title": "Curated collections",
     "subtitle": "Pre-built tool stacks for specific use cases",
     "seeAll": "See all"
   },
@@ -14,14 +14,36 @@
   "card": {
     "perMonth": "per month",
     "save": "Save {percent}%",
-    "toolsIncluded": "{count, plural, one {# tool} other {# tools}} included"
+    "toolsIncluded": "{count, plural, one {# tool} other {# tools}} included",
+    "view": "View bundle"
   },
   "detail": {
     "back": "All bundles",
-    "subscribe": "Subscribe",
-    "included": "{count, plural, one {# tool included} other {# tools included}}",
+    "subscribe": "Subscribe now",
+    "checklist": "What the bundle includes",
+    "footnote": {
+      "monthly": "Billed monthly · {count, plural, one {# tool} other {# tools}} included",
+      "quarterly": "Billed every 3 months · {count, plural, one {# tool} other {# tools}} included",
+      "yearly": "Billed yearly · {count, plural, one {# tool} other {# tools}} included"
+    },
+    "included": "Included tools ({count})",
     "emptyTitle": "No tools in this bundle",
     "emptyBody": "This bundle has no published tools right now."
+  },
+  "benefits": {
+    "title": "Why choose this bundle?",
+    "curated": {
+      "title": "Hand-picked",
+      "body": "The tools in this bundle are chosen to work together for one use case."
+    },
+    "savings": {
+      "title": "Save money",
+      "body": "{percent, plural, =0 {One price covers every tool in the stack.} other {Save up to #% compared to buying each tool on its own.}}"
+    },
+    "onePrice": {
+      "title": "One price",
+      "body": "Pay one monthly, quarterly or yearly price for the whole stack."
+    }
   },
   "period": {
     "label": "Billing period",
@@ -30,12 +52,7 @@
     "yearly": "Yearly"
   },
   "price": {
-    "save": "Save {percent}%",
-    "perMonth": "{price} per month",
-    "suffix": {
-      "monthly": "/mo",
-      "quarterly": "/quarter",
-      "yearly": "/yr"
-    }
+    "save": "Save {percent}% on this bundle",
+    "perMonth": "{price}/month"
   }
 }

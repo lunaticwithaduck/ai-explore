@@ -2,6 +2,7 @@
 
 import type { BundlePeriod } from '@ai-explore/schemas';
 import { Button } from '@ai-explore/ui';
+import { ShoppingCart } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { TEST_IDS } from '@/config/test-ids';
 import { NotifyMeButton } from '@/features/bundle-interest/components/NotifyMeButton/NotifyMeButton';
@@ -17,7 +18,13 @@ export function BundleCta({ bundleId, period }: BundleCtaProps) {
   const checkoutEnabled = useFlag('checkoutEnabled');
   if (checkoutEnabled) {
     return (
-      <Button size="lg" fullWidth data-testid={TEST_IDS.bundles.subscribe}>
+      <Button
+        size="lg"
+        fullWidth
+        iconLeft={ShoppingCart}
+        className="h-14 text-lg"
+        data-testid={TEST_IDS.bundles.subscribe}
+      >
         {t('detail.subscribe')}
       </Button>
     );
