@@ -17,8 +17,12 @@ describe('deriveDisplayName', () => {
 });
 
 describe('safePhotoUrl', () => {
-  it('keeps http(s) urls and drops anything else', () => {
+  it('keeps https urls and drops anything else', () => {
     expect(safePhotoUrl('https://lh3.example.com/a.png')).toBe('https://lh3.example.com/a.png');
+    expect(safePhotoUrl('http://lh3.example.com/a.png')).toBeNull();
+    expect(safePhotoUrl('HTTPS://lh3.example.com/a.png')).toBeNull();
+    expect(safePhotoUrl('https://lh3.example.com/a b.png')).toBeNull();
+    expect(safePhotoUrl('https://[')).toBeNull();
     expect(safePhotoUrl(null)).toBeNull();
     expect(safePhotoUrl('not a url')).toBeNull();
     expect(safePhotoUrl('data:image/png;base64,AAAA')).toBeNull();

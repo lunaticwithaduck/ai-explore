@@ -1,51 +1,33 @@
 import { describe, expect, it } from 'vitest';
 import { reviewAuthor } from './reviewAuthor';
 
-const user = {
-  uid: 'u1',
-  email: 'ada.lovelace@example.com',
-  displayName: 'Ada from Auth',
-  photoUrl: 'https://example.com/auth.png',
-};
+const user = { uid: 'u1' };
 
 describe('reviewAuthor', () => {
-  it('prefers the profile name and photo', () => {
+  it('copies the profile name and photo exactly', () => {
     expect(
-      reviewAuthor(user, { displayName: 'Ada', photoUrl: 'https://example.com/p.png' }, 'Member'),
+      reviewAuthor(user, { displayName: 'Ada', photoUrl: 'https://example.com/p.png' }),
     ).toEqual({ uid: 'u1', displayName: 'Ada', photoUrl: 'https://example.com/p.png' });
+    expect(reviewAuthor(user, { displayName: 'Ada', photoUrl: null })).toEqual({
+      uid: 'u1',
+      displayName: 'Ada',
+      photoUrl: null,
+    });
   });
 
-  it('falls back to the auth user, then the email, then the given name', () => {
-    expect(reviewAuthor(user, null, 'Member').displayName).toBe('Ada from Auth');
-    expect(reviewAuthor({ ...user, displayName: '  ' }, null, 'Member').displayName).toBe(
-      'ada.lovelace',
-    );
-    expect(
-      reviewAuthor({ ...user, displayName: null, email: null }, undefined, 'Member').displayName,
-    ).toBe('Member');
+  it('keeps the profile values untouched, with no trimming or clipping', () => {
+    const displayName = ` ${'😀'.repeat(29)}x `;
+    const photoUrl = `https://example.com/${'a'.repeat(2000)}`;
+    expect(reviewAuthor(user, { displayName, photoUrl })).toEqual({
+      uid: 'u1',
+      displayName,
+      photoUrl,
+    });
   });
 
-  it('clips the name to the 60 characters the rules allow', () => {
-    const name = reviewAuthor({ ...user, displayName: 'x'.repeat(80) }, null, 'Member');
-    expect(name.displayName).toHaveLength(60);
-  });
-
-  it('counts UTF-16 units, so emoji never push the name past the limit', () => {
-    const emoji = reviewAuthor({ ...user, displayName: '😀'.repeat(40) }, null, 'Member');
-    expect(emoji.displayName.length).toBeLessThanOrEqual(60);
-    expect(emoji.displayName).toBe('😀'.repeat(30));
-    const split = reviewAuthor({ ...user, displayName: `${'x'.repeat(59)}😀` }, null, 'Member');
-    expect(split.displayName).toBe('x'.repeat(59));
-  });
-
-  it('drops a photo the review schema would reject', () => {
-    expect(
-      reviewAuthor({ ...user, photoUrl: 'not a url' }, { displayName: 'Ada', photoUrl: null }, 'M')
-        .photoUrl,
-    ).toBeNull();
-    expect(
-      reviewAuthor({ ...user, photoUrl: `https://example.com/${'a'.repeat(2048)}` }, null, 'M')
-        .photoUrl,
-    ).toBeNull();
+  it('returns no author while the profile is loading or missing', () => {
+    expect(reviewAuthor(user, undefined)).toBeNull();
+    expect(reviewAuthor(user, null)).toBeNull();
+    expect(reviewAuthor(user, null, 'AI Explore member')).toBeNull();
   });
 });

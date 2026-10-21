@@ -43,6 +43,11 @@ service cloud.firestore {
       return value == null || (value is string && value.size() <= 2048);
     }
 
+    function isHttpsUrl(value) {
+      return value == null
+        || (value is string && value.size() <= 2048 && value.matches('^https://[^\\s]+$'));
+    }
+
     function isLocale(value) {
       return value in ['en', 'bg'];
     }
@@ -88,6 +93,12 @@ service cloud.firestore {
         );
     }
 
+    function isProfileAuthor(review) {
+      let profile = get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+      return review.authorName == profile.displayName
+        && review.authorPhotoUrl == profile.photoUrl;
+    }
+
     function isValidReview(slug) {
       let review = request.resource.data;
       return exactKeys(['toolId', 'authorUid', 'rating', 'body', 'authorName', 'authorPhotoUrl',
@@ -108,13 +119,16 @@ service cloud.firestore {
     // INV-5
     function isValidReviewCreate(slug) {
       return isValidReview(slug)
+        && isProfileAuthor(request.resource.data)
         && request.resource.data.helpfulCount == 0
         && isServerTime(request.resource.data.createdAt);
     }
 
     // INV-6, INV-8
     function isValidReviewEdit(slug) {
-      return isValidReview(slug) && unchanged(['toolId', 'authorUid', 'helpfulCount', 'createdAt']);
+      return isValidReview(slug)
+        && unchanged(['toolId', 'authorUid', 'helpfulCount', 'createdAt'])
+        && (unchanged(['authorName', 'authorPhotoUrl']) || isProfileAuthor(request.resource.data));
     }
 
     // INV-9
@@ -146,7 +160,7 @@ service cloud.firestore {
       let profile = request.resource.data;
       return exactKeys(['displayName', 'photoUrl', 'locale', 'prefs', 'notificationsSeenAt', 'createdAt'])
         && isText(profile.displayName, 1, 60)
-        && isUrlText(profile.photoUrl)
+        && isHttpsUrl(profile.photoUrl)
         && isLocale(profile.locale)
         && profile.prefs is map
         && profile.prefs.keys().hasOnly(['productUpdates', 'emailDigest'])

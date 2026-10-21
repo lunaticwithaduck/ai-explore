@@ -3,6 +3,7 @@
 import { Button, Dialog, DialogClose } from '@ai-explore/ui';
 import { Trash2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { useRef, useState } from 'react';
 import { TEST_IDS } from '@/config/test-ids';
 import { deleteReviewDialogStyles as styles } from './DeleteReviewDialog.styles';
 
@@ -13,9 +14,26 @@ export type DeleteReviewDialogProps = {
 
 export function DeleteReviewDialog({ disabled, onConfirm }: DeleteReviewDialogProps) {
   const t = useTranslations('reviews');
+  const confirmedRef = useRef(false);
+  const [confirmed, setConfirmed] = useState(false);
+
+  const handleOpenChange = (open: boolean) => {
+    if (!open) return;
+    confirmedRef.current = false;
+    setConfirmed(false);
+  };
+
+  const confirm = () => {
+    if (confirmedRef.current || disabled) return;
+    confirmedRef.current = true;
+    setConfirmed(true);
+    onConfirm();
+  };
+
   return (
     <Dialog
       size="sm"
+      onOpenChange={handleOpenChange}
       title={t('delete.title')}
       description={t('delete.description')}
       closeLabel={t('delete.close')}
@@ -40,7 +58,8 @@ export function DeleteReviewDialog({ disabled, onConfirm }: DeleteReviewDialogPr
             <Button
               variant="danger"
               iconLeft={Trash2}
-              onClick={onConfirm}
+              onClick={confirm}
+              disabled={disabled || confirmed}
               data-testid={TEST_IDS.reviews.confirmDelete}
             >
               {t('delete.confirm')}

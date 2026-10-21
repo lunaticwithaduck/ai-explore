@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import type { ReactNode } from 'react';
 import { Provider } from 'react-redux';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { useProfileQuery } from '@/api/endpoints/profile';
 import {
   type ReviewDoc,
   useHelpfulVoteQuery,
@@ -27,9 +28,7 @@ import { ReviewsSection } from './ReviewsSection';
 const db = vi.hoisted(() => ({ name: 'db' }));
 
 vi.mock('@/lib/firebase/client', () => ({ clientDb: () => db }));
-vi.mock('@/api/endpoints/profile', () => ({
-  useProfileQuery: () => ({ currentData: undefined, isSuccess: false }),
-}));
+vi.mock('@/api/endpoints/profile', () => ({ useProfileQuery: vi.fn() }));
 vi.mock('@/api/endpoints/reviews', () => ({
   useToolRatingQuery: vi.fn(),
   useToolReviewsQuery: vi.fn(),
@@ -52,6 +51,13 @@ vi.mock('@/i18n/navigation', () => ({
 }));
 
 const me = { uid: 'me', email: 'ada@example.com', displayName: 'Ada', photoUrl: null };
+const myProfile = { id: 'me', displayName: 'Ada L.', photoUrl: 'https://example.com/ada.png' };
+
+const withProfile = (currentData: typeof myProfile | null | undefined) =>
+  vi.mocked(useProfileQuery).mockReturnValue({
+    currentData,
+    isSuccess: currentData !== undefined,
+  } as never);
 
 const review = (authorUid: string, rating: number, helpfulCount = 0, day = 1): ReviewDoc => ({
   id: authorUid,
@@ -93,6 +99,7 @@ describe('ReviewsSection', () => {
     vi.clearAllMocks();
     vi.mocked(useToolRatingQuery).mockReturnValue({ currentData: { count: 2, sum: 9 } } as never);
     vi.mocked(useHelpfulVoteQuery).mockReturnValue({ currentData: false } as never);
+    withProfile(myProfile);
   });
 
   it('asks a visitor to sign in and sends Helpful to sign-in with next', () => {
@@ -122,10 +129,35 @@ describe('ReviewsSection', () => {
       expect(createReview).toHaveBeenCalledWith(
         db,
         'jasper',
-        { uid: 'me', displayName: 'Ada', photoUrl: null },
+        { uid: 'me', displayName: 'Ada L.', photoUrl: 'https://example.com/ada.png' },
         { rating: 4, body: 'Solid tool.', locale: 'en' },
       ),
     );
+  });
+
+  it('keeps the form hidden while the profile is loading', () => {
+    withProfile(undefined);
+    withReviews([]);
+    renderSection(true);
+    expect(screen.queryByTestId(TEST_IDS.reviews.form)).not.toBeInTheDocument();
+    expect(screen.queryByText(reviews.form.profileMissing)).not.toBeInTheDocument();
+  });
+
+  it('explains a missing profile instead of offering the form', () => {
+    withProfile(null);
+    withReviews([]);
+    renderSection(true);
+    expect(screen.getByRole('status')).toHaveTextContent(reviews.form.profileMissing);
+    expect(screen.queryByTestId(TEST_IDS.reviews.form)).not.toBeInTheDocument();
+  });
+
+  it('still lets an author without a profile edit or delete their review', () => {
+    withProfile(null);
+    withReviews([review('me', 4)]);
+    renderSection(true);
+    expect(screen.getByTestId(TEST_IDS.reviews.edit)).toBeEnabled();
+    expect(screen.getByTestId(TEST_IDS.reviews.delete)).toBeEnabled();
+    expect(screen.queryByText(reviews.form.profileMissing)).not.toBeInTheDocument();
   });
 
   it('shows the own review first, edits it prefilled and deletes it after confirming', async () => {

@@ -33,6 +33,7 @@
     "submit": "Post review",
     "update": "Save changes",
     "cancel": "Cancel",
+    "profileMissing": "Your profile isn't ready yet, so you can't post a review. Reload the page to try again.",
     "validation": {
       "ratingRequired": "Choose a rating from 1 to 5 stars.",
       "bodyTooLong": "Keep your review to {max} characters or fewer."

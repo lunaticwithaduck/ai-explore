@@ -3,6 +3,7 @@
 import { Skeleton, Text } from '@ai-explore/ui';
 import { useTranslations } from 'next-intl';
 import type { ReviewDoc } from '@/api/endpoints/reviews';
+import { useCurrentProfile } from '@/features/auth/hooks/useCurrentProfile';
 import { useCurrentUser } from '@/features/auth/hooks/useCurrentUser';
 import { useReviewAuthor } from '../../hooks/useReviewAuthor';
 import { useReviewWrites } from '../../hooks/useReviewWrites';
@@ -21,12 +22,15 @@ export function ReviewComposer({ toolId, own, failed = false }: ReviewComposerPr
   const t = useTranslations('reviews.form');
   const tErrors = useTranslations('errors');
   const { status } = useCurrentUser();
+  const { profile, isLoaded } = useCurrentProfile();
   const author = useReviewAuthor();
   const writes = useReviewWrites(toolId);
+  const profileMissing = isLoaded && profile === null;
 
   if (status === 'signedOut') return <ReviewSignInPrompt />;
   if (own === undefined && failed) return null;
-  if (!author || own === undefined) return <Skeleton shape="card" className={styles.loading} />;
+  if (own === undefined || (!own && !author && !profileMissing))
+    return <Skeleton shape="card" className={styles.loading} />;
 
   return (
     <div className={styles.root}>
@@ -35,7 +39,7 @@ export function ReviewComposer({ toolId, own, failed = false }: ReviewComposerPr
           {tErrors(writes.error)}
         </Text>
       )}
-      {own ? (
+      {own && (
         <OwnReview
           toolId={toolId}
           review={own}
@@ -43,13 +47,19 @@ export function ReviewComposer({ toolId, own, failed = false }: ReviewComposerPr
           onUpdate={(values) => writes.update(own, values)}
           onDelete={() => void writes.remove(own)}
         />
-      ) : (
+      )}
+      {!own && author && (
         <ReviewForm
           title={t('createTitle')}
           submitLabel={t('submit')}
           pending={writes.pending}
           onSubmit={(values) => writes.create(author, values)}
         />
+      )}
+      {!own && !author && (
+        <Text size="sm" tone="muted" role="status" className={styles.profileMissing}>
+          {t('profileMissing')}
+        </Text>
       )}
     </div>
   );

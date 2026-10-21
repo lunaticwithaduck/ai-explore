@@ -7,11 +7,12 @@ export function deriveDisplayName(user: AuthUser): string {
   return (name ?? user.uid).slice(0, DISPLAY_NAME_MAX_LENGTH);
 }
 
+const HTTPS_URL = /^https:\/\/\S+$/;
+
 export function safePhotoUrl(photoUrl: string | null): string | null {
-  if (!photoUrl || photoUrl.length > PHOTO_URL_MAX_LENGTH) return null;
+  if (!photoUrl || photoUrl.length > PHOTO_URL_MAX_LENGTH || !HTTPS_URL.test(photoUrl)) return null;
   try {
-    const url = new URL(photoUrl);
-    return url.protocol === 'https:' || url.protocol === 'http:' ? photoUrl : null;
+    return new URL(photoUrl).protocol === 'https:' ? photoUrl : null;
   } catch {
     return null;
   }
