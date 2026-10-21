@@ -40,4 +40,4 @@ export const segmentedItemStyles = cva(
   },
 );
 
-export const segmentedDescriptionStyles = cva('font-normal text-xs opacity-80');
+export const segmentedDescriptionStyles = cva('font-normal text-xs');
