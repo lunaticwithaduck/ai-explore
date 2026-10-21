@@ -1,8 +1,8 @@
 'use client';
 
 import { type Locale, pickLocalized } from '@ai-explore/schemas';
-import { Badge, Button, Skeleton, Text, TextLink } from '@ai-explore/ui';
-import { Plus } from 'lucide-react';
+import { Badge, Button, Skeleton, Text } from '@ai-explore/ui';
+import { Pencil, Plus } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useAdminBundlesQuery } from '@/api/endpoints/admin';
 import { routes } from '@/config/routes';
@@ -38,9 +38,9 @@ export function BundlesTab() {
               <Badge tone={bundle.published ? 'success' : 'neutral'}>
                 {bundle.published ? t('status.published') : t('status.draft')}
               </Badge>
-              <TextLink asChild size="sm">
+              <Button asChild size="sm" variant="secondary" iconLeft={Pencil}>
                 <Link href={routes.adminBundle(bundle.id)}>{t('actions.edit')}</Link>
-              </TextLink>
+              </Button>
             </div>
           </AdminRow>
         ))}

@@ -8,7 +8,9 @@ import {
   categorySchema,
   SUBCOLLECTIONS,
   type Tool,
+  type ToolUpdate,
   toolSchema,
+  toolUpdateSchema,
   type WithId,
 } from '@ai-explore/schemas';
 import {
@@ -48,7 +50,14 @@ export type SaveToolArgs = {
 
 export type SaveBundleArgs = SaveToolArgs;
 
+export type AdminUpdateEntry = {
+  toolId: string;
+  updateId: string;
+  update: ToolUpdate;
+};
+
 export type CreateUpdateArgs = {
+  mode?: SaveToolArgs['mode'];
   toolId: string;
   updateId: string;
   data: DocumentData;
@@ -123,16 +132,43 @@ const adminApi = firestoreApi.injectEndpoints({
       invalidatesTags: ['AdminBundle'],
     }),
     createUpdate: build.mutation<null, CreateUpdateArgs>({
-      queryFn: ({ toolId, updateId, data }) =>
+      queryFn: ({ mode = 'create', toolId, updateId, data }) =>
         firestoreCall(async () => {
           await writeDocument(
             [COLLECTIONS.tools, toolId, SUBCOLLECTIONS.updates, updateId],
-            'create',
+            mode,
             data,
           );
           return null;
         }),
       invalidatesTags: ['AdminUpdate'],
+    }),
+    adminUpdates: build.query<AdminUpdateEntry[], void>({
+      queryFn: () =>
+        firestoreCall(async () => {
+          const snap = await getDocs(collectionGroup(clientDb(), SUBCOLLECTIONS.updates));
+          const entries = snap.docs.flatMap((entry) => {
+            const toolId = entry.ref.parent.parent?.id;
+            const update = parseDoc(toolUpdateSchema, entry.id, entry.data());
+            return toolId && update ? [{ toolId, updateId: entry.id, update }] : [];
+          });
+          return entries.sort(
+            (a, b) => b.update.publishedAt.getTime() - a.update.publishedAt.getTime(),
+          );
+        }),
+      providesTags: ['AdminUpdate'],
+    }),
+    adminUpdate: build.query<ToolUpdate | null, Pick<CreateUpdateArgs, 'toolId' | 'updateId'>>({
+      queryFn: ({ toolId, updateId }) =>
+        firestoreCall(async () => {
+          const snap = await getDoc(
+            doc(clientDb(), COLLECTIONS.tools, toolId, SUBCOLLECTIONS.updates, updateId),
+          );
+          return snap.exists() ? parseDoc(toolUpdateSchema, snap.id, snap.data()) : null;
+        }),
+      providesTags: (_result, _error, { toolId, updateId }) => [
+        { type: 'AdminUpdate', id: `${toolId}/${updateId}` },
+      ],
     }),
     adminInterest: build.query<AdminInterestEntry[], void>({
       queryFn: () =>
@@ -156,5 +192,7 @@ export const {
   useAdminBundlesQuery,
   useSaveBundleMutation,
   useCreateUpdateMutation,
+  useAdminUpdatesQuery,
+  useAdminUpdateQuery,
   useAdminInterestQuery,
 } = adminApi;

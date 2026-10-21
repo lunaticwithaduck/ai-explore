@@ -4,6 +4,7 @@ import { PLAN_PERIODS } from '@ai-explore/schemas';
 import { useTranslations } from 'next-intl';
 import { useFieldArray, useFormContext } from 'react-hook-form';
 import { EMPTY_PLAN } from '../../config/toolForm';
+import { AdminMoneyField } from '../AdminMoneyField/AdminMoneyField';
 import { AdminSelectField } from '../AdminSelectField/AdminSelectField';
 import { AdminSwitchField } from '../AdminSwitchField/AdminSwitchField';
 import { AdminTextField } from '../AdminTextField/AdminTextField';
@@ -28,7 +29,13 @@ export function ToolPlanRows() {
           onRemove={() => remove(index)}
         >
           <AdminTextField name={`plans.${index}.name`} label={t('tool.planName')} />
-          <AdminTextField numeric name={`plans.${index}.priceCents`} label={t('tool.planPrice')} />
+          <AdminMoneyField
+            nullable
+            name={`plans.${index}.priceCents`}
+            label={t('tool.planPrice')}
+            hint={t('tool.hints.planPrice')}
+            placeholder={t('tool.placeholders.planPrice')}
+          />
           <AdminSelectField
             name={`plans.${index}.period`}
             label={t('tool.planPeriod')}

@@ -1,4 +1,11 @@
-import { planSchema, slugSchema, toolPricingSchema, toolSchema } from '@ai-explore/schemas';
+import {
+  comparisonSchema,
+  planSchema,
+  slugSchema,
+  toolPricingSchema,
+  toolSchema,
+  tutorialSchema,
+} from '@ai-explore/schemas';
 import { z } from 'zod';
 
 export const localizedFormSchema = z.object({
@@ -23,6 +30,12 @@ export const toolFormSchema = toolSchema
     pricing: toolPricingSchema.pick({ hasFreePlan: true, trialDays: true }),
     plans: z.array(planSchema),
     features: z.array(localizedFormSchema),
+    tutorials: z.array(tutorialSchema.extend({ title: localizedFormSchema })),
+    comparison: comparisonSchema.extend({
+      bestUseCase: z.object({ en: z.string().trim(), bg: z.string().trim() }),
+    }),
+    similarToolIds: toolSchema.shape.similarToolIds,
+    complementaryToolIds: toolSchema.shape.complementaryToolIds,
   });
 
 export type ToolFormValues = z.infer<typeof toolFormSchema>;
@@ -40,8 +53,25 @@ export const defaultToolFormValues = (): ToolFormValues => ({
   pricing: { hasFreePlan: false },
   plans: [],
   features: [],
+  tutorials: [],
+  comparison: {
+    apiAccess: 'none',
+    integrations: 0,
+    speed: 3,
+    outputQuality: 3,
+    bestUseCase: { en: '', bg: '' },
+  },
+  similarToolIds: [],
+  complementaryToolIds: [],
   published: false,
 });
+
+export const EMPTY_TUTORIAL: ToolFormValues['tutorials'][number] = {
+  youtubeId: '',
+  title: { en: '', bg: '' },
+  durationMin: 10,
+  difficulty: 'beginner',
+};
 
 export const EMPTY_PLAN: ToolFormValues['plans'][number] = {
   name: '',

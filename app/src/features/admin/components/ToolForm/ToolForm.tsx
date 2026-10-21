@@ -8,19 +8,23 @@ import { useTranslations } from 'next-intl';
 import { FormProvider, useForm } from 'react-hook-form';
 import { adminToolField, TEST_IDS } from '@/config/test-ids';
 import { type ToolFormValues, toolFormSchema } from '../../config/toolForm';
-import { AdminSelectField } from '../AdminSelectField/AdminSelectField';
 import { AdminSwitchField } from '../AdminSwitchField/AdminSwitchField';
 import { AdminTextField } from '../AdminTextField/AdminTextField';
 import { QueryNotice } from '../QueryNotice/QueryNotice';
 import { SavedNotice } from '../SavedNotice/SavedNotice';
+import { ToolBasicsCard } from '../ToolBasicsCard/ToolBasicsCard';
+import { ToolComparisonCard } from '../ToolComparisonCard/ToolComparisonCard';
 import { ToolListRows } from '../ToolListRows/ToolListRows';
+import { ToolMultiSelect } from '../ToolMultiSelect/ToolMultiSelect';
 import { ToolPlanRows } from '../ToolPlanRows/ToolPlanRows';
+import { ToolTutorialRows } from '../ToolTutorialRows/ToolTutorialRows';
 import { toolFormStyles } from './ToolForm.styles';
 
 export type ToolFormProps = {
   mode: 'create' | 'edit';
   initial: ToolFormValues;
   categories: readonly SelectOption[];
+  tools: readonly { id: string; name: string }[];
   takenSlugs: readonly string[];
   error: unknown;
   saved: boolean;
@@ -31,6 +35,7 @@ export function ToolForm({
   mode,
   initial,
   categories,
+  tools,
   takenSlugs,
   error,
   saved,
@@ -49,70 +54,11 @@ export function ToolForm({
     await onSubmit(values);
   });
   const field = (name: string) => adminToolField(name);
+  const related = tools.filter((entry) => entry.id !== initial.slug);
   return (
     <FormProvider {...methods}>
       <form noValidate onSubmit={submit} className={toolFormStyles.form}>
-        <Card padding="md" className={toolFormStyles.card}>
-          <Heading level={2} size="sm">
-            {t('tool.basics')}
-          </Heading>
-          <div className={toolFormStyles.grid}>
-            {mode === 'create' && (
-              <AdminTextField name="slug" label={t('tool.slug')} testId={field('slug')} />
-            )}
-            <AdminTextField name="name" label={t('tool.name')} testId={field('name')} />
-            <AdminTextField
-              name="developer"
-              label={t('tool.developer')}
-              testId={field('developer')}
-            />
-            <AdminTextField
-              name="websiteUrl"
-              label={t('tool.websiteUrl')}
-              inputType="url"
-              testId={field('websiteUrl')}
-            />
-            <AdminSelectField
-              name="categoryId"
-              label={t('tool.category')}
-              options={categories}
-              placeholder={t('tool.categoryPlaceholder')}
-              testId={field('categoryId')}
-            />
-            <AdminTextField
-              name="tagline.en"
-              label={t('tool.taglineEn')}
-              testId={field('tagline.en')}
-            />
-            <AdminTextField
-              name="tagline.bg"
-              label={t('tool.taglineBg')}
-              testId={field('tagline.bg')}
-            />
-            <AdminTextField
-              multiline
-              name="description.en"
-              label={t('tool.descriptionEn')}
-              testId={field('description.en')}
-            />
-            <AdminTextField
-              multiline
-              name="description.bg"
-              label={t('tool.descriptionBg')}
-              testId={field('description.bg')}
-            />
-            <AdminTextField
-              name="logo.path"
-              label={t('tool.logoPath')}
-              testId={field('logo.path')}
-            />
-            <AdminTextField
-              name="logo.background"
-              label={t('tool.logoBackground')}
-              testId={field('logo.background')}
-            />
-          </div>
-        </Card>
+        <ToolBasicsCard mode={mode} categories={categories} />
         <Card padding="md" className={toolFormStyles.card}>
           <Heading level={2} size="sm">
             {t('tool.pricing')}
@@ -127,10 +73,29 @@ export function ToolForm({
               numeric
               name="pricing.trialDays"
               label={t('tool.trialDays')}
+              hint={t('tool.hints.trialDays')}
               testId={field('pricing.trialDays')}
             />
           </div>
           <ToolPlanRows />
+        </Card>
+        <ToolComparisonCard />
+        <Card padding="md" className={toolFormStyles.card}>
+          <ToolTutorialRows />
+        </Card>
+        <Card padding="md" className={toolFormStyles.card}>
+          <ToolMultiSelect
+            name="similarToolIds"
+            title={t('tool.similar')}
+            hint={t('tool.hints.similar')}
+            tools={related}
+          />
+          <ToolMultiSelect
+            name="complementaryToolIds"
+            title={t('tool.complementary')}
+            hint={t('tool.hints.complementary')}
+            tools={related}
+          />
         </Card>
         <Card padding="md" className={toolFormStyles.card}>
           <ToolListRows />

@@ -39,6 +39,10 @@ export function ToolFormView({ slug }: ToolFormViewProps) {
       })),
     [categories.data, locale],
   );
+  const toolOptions = useMemo(
+    () => (tools.data ?? []).map((entry) => ({ id: entry.id, name: entry.name })),
+    [tools.data],
+  );
   const initial = useMemo(
     () => (tool.data ? toolToFormValues(tool.data) : defaultToolFormValues()),
     [tool.data],
@@ -50,13 +54,13 @@ export function ToolFormView({ slug }: ToolFormViewProps) {
     await save({ slug: values.slug, mode: editing ? 'update' : 'create', data });
   };
 
-  const ready = categories.isSuccess && (!editing || tool.isSuccess);
+  const ready = categories.isSuccess && tools.isSuccess && (!editing || tool.isSuccess);
   const missing = editing && tool.isSuccess && tool.data === null;
   return (
     <AdminPage title={editing ? t('tool.editTitle') : t('tool.newTitle')} backLabel={t('back')}>
-      <QueryNotice error={tool.error ?? categories.error} />
+      <QueryNotice error={tool.error ?? categories.error ?? tools.error} />
       {missing && <QueryNotice error={{ code: 'not-found' }} />}
-      {!ready && !missing && !tool.error && !categories.error && (
+      {!ready && !missing && !tool.error && !categories.error && !tools.error && (
         <Skeleton shape="card" className="h-64" />
       )}
       {ready && !missing && (
@@ -65,6 +69,7 @@ export function ToolFormView({ slug }: ToolFormViewProps) {
           mode={editing ? 'edit' : 'create'}
           initial={initial}
           categories={options}
+          tools={toolOptions}
           takenSlugs={tools.data?.map((entry) => entry.id) ?? []}
           error={saveError}
           saved={saved}

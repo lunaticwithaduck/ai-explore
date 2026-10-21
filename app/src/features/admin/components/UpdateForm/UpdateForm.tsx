@@ -1,11 +1,12 @@
 'use client';
 
 import { UPDATE_KINDS } from '@ai-explore/schemas';
-import { Button, Card } from '@ai-explore/ui';
+import { Button, Card, Text } from '@ai-explore/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Save } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { FormProvider, useForm } from 'react-hook-form';
+import { formatVersion } from '@/lib/format/version';
 import { type UpdateFormValues, updateFormSchema } from '../../config/updateForm';
 import { AdminSelectField } from '../AdminSelectField/AdminSelectField';
 import { AdminTextField } from '../AdminTextField/AdminTextField';
@@ -15,6 +16,7 @@ import { SavedNotice } from '../SavedNotice/SavedNotice';
 import { updateFormStyles } from './UpdateForm.styles';
 
 export type UpdateFormProps = {
+  mode: 'create' | 'edit';
   initial: UpdateFormValues;
   tools: readonly { value: string; label: string }[];
   error: unknown;
@@ -22,7 +24,7 @@ export type UpdateFormProps = {
   onSubmit: (values: UpdateFormValues) => Promise<void>;
 };
 
-export function UpdateForm({ initial, tools, error, saved, onSubmit }: UpdateFormProps) {
+export function UpdateForm({ mode, initial, tools, error, saved, onSubmit }: UpdateFormProps) {
   const t = useTranslations('admin');
   const methods = useForm<UpdateFormValues>({
     resolver: zodResolver(updateFormSchema),
@@ -34,13 +36,30 @@ export function UpdateForm({ initial, tools, error, saved, onSubmit }: UpdateFor
       <form noValidate onSubmit={methods.handleSubmit(onSubmit)} className={updateFormStyles.form}>
         <Card padding="md" className={updateFormStyles.card}>
           <div className={updateFormStyles.grid}>
-            <AdminSelectField
-              name="toolId"
-              label={t('update.tool')}
-              options={tools}
-              placeholder={t('update.toolPlaceholder')}
-            />
-            <AdminTextField name="version" label={t('update.version')} />
+            {mode === 'create' ? (
+              <>
+                <AdminSelectField
+                  name="toolId"
+                  label={t('update.tool')}
+                  options={tools}
+                  placeholder={t('update.toolPlaceholder')}
+                />
+                <AdminTextField
+                  name="version"
+                  label={t('update.version')}
+                  hint={t('update.hints.version')}
+                  placeholder={t('update.placeholders.version')}
+                />
+              </>
+            ) : (
+              <Text tone="muted" className={updateFormStyles.summary}>
+                {t('update.editing', {
+                  tool:
+                    tools.find((entry) => entry.value === initial.toolId)?.label ?? initial.toolId,
+                  version: formatVersion(initial.version),
+                })}
+              </Text>
+            )}
             <AdminSelectField name="kind" label={t('update.kind')} options={kinds} />
             <AdminTextField name="title.en" label={t('update.titleEn')} />
             <AdminTextField name="title.bg" label={t('update.titleBg')} />

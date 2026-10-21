@@ -1,9 +1,9 @@
 'use client';
 
 import { Input, Textarea } from '@ai-explore/ui';
-import { useTranslations } from 'next-intl';
-import { get, useFormContext } from 'react-hook-form';
-import { AdminField } from '../AdminField/AdminField';
+import { useFormContext } from 'react-hook-form';
+import { useFieldError } from '../../hooks/useFieldError';
+import { AdminField, fieldMessageId } from '../AdminField/AdminField';
 
 export type AdminTextFieldProps = {
   name: string;
@@ -12,6 +12,8 @@ export type AdminTextFieldProps = {
   multiline?: boolean;
   numeric?: boolean;
   placeholder?: string | undefined;
+  hint?: string | undefined;
+  wide?: boolean;
   inputType?: 'text' | 'url';
 };
 
@@ -27,20 +29,23 @@ export function AdminTextField({
   multiline = false,
   numeric = false,
   placeholder,
+  hint,
+  wide = false,
   inputType = 'text',
 }: AdminTextFieldProps) {
-  const t = useTranslations('admin');
-  const { register, formState } = useFormContext();
+  const { register } = useFormContext();
   const id = `field-${name}`;
-  const failed = Boolean(get(formState.errors, name));
+  const { failed, message } = useFieldError(name, { numeric });
   const registered = register(name, numeric ? { setValueAs: toNumber } : undefined);
+  const describedBy = message || hint ? fieldMessageId(id) : undefined;
   return (
-    <AdminField id={id} label={label} error={failed ? t('form.invalid') : undefined}>
+    <AdminField id={id} label={label} error={message} hint={hint} wide={wide}>
       {multiline ? (
         <Textarea
           id={id}
           invalid={failed}
           placeholder={placeholder}
+          aria-describedby={describedBy}
           data-testid={testId}
           {...registered}
         />
@@ -51,6 +56,7 @@ export function AdminTextField({
           type={numeric ? 'number' : inputType}
           inputMode={numeric ? 'numeric' : undefined}
           placeholder={placeholder}
+          aria-describedby={describedBy}
           data-testid={testId}
           {...registered}
         />

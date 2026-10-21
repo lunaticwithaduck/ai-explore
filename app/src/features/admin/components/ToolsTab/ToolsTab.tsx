@@ -1,7 +1,7 @@
 'use client';
 
-import { Badge, Button, Skeleton, Text, TextLink } from '@ai-explore/ui';
-import { Plus } from 'lucide-react';
+import { Badge, Button, Skeleton, Text } from '@ai-explore/ui';
+import { Pencil, Plus } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useAdminToolsQuery } from '@/api/endpoints/admin';
 import { routes } from '@/config/routes';
@@ -39,9 +39,9 @@ export function ToolsTab() {
               <Badge tone={tool.published ? 'success' : 'neutral'}>
                 {tool.published ? t('status.published') : t('status.draft')}
               </Badge>
-              <TextLink asChild size="sm">
+              <Button asChild size="sm" variant="secondary" iconLeft={Pencil}>
                 <Link href={routes.adminTool(tool.id)}>{t('actions.edit')}</Link>
-              </TextLink>
+              </Button>
             </div>
           </AdminRow>
         ))}

@@ -20,6 +20,17 @@ const buildPricing = (values: ToolFormValues) => {
   };
 };
 
+const buildComparison = (values: ToolFormValues) => {
+  const { bestUseCase, ...rest } = values.comparison;
+  const hasOwn = bestUseCase.en.trim() !== '';
+  return {
+    ...rest,
+    bestUseCase: toLocalized(
+      hasOwn ? bestUseCase : { en: values.tagline.en, bg: values.tagline.bg },
+    ),
+  };
+};
+
 const buildEditable = (values: ToolFormValues) => ({
   name: values.name.trim(),
   developer: values.developer.trim(),
@@ -38,25 +49,23 @@ const buildEditable = (values: ToolFormValues) => ({
     ...(plan.popular === undefined ? {} : { popular: plan.popular }),
   })),
   features: values.features.map(toLocalized),
+  tutorials: values.tutorials.map((tutorial) => ({
+    youtubeId: tutorial.youtubeId.trim(),
+    title: toLocalized(tutorial.title),
+    durationMin: tutorial.durationMin,
+    difficulty: tutorial.difficulty,
+  })),
+  comparison: buildComparison(values),
+  similarToolIds: values.similarToolIds,
+  complementaryToolIds: values.complementaryToolIds,
   published: values.published,
 });
 
 export function buildToolDocument<Stamp>(values: ToolFormValues, stamp: Stamp) {
-  const tagline = toLocalized(values.tagline);
   return {
     ...buildEditable(values),
     slug: values.slug,
     rating: { count: 0, sum: 0 },
-    tutorials: [],
-    comparison: {
-      apiAccess: 'none' as const,
-      integrations: 0,
-      speed: 3,
-      outputQuality: 3,
-      bestUseCase: tagline,
-    },
-    similarToolIds: [],
-    complementaryToolIds: [],
     createdAt: stamp,
     updatedAt: stamp,
     lastReleaseAt: stamp,
@@ -84,6 +93,16 @@ export function toolToFormValues(tool: Tool): ToolFormValues {
     },
     plans: tool.plans,
     features: tool.features.map(fromLocalized),
+    tutorials: tool.tutorials.map((tutorial) => ({
+      ...tutorial,
+      title: fromLocalized(tutorial.title),
+    })),
+    comparison: {
+      ...tool.comparison,
+      bestUseCase: fromLocalized(tool.comparison.bestUseCase),
+    },
+    similarToolIds: tool.similarToolIds,
+    complementaryToolIds: tool.complementaryToolIds,
     published: tool.published,
   };
 }

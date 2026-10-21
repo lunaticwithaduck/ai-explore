@@ -7,6 +7,7 @@ import { Save } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { FormProvider, useForm } from 'react-hook-form';
 import { type BundleFormValues, bundleFormSchema } from '../../config/bundleForm';
+import { AdminMoneyField } from '../AdminMoneyField/AdminMoneyField';
 import { AdminSelectField } from '../AdminSelectField/AdminSelectField';
 import { AdminSwitchField } from '../AdminSwitchField/AdminSwitchField';
 import { AdminTextField } from '../AdminTextField/AdminTextField';
@@ -52,21 +53,35 @@ export function BundleForm({
       <form noValidate onSubmit={submit} className={bundleFormStyles.form}>
         <Card padding="md" className={bundleFormStyles.card}>
           <div className={bundleFormStyles.grid}>
-            {mode === 'create' && <AdminTextField name="slug" label={t('bundle.slug')} />}
+            {mode === 'create' && (
+              <AdminTextField
+                wide
+                name="slug"
+                label={t('bundle.slug')}
+                hint={t('tool.hints.slug')}
+                placeholder={t('bundle.placeholders.slug')}
+              />
+            )}
             <AdminTextField name="name.en" label={t('bundle.nameEn')} />
             <AdminTextField name="name.bg" label={t('bundle.nameBg')} />
             <AdminTextField multiline name="description.en" label={t('bundle.descriptionEn')} />
             <AdminTextField multiline name="description.bg" label={t('bundle.descriptionBg')} />
-            <AdminTextField name="icon" label={t('bundle.icon')} />
+            <AdminTextField
+              name="icon"
+              label={t('bundle.icon')}
+              hint={t('bundle.hints.icon')}
+              placeholder={t('bundle.placeholders.icon')}
+            />
             <AdminSelectField name="accent" label={t('bundle.accent')} options={accents} />
           </div>
           <div className={bundleFormStyles.grid}>
             {BUNDLE_PERIODS.map((period) => (
-              <AdminTextField
+              <AdminMoneyField
                 key={period}
-                numeric
                 name={`pricing.${period}.priceCents`}
                 label={t('bundle.price', { period: t(`bundle.periods.${period}`) })}
+                hint={t('bundle.hints.price')}
+                placeholder={t('bundle.placeholders.price')}
               />
             ))}
           </div>

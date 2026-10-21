@@ -1,8 +1,8 @@
 'use client';
 
 import { Select, type SelectOption } from '@ai-explore/ui';
-import { useTranslations } from 'next-intl';
-import { Controller, get, useFormContext } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
+import { useFieldError } from '../../hooks/useFieldError';
 import { AdminField } from '../AdminField/AdminField';
 
 export type AdminSelectFieldProps = {
@@ -10,6 +10,7 @@ export type AdminSelectFieldProps = {
   label: string;
   options: readonly SelectOption[];
   placeholder?: string | undefined;
+  hint?: string | undefined;
   testId?: string | undefined;
 };
 
@@ -18,14 +19,14 @@ export function AdminSelectField({
   label,
   options,
   placeholder,
+  hint,
   testId,
 }: AdminSelectFieldProps) {
-  const t = useTranslations('admin');
-  const { control, formState } = useFormContext();
+  const { control } = useFormContext();
   const id = `field-${name}`;
-  const failed = Boolean(get(formState.errors, name));
+  const { failed, message } = useFieldError(name);
   return (
-    <AdminField id={id} label={label} error={failed ? t('form.invalid') : undefined}>
+    <AdminField id={id} label={label} error={message} hint={hint}>
       <Controller
         control={control}
         name={name}

@@ -61,4 +61,45 @@ describe('tool form', () => {
     expect(values.description.bg).toBe('Инструмент');
     expect(values.tagline.bg).toBe('');
   });
+
+  it('writes tutorials, comparison and related tools, and keeps rating out of patches', () => {
+    const values = filled();
+    values.tutorials = [
+      {
+        youtubeId: 'dQw4w9WgXcQ',
+        title: { en: 'Intro', bg: '' },
+        durationMin: 12,
+        difficulty: 'advanced',
+      },
+    ];
+    values.comparison = {
+      apiAccess: 'full',
+      integrations: 40,
+      speed: 4,
+      outputQuality: 5,
+      bestUseCase: { en: 'Research', bg: 'Проучване' },
+    };
+    values.similarToolIds = ['a-tool'];
+    values.complementaryToolIds = ['b-tool'];
+    expect(toolFormSchema.safeParse(values).success).toBe(true);
+    const doc = buildToolDocument(values, now);
+    expect(toolSchema.safeParse(doc).success).toBe(true);
+    expect(doc.tutorials[0]?.title).toEqual({ en: 'Intro' });
+    expect(doc.comparison.bestUseCase).toEqual({ en: 'Research', bg: 'Проучване' });
+    const patch = buildToolPatch(values, now);
+    expect(patch).not.toHaveProperty('rating');
+    expect(patch.similarToolIds).toEqual(['a-tool']);
+    expect(patch.complementaryToolIds).toEqual(['b-tool']);
+    expect(toolFormSchema.safeParse(toolToFormValues(toolSchema.parse(doc))).success).toBe(true);
+  });
+
+  it('rejects an invalid YouTube id and out-of-range speed', () => {
+    const values = filled();
+    values.tutorials = [
+      { youtubeId: 'short', title: { en: 'x', bg: '' }, durationMin: 1, difficulty: 'beginner' },
+    ];
+    values.comparison.speed = 9;
+    const result = toolFormSchema.safeParse(values);
+    expect(result.success).toBe(false);
+  });
 });
